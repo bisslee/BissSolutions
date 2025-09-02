@@ -6,7 +6,12 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
+    "test:coverage": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
+    "e2e": "cypress run",
+    "e2e:open": "cypress open",
+    "test:all": "npm run test:coverage && npm run e2e"
   },
   "prettier": {
     "printWidth": 100,
@@ -36,7 +41,10 @@
     "@angular/build": "^20.2.0",
     "@angular/cli": "^20.2.0",
     "@angular/compiler-cli": "^20.2.0",
+    "@angular/common": "^20.2.0",
+    "@angular/platform-browser": "^20.2.0",
     "@types/jasmine": "~5.1.0",
+    "cypress": "^13.15.0",
     "jasmine-core": "~5.9.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
