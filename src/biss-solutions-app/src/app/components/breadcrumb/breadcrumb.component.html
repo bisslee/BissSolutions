@@ -1,0 +1,22 @@
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list">
+    <li
+      *ngFor="let item of breadcrumbItems; let first = first; let last = last"
+      class="breadcrumb-item"
+      [class.active]="item.active || last"
+    >
+      <ng-container *ngIf="item.route && !last; else textOnly">
+        <a [routerLink]="item.route" class="breadcrumb-link">
+          <i *ngIf="first" class="ri-home-line"></i>
+          {{ item.label }}
+        </a>
+      </ng-container>
+      <ng-template #textOnly>
+        <span class="breadcrumb-text">
+          <i *ngIf="first" class="ri-home-line"></i>
+          {{ item.label }}
+        </span>
+      </ng-template>
+    </li>
+  </ol>
+</nav>

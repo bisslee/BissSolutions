@@ -1,0 +1,35 @@
+<!-- Botão Flutuante -->
+<button
+  class="contact-float-btn"
+  (click)="toggleContactForm()"
+  [class.active]="isContactFormOpen"
+  [attr.aria-label]="isContactFormOpen ? 'Fechar formulário de contato' : 'Abrir formulário de contato'"
+>
+  <i class="fas fa-comments" *ngIf="!isContactFormOpen"></i>
+  <i class="fas fa-times" *ngIf="isContactFormOpen"></i>
+</button>
+
+<!-- Overlay do Formulário -->
+<div
+  class="contact-overlay"
+  [class.active]="isContactFormOpen"
+  (click)="closeContactForm()"
+></div>
+
+<!-- Formulário de Contato -->
+<div class="contact-form-wrapper" [class.active]="isContactFormOpen">
+  <div class="contact-form-header">
+    <h3>Entre em Contato</h3>
+    <button
+      class="close-btn"
+      (click)="closeContactForm()"
+      aria-label="Fechar formulário"
+    >
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <app-contact-form
+    (formSubmit)="onFormSubmit($event)"
+  ></app-contact-form>
+</div>

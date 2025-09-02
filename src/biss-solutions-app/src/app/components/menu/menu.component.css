@@ -1,0 +1,134 @@
+/* Estilos base do menu */
+.nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  margin: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+  display: block;
+}
+
+/* Estilos específicos para header */
+.nav-menu-header {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu-header li {
+  margin-left: 30px;
+}
+
+.nav-menu-header li:first-child {
+  margin-left: 0;
+}
+
+.nav-link-header {
+  color: #1e293b;
+  font-weight: 500;
+  padding: 0.5rem 0;
+}
+
+.nav-link-header:hover,
+.nav-link-header.active {
+  color: #2563eb;
+}
+
+.nav-link-header::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+.nav-link-header:hover::after,
+.nav-link-header.active::after {
+  width: 100%;
+}
+
+/* Estilos específicos para footer */
+.nav-menu-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.nav-menu-footer li {
+  margin-bottom: 0.75rem;
+  width: 100%;
+}
+
+.nav-link-footer {
+  color: #cbd5e1;
+  font-weight: 400;
+  font-size: 0.875rem;
+  padding: 0;
+}
+
+.nav-link-footer:hover {
+  color: #f8fafc;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .nav-menu-header {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: white;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
+    transition: left 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .nav-menu-header.active {
+    left: 0;
+  }
+
+  .nav-menu-header li {
+    margin: 20px 0;
+  }
+
+  .nav-link-header {
+    padding: 1rem;
+    border-bottom: 1px solid #f3f4f6;
+    border-radius: 0;
+  }
+
+  /* Footer menu não precisa de estilos mobile especiais */
+  .nav-menu-footer {
+    position: static;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+    width: auto;
+    left: 0;
+  }
+
+  .nav-menu-footer li {
+    margin-bottom: 0.75rem;
+  }
+
+  .nav-link-footer {
+    padding: 0;
+    border-bottom: none;
+  }
+}

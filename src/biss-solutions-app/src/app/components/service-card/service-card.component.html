@@ -1,0 +1,27 @@
+<div class="section-block">
+  <div class="block-image">
+    <div class="icon-container">
+      <i [class]="service.icon"></i>
+    </div>
+    <div class="image-overlay"></div>
+  </div>
+  <div class="block-content">
+    <h3 class="block-title">{{ service.title }}</h3>
+    <p class="block-text">{{ service.description }}</p>
+
+    <ul class="service-features">
+      <li *ngFor="let feature of service.features">
+        <i class="fas fa-check"></i>
+        {{ feature }}
+      </li>
+    </ul>
+
+    <a
+      [routerLink]="service.buttonLink"
+      class="btn btn-outline"
+    >
+      {{ service.buttonText }}
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</div>

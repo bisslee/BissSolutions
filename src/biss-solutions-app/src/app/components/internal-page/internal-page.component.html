@@ -1,0 +1,24 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb-section">
+  <div class="container">
+    <app-breadcrumb [breadcrumbItems]="pageData.breadcrumbItems"></app-breadcrumb>
+  </div>
+</div>
+
+<!-- Page Header -->
+<div class="page-header" [style.background-image]="'url(' + pageData.backgroundImage + ')'">
+  <div class="header-overlay"></div>
+  <div class="container">
+    <div class="header-content">
+      <h1 class="page-title">{{ pageData.title }}</h1>
+      <p *ngIf="pageData.subtitle" class="page-subtitle">{{ pageData.subtitle }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="page-content">
+  <div class="container">
+    <ng-content></ng-content>
+  </div>
+</div>

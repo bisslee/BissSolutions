@@ -1,0 +1,122 @@
+<div class="contact-form-container">
+  <div class="form-header">
+    <h3>{{ title }}</h3>
+    <p>{{ description }}</p>
+  </div>
+
+  <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Nome Completo *</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="formData.name"
+          required
+          [class.error]="showErrors && !formData.name"
+          placeholder="Digite seu nome completo"
+        />
+        <span class="error-message" *ngIf="showErrors && !formData.name">
+          Nome é obrigatório
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail *</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="formData.email"
+          required
+          [class.error]="showErrors && !isValidEmail(formData.email)"
+          placeholder="seu@email.com"
+        />
+        <span class="error-message" *ngIf="showErrors && !isValidEmail(formData.email)">
+          E-mail válido é obrigatório
+        </span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="phone">Telefone *</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          [(ngModel)]="formData.phone"
+          required
+          [class.error]="showErrors && !formData.phone"
+          placeholder="(11) 99999-9999"
+        />
+        <span class="error-message" *ngIf="showErrors && !formData.phone">
+          Telefone é obrigatório
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Empresa</label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          [(ngModel)]="formData.company"
+          placeholder="Nome da sua empresa"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Assunto *</label>
+      <select
+        id="subject"
+        name="subject"
+        [(ngModel)]="formData.subject"
+        required
+        [class.error]="showErrors && !formData.subject"
+      >
+        <option value="">Selecione um assunto</option>
+        <option value="orcamento">Solicitar Orçamento</option>
+        <option value="consultoria">Consultoria</option>
+        <option value="parceria">Proposta de Parceria</option>
+        <option value="suporte">Suporte Técnico</option>
+        <option value="outro">Outro</option>
+      </select>
+      <span class="error-message" *ngIf="showErrors && !formData.subject">
+        Assunto é obrigatório
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Mensagem *</label>
+      <textarea
+        id="message"
+        name="message"
+        [(ngModel)]="formData.message"
+        required
+        rows="5"
+        [class.error]="showErrors && !formData.message"
+        placeholder="Descreva sua necessidade ou solicitação..."
+      ></textarea>
+      <span class="error-message" *ngIf="showErrors && !formData.message">
+        Mensagem é obrigatória
+      </span>
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="isSubmitting"
+      >
+        <span *ngIf="!isSubmitting">Enviar Mensagem</span>
+        <span *ngIf="isSubmitting">
+          <i class="fas fa-spinner fa-spin"></i>
+          Enviando...
+        </span>
+      </button>
+    </div>
+  </form>
+</div>

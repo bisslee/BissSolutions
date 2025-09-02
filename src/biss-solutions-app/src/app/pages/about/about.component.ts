@@ -543,7 +543,7 @@ export class AboutComponent {
   pageData: InternalPageData = {
     title: 'Sobre o Site',
     subtitle: 'Arquitetura, tecnologias e roadmap de desenvolvimento',
-    backgroundImage: '/images/about/aboutjpg',
+    backgroundImage: '/images/about/about.jpg',
     breadcrumbItems: [
       { label: 'Home', route: '/home' },
       { label: 'Sobre', route: '/sobre' }

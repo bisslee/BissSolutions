@@ -1,0 +1,54 @@
+<header class="header">
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-content">
+        <div class="contact-info">
+          <span>
+            <i class="fas fa-phone"></i>
+            (11) 95273-9399
+          </span>
+          <span>
+            <i class="fas fa-envelope"></i>
+            contato@biss.com.br
+          </span>
+          <span>
+            <i class="fas fa-clock"></i>
+            Seg-Sex: 8h às 18h
+          </span>
+        </div>
+        <app-social></app-social>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <div class="header-main">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <a routerLink="/" [attr.aria-label]="'Ir para página inicial'">
+            <img src="/images/logo-tech-azul.png" alt="Biss Solutions" />
+          </a>
+        </div>
+
+        <app-menu
+          [isMenuOpen]="isMenuOpen"
+          [style]="'header'"
+          (menuItemClick)="onMenuItemClick($event)"
+        ></app-menu>
+
+        <button
+          class="nav-toggle"
+          [class.active]="isMenuOpen"
+          (click)="toggleMenu()"
+          aria-label="Toggle navigation menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

@@ -11,79 +11,8 @@ export interface ImageSource {
   selector: 'app-optimized-image',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <picture>
-      <!-- WebP com fallback para navegadores antigos -->
-      <source
-        *ngFor="let source of webpSources"
-        [srcset]="source.src"
-        [type]="'image/' + source.format"
-        [media]="source.media"
-      >
-
-      <!-- Fallback para navegadores que não suportam WebP -->
-      <img
-        [src]="fallbackSrc"
-        [alt]="alt"
-        [loading]="loading"
-        [class]="cssClass"
-        [style]="customStyles"
-        (load)="onImageLoad()"
-        (error)="onImageError()"
-        [class.loaded]="isLoaded"
-        [class.error]="hasError"
-      >
-    </picture>
-  `,
-  styles: [`
-    :host {
-      display: block;
-    }
-
-    picture {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: opacity 0.3s ease;
-      opacity: 0;
-    }
-
-    img.loaded {
-      opacity: 1;
-    }
-
-    img.error {
-      opacity: 0.5;
-      filter: grayscale(100%);
-    }
-
-    /* Skeleton loading */
-    img:not(.loaded):not(.error) {
-      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-    }
-
-    @keyframes loading {
-      0% {
-        background-position: 200% 0;
-      }
-      100% {
-        background-position: -200% 0;
-      }
-    }
-
-    /* Lazy loading placeholder */
-    img[loading="lazy"] {
-      min-height: 200px;
-    }
-  `]
+  templateUrl: './optimized-image.component.html',
+  styleUrls: ['./optimized-image.component.css']
 })
 export class OptimizedImageComponent implements OnInit {
   @Input() src!: string;

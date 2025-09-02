@@ -1,0 +1,22 @@
+<picture>
+  <!-- WebP com fallback para navegadores antigos -->
+  <source
+    *ngFor="let source of webpSources"
+    [srcset]="source.src"
+    [type]="'image/' + source.format"
+    [media]="source.media"
+  >
+
+  <!-- Fallback para navegadores que não suportam WebP -->
+  <img
+    [src]="fallbackSrc"
+    [alt]="alt"
+    [loading]="loading"
+    [class]="cssClass"
+    [style]="customStyles"
+    (load)="onImageLoad()"
+    (error)="onImageError()"
+    [class.loaded]="isLoaded"
+    [class.error]="hasError"
+  >
+</picture>

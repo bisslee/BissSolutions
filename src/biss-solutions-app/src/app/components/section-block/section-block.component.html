@@ -1,0 +1,22 @@
+<div class="section-block">
+  <div class="block-image">
+    <img
+      [src]="block.image"
+      [alt]="block.imageAlt || block.title"
+      loading="lazy"
+    />
+    <div class="image-overlay"></div>
+  </div>
+  <div class="block-content">
+    <h3 class="block-title">{{ block.title }}</h3>
+    <p class="block-text">{{ block.text }}</p>
+    <a
+      [routerLink]="block.buttonLink"
+      [target]="block.buttonTarget || '_self'"
+      class="btn btn-outline"
+    >
+      {{ block.buttonText }}
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</div>

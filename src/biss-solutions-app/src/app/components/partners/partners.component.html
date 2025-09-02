@@ -1,0 +1,38 @@
+<section class="partners-section">
+  <div class="container">
+    <div class="section-header" *ngIf="title || description">
+      <h2 *ngIf="title" class="section-title">{{ title }}</h2>
+      <p *ngIf="description" class="section-description">{{ description }}</p>
+    </div>
+
+    <div class="partners-grid">
+      <div
+        *ngFor="let partner of partners"
+        class="partner-item"
+        (click)="openPartnerWebsite(partner.website)"
+        [attr.aria-label]="'Visitar site do ' + partner.name"
+        tabindex="0"
+        (keydown.enter)="openPartnerWebsite(partner.website)"
+        (keydown.space)="openPartnerWebsite(partner.website)"
+      >
+        <div class="partner-logo">
+          <img
+            [src]="partner.logo"
+            [alt]="'Logo ' + partner.name"
+            loading="lazy"
+          />
+        </div>
+        <div class="partner-info" *ngIf="showPartnerNames">
+          <h4 class="partner-name">{{ partner.name }}</h4>
+          <p *ngIf="partner.description" class="partner-description">
+            {{ partner.description }}
+          </p>
+        </div>
+        <div class="partner-overlay">
+          <i class="fas fa-external-link-alt"></i>
+          <span>Visitar Site</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

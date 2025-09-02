@@ -1,0 +1,37 @@
+<nav class="nav" [class.menu-open]="isMenuOpen">
+  <ul class="nav-menu" [ngClass]="{
+    'nav-menu-header': style === 'header',
+    'nav-menu-footer': style === 'footer'
+  }">
+    <li *ngFor="let item of menuItems">
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        class="nav-link"
+        [ngClass]="{
+          'nav-link-header': style === 'header',
+          'nav-link-footer': style === 'footer'
+        }"
+        (click)="onMenuItemClick(item)"
+      >
+        {{ item.label }}
+      </a>
+      <ul *ngIf="item.children && item.children.length > 0" class="submenu">
+        <li *ngFor="let child of item.children">
+          <a
+            [routerLink]="child.route"
+            routerLinkActive="active"
+            class="nav-link"
+            [ngClass]="{
+              'nav-link-header': style === 'header',
+              'nav-link-footer': style === 'footer'
+            }"
+            (click)="onMenuItemClick(child)"
+          >
+            {{ child.label }}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

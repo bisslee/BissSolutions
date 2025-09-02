@@ -1,0 +1,72 @@
+<section class="clients-section">
+  <div class="container">
+    <div class="section-header" *ngIf="title || description">
+      <h2 *ngIf="title" class="section-title">{{ title }}</h2>
+      <p *ngIf="description" class="section-description">{{ description }}</p>
+    </div>
+
+    <div class="clients-grid">
+      <div
+        *ngFor="let client of clients"
+        class="client-item"
+        [class.has-project-image]="client.projectImage"
+      >
+        <div class="client-content">
+          <div class="client-header">
+            <div class="client-logo">
+              <img
+                [src]="client.logo"
+                [alt]="'Logo ' + client.name"
+                loading="lazy"
+                (error)="onImageError($event)"
+              />
+            </div>
+            <div class="client-info">
+              <h3 class="client-name">{{ client.name }}</h3>
+              <p class="client-version">{{ client.version }}</p>
+              <p class="client-description">{{ client.description }}</p>
+            </div>
+          </div>
+
+          <div class="client-services">
+            <h4 class="services-title">Serviços Prestados:</h4>
+            <div class="services-tags">
+              <span
+                *ngFor="let service of client.services"
+                class="service-tag"
+                [class]="'service-' + service.category.toLowerCase().replace(' ', '-')"
+              >
+                {{ service.name }}
+              </span>
+            </div>
+          </div>
+
+          <div class="client-project" *ngIf="client.projectImage">
+            <h4 class="project-title">Projeto Realizado:</h4>
+            <div class="project-image">
+              <img
+                [src]="client.projectImage"
+                [alt]="client.projectImageAlt || 'Projeto ' + client.name"
+                loading="lazy"
+                (error)="onProjectImageError($event)"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="client-actions" *ngIf="client.website">
+          <a
+            [href]="client.website"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline"
+            [attr.aria-label]="'Visitar site do ' + client.name"
+          >
+            <i class="fas fa-external-link-alt"></i>
+            Visitar Site
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
