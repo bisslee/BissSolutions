@@ -3,21 +3,27 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeroSection } from '../../components/hero-section/hero-section';
 import { ClienteCard, Cliente } from '../../components/cliente-card/cliente-card';
+import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb';
 import { SeoService } from '../../services/seo.service';
+import { BreadcrumbService } from '../../services/breadcrumb.service';
 
 @Component({
   selector: 'app-clients',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeroSection, ClienteCard],
+  imports: [CommonModule, RouterModule, HeroSection, ClienteCard, BreadcrumbComponent],
   templateUrl: './clients.html',
   styleUrl: './clients.css'
 })
 export class Clients implements OnInit {
 
-  constructor(private seoService: SeoService) {}
+  constructor(
+    private seoService: SeoService,
+    private breadcrumbService: BreadcrumbService
+  ) {}
 
   ngOnInit(): void {
     this.seoService.updateSEO(this.seoService.getClientsSEO());
+    this.breadcrumbService.setBreadcrumbs(this.breadcrumbService.getBreadcrumbsForPage('clients'));
   }
   clients: Cliente[] = [
     {

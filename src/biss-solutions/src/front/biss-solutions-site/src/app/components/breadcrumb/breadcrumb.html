@@ -1,0 +1,26 @@
+<nav class="breadcrumb" *ngIf="breadcrumbs.length > 1" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list">
+    <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumbs; let i = index">
+      <ng-container [ngSwitch]="breadcrumb.isActive">
+        <!-- Item ativo (último item) -->
+        <span *ngSwitchCase="true" class="breadcrumb-current" aria-current="page">
+          {{ breadcrumb.label }}
+        </span>
+        
+        <!-- Item clicável -->
+        <a *ngSwitchDefault 
+           [routerLink]="breadcrumb.url" 
+           class="breadcrumb-link"
+           [class.breadcrumb-home]="breadcrumb.label === 'Home'"
+           [attr.aria-label]="'Ir para ' + breadcrumb.label">
+          {{ breadcrumb.label }}
+        </a>
+      </ng-container>
+      
+      <!-- Separador (seta) -->
+      <i *ngIf="!isLastItem(i)" 
+         class="ri-arrow-right-s-line breadcrumb-separator" 
+         aria-hidden="true"></i>
+    </li>
+  </ol>
+</nav>

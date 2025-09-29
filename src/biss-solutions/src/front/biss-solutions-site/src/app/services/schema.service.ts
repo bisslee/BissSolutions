@@ -54,7 +54,7 @@ export class SchemaService {
 
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
-  private addJsonLd(jsonLd: any, id: string): void {
+  public addJsonLd(jsonLd: any, id: string): void {
     // Remove existing schema with same ID
     const existingScript = this.document.getElementById(id);
     if (existingScript) {

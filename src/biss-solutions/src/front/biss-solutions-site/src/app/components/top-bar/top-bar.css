@@ -1,8 +1,8 @@
 .top-bar {
   background-color: #0f172a;
   border-bottom: 1px solid #334155;
-  padding: 8px 0;
-  font-size: 0.875rem;
+  padding: 4px 0;
+  font-size: 0.75rem;
   position: sticky;
   top: 0;
   z-index: 1001;
@@ -29,7 +29,7 @@
   align-items: center;
   gap: var(--space-xs);
   color: #cbd5e1;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 .contact-item i {
@@ -45,8 +45,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background-color: #1e293b;
   color: #cbd5e1;
@@ -74,7 +74,7 @@
 /* Mobile responsivo */
 @media (max-width: 768px) {
   .top-bar {
-    padding: var(--space-xs) 0;
+    padding: 2px 0;
   }
   
   .top-bar-content {
@@ -88,7 +88,7 @@
   }
 
   .contact-item {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .social-links {

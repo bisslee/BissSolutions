@@ -1,7 +1,6 @@
 /* Serviço Detalhe Component */
 .service-detail-page {
   min-height: 100vh;
-  padding-top: 80px; /* Espaço para o header fixo */
   width: 100%;
   box-sizing: border-box;
   overflow: visible;
@@ -293,9 +292,6 @@
 
 /* Responsividade */
 @media (max-width: 767px) {
-  .service-detalhe-page {
-    padding-top: 70px;
-  }
 
   .container {
     padding: 0 0.5rem;

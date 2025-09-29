@@ -1,7 +1,7 @@
 /* Serviços Page Styles */
 .services-page {
   min-height: 100vh;
-  padding-top: 80px; /* Espaço para o header fixo */
+  padding-top: 10px; /* Espaço mínimo para o header fixo */
   width: 100%;
   box-sizing: border-box;
   overflow: visible;
@@ -125,7 +125,7 @@
 /* Responsividade */
 @media (max-width: 767px) {
   .services-page {
-    padding-top: 70px;
+    padding-top: 8px;
   }
 
   .container {

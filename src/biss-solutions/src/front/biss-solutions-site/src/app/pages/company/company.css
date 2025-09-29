@@ -1,7 +1,7 @@
 /* company Page Styles */
 .company-page {
   min-height: 100vh;
-  padding-top: 80px; /* Espaço para o header fixo */
+  padding-top: 10px; /* Espaço para o header fixo */
 }
 
 .container {

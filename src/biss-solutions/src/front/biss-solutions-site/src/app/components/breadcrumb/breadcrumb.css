@@ -1,0 +1,146 @@
+/* Breadcrumb Styles */
+.breadcrumb {
+  margin-bottom: var(--space-sm);
+  padding: var(--space-xs) 0;
+  text-align: left;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.breadcrumb-link {
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 2px var(--space-xs);
+  border-radius: var(--radius-sm);
+  position: relative;
+}
+
+.breadcrumb-link:hover {
+  color: var(--primary-700);
+  background-color: var(--primary-50);
+  transform: translateY(-1px);
+}
+
+.breadcrumb-link:focus {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+.breadcrumb-home {
+  color: var(--neutral-500) !important;
+}
+
+.breadcrumb-current {
+  color: var(--neutral-700);
+  font-weight: 600;
+  padding: 2px var(--space-xs);
+  background-color: transparent;
+  border-radius: var(--radius-sm);
+}
+
+.breadcrumb-separator {
+  color: var(--neutral-400);
+  font-size: 0.875rem;
+  margin: 0 var(--space-xs);
+  flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .breadcrumb {
+    margin-bottom: var(--space-xs);
+    padding: 2px 0;
+  }
+  
+  .breadcrumb-list {
+    gap: var(--space-xs);
+  }
+  
+  .breadcrumb-link,
+  .breadcrumb-current {
+    padding: 1px var(--space-xs);
+    font-size: 0.875rem;
+  }
+  
+  .breadcrumb-separator {
+    font-size: 0.75rem;
+    margin: 0 var(--space-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumb-link,
+  .breadcrumb-current {
+    font-size: 0.8rem;
+    padding: 2px var(--space-xs);
+  }
+  
+  .breadcrumb-separator {
+    font-size: 0.7rem;
+  }
+}
+
+/* Animação suave */
+.breadcrumb-item {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo especial para primeira página (home) */
+.breadcrumb-item:first-child .breadcrumb-link {
+  color: var(--primary-500);
+  font-weight: 600;
+}
+
+.breadcrumb-item:first-child .breadcrumb-link:hover {
+  color: var(--primary-600);
+  background-color: var(--primary-100);
+}
+
+/* Dark mode support (se necessário no futuro) */
+@media (prefers-color-scheme: dark) {
+  .breadcrumb-current {
+    color: var(--neutral-300);
+    background-color: var(--neutral-800);
+  }
+  
+  .breadcrumb-link {
+    color: var(--primary-400);
+  }
+  
+  .breadcrumb-link:hover {
+    color: var(--primary-300);
+    background-color: var(--primary-900);
+  }
+}

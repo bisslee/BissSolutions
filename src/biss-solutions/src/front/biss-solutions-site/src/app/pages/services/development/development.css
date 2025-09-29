@@ -1,3 +1,14 @@
 /* development Page Styles */
-/* Estilos específicos podem ser adicionados aqui se necessário */
-/* Por enquanto, o componente serviceDetail já fornece todos os estilos necessários */
+.development-page {
+  min-height: 100vh;
+  padding-top: 10px; /* Espaço mínimo para o header fixo */
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+@media (max-width: 767px) {
+  .development-page {
+    padding-top: 8px;
+  }
+}

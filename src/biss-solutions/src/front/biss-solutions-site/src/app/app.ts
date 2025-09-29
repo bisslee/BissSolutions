@@ -7,6 +7,7 @@ import { FloatingButtons } from './components/floating-buttons/floating-buttons'
 import { BottomNavigation } from './components/bottom-navigation/bottom-navigation';
 import { PwaInstallBannerComponent } from './components/pwa-install-banner/pwa-install-banner';
 import { PwaUpdateNotificationComponent } from './components/pwa-update-notification/pwa-update-notification';
+import { CookieBannerComponent } from './components/cookie-banner/cookie-banner';
 import { PwaService } from './services/pwa.service';
 
 @Component({
@@ -19,7 +20,8 @@ import { PwaService } from './services/pwa.service';
     FloatingButtons,
     BottomNavigation,
     PwaInstallBannerComponent,
-    PwaUpdateNotificationComponent
+    PwaUpdateNotificationComponent,
+    CookieBannerComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'

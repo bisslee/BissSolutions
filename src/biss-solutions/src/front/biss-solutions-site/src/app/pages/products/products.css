@@ -1,7 +1,7 @@
 /* products Page Styles */
 .products-page {
   min-height: 100vh;
-  padding-top: 80px; /* Espaço para o header fixo */
+  padding-top: 10px; /* Espaço mínimo para o header fixo */
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
@@ -58,7 +58,7 @@
 /* Responsividade */
 @media (max-width: 767px) {
   .products-page {
-    padding-top: 70px;
+    padding-top: 8px;
   }
 
   .container {
