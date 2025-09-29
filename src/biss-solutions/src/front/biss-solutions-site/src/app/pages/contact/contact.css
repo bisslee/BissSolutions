@@ -1,0 +1,360 @@
+/* contact Page Styles */
+.contact-page {
+  min-height: 100vh;
+  padding-top: 80px; /* Espaço para o header fixo */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Hero Section removido - agora é um componente */
+
+/* contact Section */
+.contact-section {
+  padding: var(--space-2xl) 0;
+  background-color: var(--white);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+/* Formulário */
+.form-container {
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--neutral-200);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.form-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--neutral-700);
+  font-size: 0.875rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  padding: var(--space-md);
+  border: 2px solid var(--neutral-200);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: var(--white);
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(44, 56, 80, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--white);
+  border: none;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(44, 56, 80, 0.3);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Informações de contact */
+.info-container {
+  background: var(--neutral-50);
+  padding: var(--space-xl);
+  border-radius: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.info-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.info-card {
+  background: var(--white);
+  padding: var(--space-lg);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--neutral-200);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.info-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-icon i {
+  font-size: 1.25rem;
+  color: var(--white);
+}
+
+.info-content {
+  flex: 1;
+}
+
+.info-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-xs);
+}
+
+.info-text {
+  color: var(--neutral-600);
+  line-height: 1.5;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.info-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.info-link:hover {
+  text-decoration: underline;
+}
+
+/* Redes Sociais */
+.social-section {
+  text-align: center;
+}
+
+.social-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-md);
+}
+
+.social-links {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--white);
+  border: 2px solid var(--neutral-200);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: var(--neutral-700);
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, var(--neutral-900) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  padding: var(--space-2xl) 0;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.cta-subtitle {
+  font-size: 1.125rem;
+  opacity: 0.9;
+  margin-bottom: var(--space-xl);
+}
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+  background: var(--white);
+  color: var(--primary);
+}
+
+/* Responsividade */
+@media (max-width: 767px) {
+  .contact-page {
+    padding-top: 70px;
+  }
+
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .form-container,
+  .info-container {
+    padding: var(--space-md);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cta-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  .info-cards {
+    gap: var(--space-md);
+  }
+}

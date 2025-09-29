@@ -1,0 +1,97 @@
+.top-bar {
+  background-color: #0f172a;
+  border-bottom: 1px solid #334155;
+  padding: 8px 0;
+  font-size: 0.875rem;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
+  background-color: rgba(15, 23, 42, 0.95);
+}
+
+.top-bar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.contact-info {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: #cbd5e1;
+  font-size: 0.875rem;
+}
+
+.contact-item i {
+  color: #cbd5e1;
+}
+
+.social-links {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #1e293b;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.social-links a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: #334155;
+}
+
+.social-links a[aria-label="LinkedIn"]:hover {
+  background-color: var(--linkedin);
+  color: var(--white);
+}
+
+.social-links a[aria-label="WhatsApp"]:hover {
+  background-color: var(--whatsapp);
+  color: var(--white);
+}
+
+/* Mobile responsivo */
+@media (max-width: 768px) {
+  .top-bar {
+    padding: var(--space-xs) 0;
+  }
+  
+  .top-bar-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contact-info {
+    justify-content: flex-start;
+  }
+
+  .contact-item {
+    font-size: 0.8rem;
+  }
+
+  .social-links {
+    justify-content: flex-end;
+  }
+}

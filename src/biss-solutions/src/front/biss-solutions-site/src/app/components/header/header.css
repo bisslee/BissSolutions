@@ -1,0 +1,117 @@
+.header {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--neutral-200);
+  padding: var(--space-md) 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 40px; /* Altura do top-bar */
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Menu de navegação desktop */
+.desktop-nav {
+  display: none;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--space-md);
+}
+
+.nav-menu li a {
+  color: var(--neutral-700);
+  text-decoration: none;
+  font-weight: 500;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-menu li a:hover {
+  color: var(--primary);
+  background-color: var(--primary-50);
+}
+
+.nav-menu li a.active {
+  color: var(--primary) !important;
+  background-color: var(--primary-50) !important;
+  font-weight: 600 !important;
+}
+
+.nav-menu li a.active:hover {
+  color: var(--primary) !important;
+  background-color: var(--primary-100) !important;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .logo-image {
+    height: 56px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .logo-image {
+    height: 64px;
+  }
+
+  .desktop-nav {
+    display: block;
+  }
+
+  /* Forçar estilos ativos no desktop */
+  .desktop-nav .nav-menu li a.active {
+    color: #ffffff !important;
+    background: #364152 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 12px rgba(54, 65, 82, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+    transform: scale(1.05) !important;
+    position: relative !important;
+  }
+
+
+  .desktop-nav .nav-menu li a.active:hover {
+    color: #ffffff !important;
+    background: #2d3748 !important;
+    transform: scale(1.08) translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(54, 65, 82, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+  }
+
+}
+
+/* Mobile responsivo */
+@media (max-width: 768px) {
+  .header {
+    top: 40px; /* Altura do top-bar no mobile */
+    padding: var(--space-sm) 0;
+  }
+  
+  .logo-image {
+    height: 40px;
+  }
+}

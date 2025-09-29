@@ -1,0 +1,95 @@
+<div class="service-detail-page">
+  <!-- Hero Section -->
+  <app-hero-section
+    [title]="titulo"
+    [subtitle]="subtitulo"
+    backgroundImage="/images/about/about.jpg"
+    height="40vh">
+  </app-hero-section>
+
+  <!-- Serviço Detalhe Section -->
+  <section class="service-detail-section">
+    <div class="container">
+      <!-- Descrição Principal -->
+      <div class="descricao-principal">
+        <div class="descricao-content">
+          <h2 class="section-title">about o Serviço</h2>
+          <p class="descricao-texto">{{ descricao }}</p>
+        </div>
+        <div class="descricao-imagem">
+          <img [src]="imagem" [alt]="titulo" class="imagem-service">
+        </div>
+      </div>
+
+      <!-- Benefícios -->
+      <div class="beneficios-section">
+        <h2 class="section-title">Benefícios</h2>
+        <div class="beneficios-grid">
+          <div class="beneficio-item" *ngFor="let beneficio of beneficios">
+            <div class="beneficio-icon">
+              <i class="ri-check-line"></i>
+            </div>
+            <p class="beneficio-texto">{{ beneficio }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tecnologias -->
+      <div class="tecnologias-section">
+        <h2 class="section-title">Tecnologias Utilizadas</h2>
+        <div class="tecnologias-grid">
+          <span class="tecnologia-tag" *ngFor="let tecnologia of tecnologias">
+            {{ tecnologia }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Processo -->
+      <div class="processo-section">
+        <h2 class="section-title">Nosso Processo</h2>
+        <div class="processo-timeline">
+          <div class="processo-item" *ngFor="let item of processo; let i = index">
+            <div class="processo-numero">{{ i + 1 }}</div>
+            <div class="processo-content">
+              <h3 class="processo-etapa">{{ item.etapa }}</h3>
+              <p class="processo-descricao">{{ item.descricao }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Casos de Uso -->
+      <div class="casos-uso-section" *ngIf="casosUso && casosUso.length > 0">
+        <h2 class="section-title">Casos de Uso</h2>
+        <div class="casos-grid">
+          <div class="caso-item" *ngFor="let caso of casosUso">
+            <div class="caso-icon">
+              <i class="ri-lightbulb-line"></i>
+            </div>
+            <p class="caso-texto">{{ caso }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <div class="cta-content">
+          <h2 class="cta-title">Interessado neste Serviço?</h2>
+          <p class="cta-subtitle">
+            Entre em contact conosco e vamos conversar about como podemos ajudar sua company.
+          </p>
+          <div class="cta-buttons">
+            <a routerLink="/contact" class="btn btn-primary">
+              <i class="ri-message-line"></i>
+              Solicitar Orçamento
+            </a>
+            <a routerLink="/services" class="btn btn-secondary">
+              <i class="ri-arrow-left-line"></i>
+              Ver Todos os Serviços
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

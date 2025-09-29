@@ -1,0 +1,129 @@
+<div class="services-page">
+  <!-- Hero Section -->
+  <app-hero-section
+    title="Nossos Serviços"
+    subtitle="Soluções completas em tecnologia para impulsionar seu negócio"
+    backgroundImage="/images/about/about.jpg"
+    height="40vh">
+  </app-hero-section>
+
+  <!-- Serviços Section -->
+  <section class="services-section">
+    <div class="container">
+      <div class="services-intro">
+        <h2 class="section-title">Serviços Especializados</h2>
+        <p class="section-subtitle">
+          Oferecemos soluções completas em tecnologia com mais de 20 anos de experiência no mercado.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- development de Software -->
+        <app-service-card
+          imagem="/images/services/development.jpg"
+          titulo="Desenvolvimento de Software"
+          descricao="Soluções personalizadas com mais de 20 anos de experiência em .NET, Python, Java e tecnologias web/mobile."
+          [itens]="[
+            'APIs REST e Microserviços',
+            'Sistemas Web e Mobile',
+            'Migração de Sistemas Legados',
+            'Arquitetura CQRS e DDD'
+          ]"
+          link="/services/development">
+        </app-service-card>
+
+        <!-- consulting em TI -->
+        <app-service-card
+          imagem="/images/services/consulting.jpg"
+          titulo="consulting em TI"
+          descricao="Nossa equipe de especialistas analisa sua infraestrutura e propõe melhorias para otimizar processos e reduzir custos."
+          [itens]="[
+            'Auditoria de Sistemas',
+            'Planejamento Estratégico',
+            'Otimização de Processos',
+            'Migração de Tecnologias'
+          ]"
+          link="/services/consulting">
+        </app-service-card>
+
+        <!-- Soluções em Cloud -->
+        <app-service-card
+          imagem="/images/services/cloud.jpg"
+          titulo="Soluções em Cloud"
+          descricao="Implementamos e gerenciamos soluções cloud para aumentar a flexibilidade e escalabilidade da sua company."
+          [itens]="[
+            'Migração para Cloud',
+            'Infraestrutura como Serviço',
+            'Backup e Recuperação',
+            'Monitoramento e Segurança'
+          ]"
+          link="/services/cloud">
+        </app-service-card>
+
+        <!-- Segurança da Informação -->
+        <app-service-card
+          imagem="/images/services/security.jpg"
+          titulo="Segurança da Informação"
+          descricao="Protegemos seus dados e sistemas com soluções avançadas de segurança e compliance."
+          [itens]="[
+            'Auditoria de Segurança',
+            'Implementação de Firewalls',
+            'Criptografia de Dados',
+            'Treinamento da Equipe'
+          ]"
+          link="/services/security">
+        </app-service-card>
+
+        <!-- support Técnico -->
+        <app-service-card
+          imagem="/images/services/support.jpg"
+          titulo="Suporte Técnico"
+          descricao="Oferecemos Suporte 24/7 para garantir que seus sistemas funcionem sempre de forma eficiente."
+          [itens]="[
+            'Suporte 24/7',
+            'Monitoramento Proativo',
+            'Resolução Rápida',
+            'Relatórios de Performance'
+          ]"
+          link="/services/support">
+        </app-service-card>
+
+        <!-- Analytics e BI -->
+        <app-service-card
+          imagem="/images/services/analytics.jpg"
+          titulo="Analytics e BI"
+          descricao="Transformamos seus dados em insights valiosos para tomada de decisões estratégicas."
+          [itens]="[
+            'Dashboards Interativos',
+            'Relatórios Automatizados',
+            'Análise Preditiva',
+            'Integração de Dados'
+          ]"
+          link="/services/analytics">
+        </app-service-card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Pronto para Transformar seu Negócio?</h2>
+        <p class="cta-subtitle">
+          Entre em contato conosco e descubra como podemos ajudar sua empresa a crescer com tecnologia.
+        </p>
+        <div class="cta-buttons">
+          <a routerLink="/contact" class="btn btn-primary">
+            <i class="ri-message-line"></i>
+            Fale Conosco
+          </a>
+          <a routerLink="/products" class="btn btn-secondary">
+            <i class="ri-download-line"></i>
+            Ver Produtos Gratuitos
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

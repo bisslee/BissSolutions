@@ -1,0 +1,33 @@
+<div class="service-card">
+  <!-- Header -->
+  <div class="service-header">
+    <div class="service-imagem">
+      <img [src]="imagem" [alt]="titulo" class="imagem-service">
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="service-content">
+    <h3 class="service-titulo">{{ titulo }}</h3>
+    <p class="service-descricao">{{ descricao }}</p>
+
+    <div class="service-itens">
+      <ul class="itens-lista">
+        <li class="item-lista" *ngFor="let item of itens">
+          <i class="ri-check-line item-icon"></i>
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="service-actions">
+    <a
+      [routerLink]="link"
+      class="btn btn-primary">
+      <i class="ri-arrow-right-line"></i>
+      Saiba Mais
+    </a>
+  </div>
+</div>

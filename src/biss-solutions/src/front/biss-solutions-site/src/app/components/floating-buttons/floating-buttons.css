@@ -1,0 +1,118 @@
+.floating-buttons {
+  position: fixed;
+  right: var(--space-sm);
+  bottom: 100px; /* Acima do bottom navigation */
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.floating-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.floating-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.floating-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.whatsapp-btn {
+  background-color: var(--whatsapp);
+  color: var(--white);
+}
+
+.whatsapp-btn:hover {
+  background-color: #128c7e;
+}
+
+.contact-btn {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.contact-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.floating-btn i {
+  font-size: 1.5rem;
+}
+
+/* Animação de pulso para WhatsApp */
+.whatsapp-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background-color: var(--whatsapp);
+  opacity: 0.3;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+}
+
+/* Tablet e Desktop - ajustar posição */
+@media (min-width: 768px) {
+  .floating-buttons {
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+  }
+
+  .floating-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .floating-btn i {
+    font-size: 1.75rem;
+  }
+}
+
+/* Desktop - manter visível em telas grandes */
+@media (min-width: 1200px) {
+  .floating-buttons {
+    display: flex;
+    bottom: var(--space-xl);
+    right: var(--space-xl);
+  }
+  
+  .floating-btn {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .floating-btn i {
+    font-size: 2rem;
+  }
+}
