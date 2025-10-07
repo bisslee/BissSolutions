@@ -19,7 +19,7 @@ export class Clients implements OnInit {
   constructor(
     private seoService: SeoService,
     private breadcrumbService: BreadcrumbService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.seoService.updateSEO(this.seoService.getClientsSEO());
@@ -82,12 +82,18 @@ export class Clients implements OnInit {
       name: 'Mangueiras Incêndio Brasil',
       logo: '/images/clients/mangueiras-incendio-logo.png',
       website: 'https://mangueirasdeincendiobrasil.com.br/',
-      description: 'Site corporativo para company especializada em equipamentos de segurança contra incêndio.',
-      version: 'Versão em Construção',
+      description: 'Site corporativo para empresa especializada em equipamentos de segurança contra incêndio.',
+      version: 'Versão Atual',
       services: [
         { name: 'Migração de Servidor', category: 'Migração de Servidor' },
+        { name: 'Design', category: 'Design' },
+        { name: 'Site (PHP)', category: 'Site' },
+        { name: 'UX', category: 'UX' },
+        { name: 'SEO', category: 'SEO' },
+        { name: 'Banco de Dados (MySQL)', category: 'Banco de Dados' },
         { name: 'Hospedagem', category: 'Hospedagem' }
       ],
+      projectImage: '/images/clients/mangueiras-incendio-project.png',
       projectImageAlt: 'Site da Mangueiras Incêndio Brasil'
     },
     {

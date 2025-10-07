@@ -36,7 +36,7 @@ export class BreadcrumbService {
   getBreadcrumbsForPage(route: string): BreadcrumbItem[] {
     const baseBreadcrumb: BreadcrumbItem = {
       label: 'Home',
-      url: '/home'
+      url: '/'
     };
 
     switch (route) {
