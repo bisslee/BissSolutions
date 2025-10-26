@@ -1,6 +1,6 @@
 {
   "name": "biss-solutions-site",
-  "version": "0.0.0",
+  "version": "2.5.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,6 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "optimize-images": "node scripts/optimize-images.js",
+    "convert-webp": "node scripts/convert-to-webp.js",
     "build:prod": "ng build --configuration production && npm run optimize-images"
   },
   "prettier": {

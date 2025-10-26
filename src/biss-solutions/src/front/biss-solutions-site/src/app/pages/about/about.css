@@ -285,6 +285,48 @@
   line-height: 1.6;
 }
 
+/* Version Section */
+.version-section {
+  margin-bottom: var(--space-xl);
+  padding-top: var(--space-xl);
+}
+
+.version-card {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--white);
+  padding: var(--space-2xl);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  text-align: center;
+}
+
+.version-icon {
+  font-size: 4rem;
+  flex-shrink: 0;
+}
+
+.version-info h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  color: var(--white);
+}
+
+.version-number {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  opacity: 0.95;
+}
+
+.version-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
 
 /* Responsividade */
 @media (max-width: 767px) {
