@@ -17,7 +17,14 @@
           <p class="descricao-texto">{{ descricao }}</p>
         </div>
         <div class="descricao-imagem">
-          <img [src]="imagem" [alt]="titulo" class="imagem-service">
+          <img
+            [src]="imagem"
+            [alt]="titulo + ' - ' + subtitulo"
+            [title]="titulo + ' - ' + subtitulo"
+            class="imagem-service"
+            loading="lazy"
+            width="800"
+            height="600">
         </div>
       </div>
 
@@ -68,6 +75,68 @@
             </div>
             <p class="caso-texto">{{ caso }}</p>
           </div>
+        </div>
+      </div>
+
+      <!-- Conteúdo Expandido -->
+      <div class="conteudo-expandido" *ngIf="conteudoExpandido">
+        <div class="conteudo-content" [innerHTML]="conteudoExpandido"></div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="testimonials-section" *ngIf="testimonials && testimonials.length > 0">
+        <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-item" *ngFor="let testimonial of testimonials">
+            <div class="testimonial-content">
+              <p class="testimonial-text">"{{ testimonial.texto }}"</p>
+              <div class="testimonial-author">
+                <div class="testimonial-info">
+                  <h4 class="testimonial-name">{{ testimonial.nome }}</h4>
+                  <p class="testimonial-company">{{ testimonial.empresa }}</p>
+                  <p class="testimonial-role" *ngIf="testimonial.cargo">{{ testimonial.cargo }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="faq-section" *ngIf="faq && faq.length > 0">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <div class="faq-list">
+          <div class="faq-item" *ngFor="let item of faq">
+            <div class="faq-question">
+              <h3>{{ item.pergunta }}</h3>
+            </div>
+            <div class="faq-answer">
+              <p>{{ item.resposta }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Links Relacionados -->
+      <div class="links-relacionados">
+        <h3>Serviços Relacionados</h3>
+        <div class="links-grid">
+          <a routerLink="/services/consulting" class="related-link">
+            <i class="ri-user-search-line"></i>
+            <span>Consultoria em TI</span>
+          </a>
+          <a routerLink="/services/cloud" class="related-link">
+            <i class="ri-cloud-line"></i>
+            <span>Soluções em Nuvem</span>
+          </a>
+          <a routerLink="/services/support" class="related-link">
+            <i class="ri-customer-service-line"></i>
+            <span>Suporte Técnico</span>
+          </a>
+          <a routerLink="/clients" class="related-link">
+            <i class="ri-star-line"></i>
+            <span>Cases de Sucesso</span>
+          </a>
         </div>
       </div>
 

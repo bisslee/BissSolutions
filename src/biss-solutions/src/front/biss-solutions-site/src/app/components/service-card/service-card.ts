@@ -15,4 +15,5 @@ export class ServiceCard {
   @Input() descricao: string = '';
   @Input() itens: string[] = [];
   @Input() link: string = '';
+  @Input() novo: boolean = false;
 }

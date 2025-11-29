@@ -8,6 +8,7 @@ import { BottomNavigation } from './components/bottom-navigation/bottom-navigati
 import { PwaInstallBannerComponent } from './components/pwa-install-banner/pwa-install-banner';
 import { PwaUpdateNotificationComponent } from './components/pwa-update-notification/pwa-update-notification';
 import { CookieBannerComponent } from './components/cookie-banner/cookie-banner';
+import { ToastComponent } from './components/toast/toast';
 import { PwaService } from './services/pwa.service';
 
 @Component({
@@ -21,7 +22,8 @@ import { PwaService } from './services/pwa.service';
     BottomNavigation,
     PwaInstallBannerComponent,
     PwaUpdateNotificationComponent,
-    CookieBannerComponent
+    CookieBannerComponent,
+    ToastComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'

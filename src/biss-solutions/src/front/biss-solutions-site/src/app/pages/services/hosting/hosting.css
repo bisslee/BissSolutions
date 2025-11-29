@@ -1,0 +1,15 @@
+/* hosting Page Styles */
+.hosting-page {
+  min-height: 100vh;
+  padding-top: 10px; /* Espaço mínimo para o header fixo */
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+@media (max-width: 767px) {
+  .hosting-page {
+    padding-top: 8px;
+  }
+}
+

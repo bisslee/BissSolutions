@@ -1,6 +1,6 @@
 {
   "name": "biss-solutions-site",
-  "version": "2.5.0",
+  "version": "2.6.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,7 @@
     "test": "ng test",
     "optimize-images": "node scripts/optimize-images.js",
     "convert-webp": "node scripts/convert-to-webp.js",
-    "build:prod": "ng build --configuration production && npm run optimize-images"
+    "prod": "ng build --configuration production && npm run optimize-images"
   },
   "prettier": {
     "printWidth": 100,
@@ -48,6 +48,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "sharp": "^0.33.0",
     "typescript": "~5.9.2"
   }
 }

@@ -48,12 +48,13 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label for="telefone" class="form-label">Telefone</label>
+                <label for="telefone" class="form-label">Telefone *</label>
                 <input
                   type="tel"
                   id="telefone"
                   name="telefone"
                   [(ngModel)]="formData.telefone"
+                  required
                   class="form-input"
                   placeholder="(11) 99999-9999">
               </div>
@@ -103,9 +104,14 @@
             <button
               type="submit"
               class="btn-submit"
-              [disabled]="!contactForm.form.valid">
-              <i class="ri-send-plane-line"></i>
-              Enviar Mensagem
+              [disabled]="!contactForm.form.valid || isSubmitting">
+              @if (isSubmitting) {
+                <i class="ri-loader-4-line"></i>
+                Enviando...
+              } @else {
+                <i class="ri-send-plane-line"></i>
+                Enviar Mensagem
+              }
             </button>
           </form>
         </div>
@@ -144,7 +150,7 @@
               <div class="info-content">
                 <h3 class="info-card-title">E-mail</h3>
                 <p class="info-text">
-                  <a href="mailto:contact@biss.com.br" class="info-link">contato@biss.com.br</a>
+                  <a href="mailto:contato@biss.com.br" class="info-link">contato@biss.com.br</a>
                 </p>
               </div>
             </div>
@@ -159,21 +165,44 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <!-- Redes Sociais -->
-          <div class="social-section">
-            <h3 class="social-title">Siga-nos nas Redes Sociais</h3>
-            <div class="social-links">
-              <a href="https://linkedin.com/company/bisssolutions" target="_blank" rel="noopener" class="social-link">
-                <i class="ri-linkedin-line"></i>
-                <span>LinkedIn</span>
-              </a>
-              <a href="https://wa.me/5511952739399" target="_blank" rel="noopener" class="social-link">
-                <i class="ri-whatsapp-line"></i>
-                <span>WhatsApp</span>
-              </a>
-            </div>
+      <!-- Seções abaixo das colunas principais -->
+      <div class="bottom-sections">
+        <!-- Redes Sociais -->
+        <div class="social-section">
+          <h3 class="social-title">Siga-nos nas Redes Sociais</h3>
+          <div class="social-links">
+            <a href="https://linkedin.com/company/bisssolutions" target="_blank" rel="noopener" class="social-link">
+              <i class="ri-linkedin-line"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://wa.me/5511952739399" target="_blank" rel="noopener" class="social-link">
+              <i class="ri-whatsapp-line"></i>
+              <span>WhatsApp</span>
+            </a>
           </div>
+        </div>
+
+        <!-- Mapa Local -->
+        <div class="map-section">
+          <h3 class="map-title">Nossa Localização</h3>
+          <p class="map-address">R. Avanhandava, 459 - Bela Vista, São Paulo - SP, 01311-000</p>
+          <a href="https://www.google.com/maps/place/Rua+Avanhandava,+459+-+Bela+Vista,+S%C3%A3o+Paulo+-+SP,+01311-000" target="_blank" rel="noopener" class="map-link">Ver rotas e empreendimentos</a>
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.7038020881527!2d-46.64796782395448!3d-23.545437978710412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce585d2b08f5d9%3A0x63ee5c36d8e12c8e!2sRua%20Avanhandava%2C%20459%20-%20Centro%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001311-000!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
+              class="contact-map-iframe"
+              allowfullscreen=""
+              loading="lazy"
+              title="Localização da Biss Solutions em São Paulo">
+            </iframe>
+          </div>
+          <p class="map-note">
+            📍 Estamos estrategicamente localizados no <strong>Centro de São Paulo</strong>,
+            facilitando o atendimento presencial para empresas da região metropolitana.
+          </p>
         </div>
       </div>
     </div>

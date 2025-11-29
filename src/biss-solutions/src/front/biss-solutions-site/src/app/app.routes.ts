@@ -46,6 +46,18 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/services/analytics/analytics').then(m => m.Analytics)
   },
   {
+    path: 'services/hosting',
+    loadComponent: () => import('./pages/services/hosting/hosting').then(m => m.Hosting)
+  },
+  {
+    path: 'services/landing-pages',
+    loadComponent: () => import('./pages/services/landing-pages/landing-pages').then(m => m.LandingPages)
+  },
+  {
+    path: 'services/pacote-completo',
+    loadComponent: () => import('./pages/services/pacote-completo/pacote-completo').then(m => m.PacoteCompleto)
+  },
+  {
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact').then(m => m.Contact)
   },

@@ -264,31 +264,54 @@ export class SchemaService {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "@id": `${this.baseUrl}/#organization`,
-      "name": "Biss Solutions",
+      "name": "Biss Solutions - Desenvolvimento de Software em São Paulo",
+      "alternateName": "Biss Solutions Software",
       "image": `${this.baseUrl}/images/favicon_io/android-chrome-192x192.png`,
       "telephone": "+55-11-95273-9399",
       "email": "contato@biss.com.br",
+      "description": "Empresa de desenvolvimento de software com mais de 20 anos de experiência em São Paulo, SP. Especialistas em Angular, .NET, Python, cloud computing e consultoria em TI.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rua Avanhandava, 459 - Cj 512",
         "addressLocality": "São Paulo",
         "addressRegion": "SP",
+        "postalCode": "01311-000",
         "addressCountry": "BR"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "-23.5505",
+        "latitude": "-23.5454",
         "longitude": "-46.6333"
       },
       "url": this.baseUrl,
-      "priceRange": "$$",
-      "openingHours": "Mo-Fr 09:00-19:00",
+      "priceRange": "R$ $",
+      "openingHours": [
+        "Mo-Fr 09:00-19:00"
+      ],
       "currenciesAccepted": "BRL",
-      "paymentAccepted": "Cash, Credit Card, Bank Transfer",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Brasil"
-      }
+      "paymentAccepted": ["Cash", "Credit Card", "Bank Transfer"],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "São Paulo",
+          "containedIn": {
+            "@type": "State",
+            "name": "São Paulo"
+          }
+        },
+        {
+          "@type": "Country",
+          "name": "Brasil"
+        }
+      ],
+      "serviceType": [
+        "Desenvolvimento de Software",
+        "Consultoria em TI",
+        "Soluções em Cloud",
+        "Desenvolvimento .NET",
+        "Desenvolvimento Angular"
+      ],
+      "keywords": "desenvolvimento de software São Paulo, empresa de TI SP, consultoria TI São Paulo, desenvolvimento .NET SP, Angular São Paulo"
     };
 
     this.addJsonLd(localBusinessSchema, 'local-business-schema');

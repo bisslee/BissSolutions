@@ -201,7 +201,7 @@ Para dúvidas ou suporte técnico:
 
 - **E-mail**: contato@biss.com.br
 - **Telefone**: (11) 95273-9399
-- **WhatsApp**: [Link direto](https://wa.me/5511952729399)
+- **WhatsApp**: [Link direto](https://wa.me/5511952739399)
 - **Horário**: Segunda a Sexta, 8h às 18h
 
 ## 📄 Licença

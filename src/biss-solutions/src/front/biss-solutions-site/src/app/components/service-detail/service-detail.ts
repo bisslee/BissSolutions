@@ -3,6 +3,19 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeroSection } from '../hero-section/hero-section';
 
+export interface FAQItem {
+  pergunta: string;
+  resposta: string;
+}
+
+export interface Testimonial {
+  nome: string;
+  cargo?: string;
+  empresa: string;
+  texto: string;
+  foto?: string;
+}
+
 @Component({
   selector: 'app-service-detail',
   standalone: true,
@@ -19,4 +32,7 @@ export class ServiceDetail {
   @Input() tecnologias: string[] = [];
   @Input() processo: { etapa: string; descricao: string }[] = [];
   @Input() casosUso: string[] = [];
+  @Input() faq: FAQItem[] = [];
+  @Input() testimonials: Testimonial[] = [];
+  @Input() conteudoExpandido?: string = '';
 }

@@ -1,0 +1,31 @@
+.pacote-completo-page {
+  min-height: 100vh;
+}
+
+/* Estilos específicos para destacar o pacote como oferta especial */
+.pacote-completo-page ::ng-deep .service-detail-page .hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.pacote-completo-page ::ng-deep .service-detail-page .hero-section h1 {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.pacote-completo-page ::ng-deep .service-detail-page .hero-section p {
+  color: #f0f0f0;
+}
+
+/* Destaque para preço */
+.pacote-completo-page ::ng-deep .beneficio-item {
+  border-left: 4px solid #667eea;
+  padding-left: 1rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .pacote-completo-page ::ng-deep .service-detail-page .hero-section {
+    padding: 2rem 1rem;
+  }
+}
+

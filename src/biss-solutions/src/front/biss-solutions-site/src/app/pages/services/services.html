@@ -23,6 +23,26 @@
       </div>
 
       <div class="services-grid">
+
+
+        <!-- Pacote Completo - Promoção Final de Ano -->
+        <app-service-card
+          imagem="/images/services/landing-pages.jpg"
+          titulo="🎄 Pacote Promocional de Final de Ano - R$ 200,00"
+          descricao="🎁 Promoção Especial! Landing Page Profissional + Hospedagem 1 ano + 5 e-mails personalizados. Tudo que você precisa para começar a vender online!"
+          [itens]="[
+            'Landing Page Profissional Completa',
+            'Hospedagem por 1 ano',
+            '5 E-mails Profissionais',
+            'SEO Básico Incluído',
+            'Botão WhatsApp Integrado',
+            'SSL/HTTPS Gratuito'
+          ]"
+          link="/services/pacote-completo"
+          [novo]="true">
+        </app-service-card>
+
+
         <!-- development de Software -->
         <app-service-card
           imagem="/images/services/development.jpg"
@@ -35,6 +55,36 @@
             'Arquitetura CQRS e DDD'
           ]"
           link="/services/development">
+        </app-service-card>
+
+        <!-- Hospedagem com 5 Emails -->
+        <app-service-card
+          imagem="/images/services/hosting.jpg"
+          titulo="Hospedagem com 5 Emails"
+          descricao="Soluções de hospedagem confiáveis com 5 contas de email profissionais incluídas para sua empresa."
+          [itens]="[
+            'Hospedagem de Sites e Aplicações',
+            '5 Contas de Email Profissionais',
+            'SSL/HTTPS Gratuito',
+            'Suporte Técnico Especializado'
+          ]"
+          link="/services/hosting"
+          [novo]="true">
+        </app-service-card>
+
+        <!-- Criação de Landing Pages Profissionais -->
+        <app-service-card
+          imagem="/images/services/landing-pages.jpg"
+          titulo="Criação de Landing Pages Profissionais"
+          descricao="Landing pages otimizadas para conversão, com design moderno e responsivo para maximizar seus resultados."
+          [itens]="[
+            'Design Responsivo e Moderno',
+            'Otimização para Conversão',
+            'Integração com Ferramentas de Marketing',
+            'SEO e Performance Otimizados'
+          ]"
+          link="/services/landing-pages"
+          [novo]="true">
         </app-service-card>
 
         <!-- consulting em TI -->
@@ -106,6 +156,7 @@
           ]"
           link="/services/analytics">
         </app-service-card>
+
       </div>
     </div>
   </section>

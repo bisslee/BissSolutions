@@ -28,6 +28,15 @@ export class Carousel implements OnInit, OnDestroy {
   slides: CarouselSlide[] = [
     {
       id: 0,
+      image: '/images/services/landing-pages.jpg',
+      title: '🎄 Pacote Promocional de Final de Ano - R$ 200,00',
+      subtitle: '🎁 Landing Page Profissional + Hospedagem 1 ano + 5 e-mails personalizados. Tudo que você precisa para começar a vender online!',
+      buttonText: 'Aproveite Agora',
+      buttonLink: '/services/pacote-completo',
+      overlayColor: 'rgba(220, 38, 127, 0.5)'
+    },
+    {
+      id: 1,
       image: '/images/services/development.jpg',
       title: 'Desenvolvimento de Software Personalizado',
       subtitle: 'Soluções em Angular, .NET, Python e tecnologias modernas com mais de 20 anos de experiência',
@@ -36,7 +45,7 @@ export class Carousel implements OnInit, OnDestroy {
       overlayColor: 'rgba(37, 99, 235, 0.4)'
     },
     {
-      id: 1,
+      id: 2,
       image: '/images/services/consulting.jpg',
       title: 'Mais de 20 Anos de Experiência em TI',
       subtitle: 'Consultoria especializada para transformação digital e otimização de processos',
@@ -45,7 +54,7 @@ export class Carousel implements OnInit, OnDestroy {
       overlayColor: 'rgba(16, 185, 129, 0.4)'
     },
     {
-      id: 2,
+      id: 3,
       image: '/images/services/analytics.jpg',
       title: 'Cases de Sucesso Comprovados',
       subtitle: 'Projetos realizados para empresas de diversos setores com resultados excepcionais',
@@ -54,7 +63,7 @@ export class Carousel implements OnInit, OnDestroy {
       overlayColor: 'rgba(245, 158, 11, 0.4)'
     },
     {
-      id: 3,
+      id: 4,
       image: '/images/services/cloud.jpg',
       title: 'Produtos Gratuitos e Open Source',
       subtitle: 'Bibliotecas e templates gratuitos para a comunidade de desenvolvedores',

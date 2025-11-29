@@ -1,7 +1,10 @@
 <section
   class="hero-section"
   [style.height]="height"
-  [style.--hero-bg-image]="'url(' + backgroundImage + ')'">
+  [style.--hero-bg-image]="'url(' + backgroundImage + ')'"
+  [attr.aria-label]="title + ' - ' + subtitle"
+  [title]="title + ' - ' + subtitle"
+  role="img">
   <div class="container">
     <div class="hero-content">
       <h1 class="hero-title">{{ title }}</h1>

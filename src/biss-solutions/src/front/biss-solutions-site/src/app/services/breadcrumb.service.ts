@@ -94,6 +94,26 @@ export class BreadcrumbService {
           { label: 'Analytics', url: '/services/analytics', isActive: true }
         ];
 
+      case 'services/hosting':
+        return [
+          baseBreadcrumb,
+          { label: 'Serviços', url: '/services' },
+          { label: 'Hospedagem', url: '/services/hosting', isActive: true }
+        ];
+
+      case 'services/landing-pages':
+        return [
+          baseBreadcrumb,
+          { label: 'Serviços', url: '/services' },
+          { label: 'Landing Pages', url: '/services/landing-pages', isActive: true }
+        ];
+
+      case 'services/pacote-completo':
+        return [
+          baseBreadcrumb,
+          { label: 'Serviços', url: '/services' },
+          { label: 'Pacote Completo', url: '/services/pacote-completo', isActive: true }
+        ];
 
       case 'products':
         return [
