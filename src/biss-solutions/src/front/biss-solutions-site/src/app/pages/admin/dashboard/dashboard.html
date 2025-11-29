@@ -1,0 +1,29 @@
+<div class="dashboard-page">
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <div class="header-content">
+        <h1 class="dashboard-title">Painel Administrativo</h1>
+        <div class="header-actions">
+          <div class="user-info">
+            <span class="user-name">{{ currentUser?.fullName || currentUser?.email }}</span>
+          </div>
+          <button (click)="logout()" class="logout-button">
+            Sair
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="welcome-section">
+        <h2>Bem-vindo, {{ currentUser?.fullName || currentUser?.email }}!</h2>
+        <p>Painel administrativo em desenvolvimento.</p>
+      </div>
+
+      <div class="loading" *ngIf="isLoading">
+        <p>Carregando...</p>
+      </div>
+    </main>
+  </div>
+</div>
+

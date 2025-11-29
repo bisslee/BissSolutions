@@ -7,6 +7,7 @@ Esta PR adiciona o novo **Pacote Promocional de Final de Ano** ao site e atualiz
 ## ✨ O que foi implementado
 
 ### 🎄 Pacote Promocional de Final de Ano
+
 - ✅ Novo serviço: Landing Page Profissional + Hospedagem 1 ano + 5 e-mails por R$ 200,00
 - ✅ Página detalhada completa (`/services/pacote-completo`)
   - FAQ com 8 perguntas
@@ -19,23 +20,27 @@ Esta PR adiciona o novo **Pacote Promocional de Final de Ano** ao site e atualiz
 - ✅ SEO otimizado
 
 ### 📦 Atualizações de Versão
+
 - ✅ Versão atualizada para **2.6.2**
   - `package.json`: 2.6.2
   - `version.service.ts`: 2.6.2
   - Sincronização entre arquivos
 
 ### 📚 Documentação
+
 - ✅ README atualizado com changelog da versão 2.6.2
 - ✅ Nova seção de serviços especiais
 
 ## 🔧 Arquivos Principais Modificados
 
 ### Novos Arquivos
+
 - `src/app/pages/services/pacote-completo/pacote-completo.ts`
 - `src/app/pages/services/pacote-completo/pacote-completo.html`
 - `src/app/pages/services/pacote-completo/pacote-completo.css`
 
 ### Arquivos Modificados
+
 - `src/app/pages/services/services.html` - Adicionado card do pacote
 - `src/app/components/carousel/carousel.ts` - Adicionado slide promocional
 - `src/app/app.routes.ts` - Adicionada rota do pacote
@@ -95,4 +100,3 @@ Esta PR adiciona o novo **Pacote Promocional de Final de Ano** ao site e atualiz
 
 **Versão:** 2.6.2  
 **Data:** Dezembro 2024
-

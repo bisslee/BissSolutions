@@ -27,6 +27,7 @@ namespace BissSolutions.Api.Data
                 entity.Property(e => e.Slug).IsRequired();
                 entity.HasIndex(e => e.Slug).IsUnique();
                 entity.Property(e => e.Title).IsRequired();
+                // Não configuramos a relação Page-Images para evitar múltiplos caminhos de cascata
             });
 
             // Configuração da entidade Component
@@ -53,10 +54,13 @@ namespace BissSolutions.Api.Data
                       .HasForeignKey(e => e.ComponentId)
                       .OnDelete(DeleteBehavior.SetNull);
                       
-                entity.HasOne(e => e.Page)
-                      .WithMany(e => e.Images)
-                      .HasForeignKey(e => e.PageId)
-                      .OnDelete(DeleteBehavior.SetNull);
+                // Ignorar propriedade de navegação Page para evitar FK constraint
+                // PageId é mantido como coluna mas sem constraint de FK
+                // A relação com Page é indireta através de Component
+                entity.Ignore(e => e.Page);
+                
+                // PageId como coluna normal sem FK
+                entity.Property(e => e.PageId);
             });
 
             // Configuração da entidade Contact

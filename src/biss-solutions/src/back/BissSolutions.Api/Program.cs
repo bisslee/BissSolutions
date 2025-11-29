@@ -12,10 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-
-// Configurar Swagger
-builder.Services.AddSwaggerGen();
+// AddEndpointsApiExplorer não é necessário sem Swagger
+// builder.Services.AddEndpointsApiExplorer();
 
 // Health Checks
 builder.Services.AddHealthChecks();
@@ -97,11 +95,12 @@ app.UseMiddleware<ExceptionHandlingMiddleware>();
 // Rate Limiting
 app.UseMiddleware<RateLimitMiddleware>();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Swagger temporariamente desabilitado para compatibilidade com .NET 10
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseSwagger();
+//     app.UseSwaggerUI();
+// }
 
 // Apenas redirecionar HTTPS em produção
 if (!app.Environment.IsDevelopment())

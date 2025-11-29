@@ -1,0 +1,6 @@
+# Arquivos de configuração locais com credenciais
+# NÃO COMMITAR arquivos com credenciais reais
+
+appsettings.Development.local.json
+appsettings.Local.json
+

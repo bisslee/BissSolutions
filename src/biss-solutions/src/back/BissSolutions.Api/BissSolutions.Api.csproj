@@ -13,8 +13,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <!-- Swashbuckle removido temporariamente - incompatível com .NET 10 -->
+    <!-- <PackageReference Include="Swashbuckle.AspNetCore" Version="8.0.0" /> -->
+    <!-- Microsoft.AspNetCore.Cors não é necessário - já está incluído no ASP.NET Core -->
+    <!-- <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" /> -->
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
