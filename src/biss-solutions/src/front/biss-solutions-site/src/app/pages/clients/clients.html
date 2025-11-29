@@ -1,0 +1,53 @@
+<div class="clients-page">
+  <!-- Breadcrumb -->
+  <div class="container">
+    <app-breadcrumb></app-breadcrumb>
+  </div>
+
+  <app-hero-section 
+    title="Nossos clientes"
+    subtitle="Conheça os projetos e soluções que desenvolvemos para nossos clientes"
+    backgroundImage="/images/services/analytics.jpg"
+    height="40vh">
+  </app-hero-section>
+
+  <section class="clients-section">
+    <div class="container">
+      <div class="section-header">
+        <br />
+        <h2>Empresas que confiam em Nossas Soluções</h2>
+        <p>
+          Mais de 20 anos desenvolvendo soluções personalizadas para diversos setores. 
+          Conheça alguns dos nossos projetos e cases de sucesso.
+        </p>
+        <br />
+      </div>
+
+      <div class="clients-grid">
+        <app-cliente-card
+          *ngFor="let cliente of clients"
+          [cliente]="cliente">
+        </app-cliente-card>
+      </div>
+    </div>
+    <br />
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Quer ser nosso próximo case de sucesso?</h2>
+        <p>
+          Entre em contato conosco e descubra como podemos ajudar sua empresa 
+          a crescer com tecnologia de ponta.
+        </p>
+        <div class="cta-buttons">
+          <a routerLink="/contact" class="btn btn-primary">Fale Conosco</a>
+          <a routerLink="/services" class="btn btn-secondary">Conheça Nossos Serviços</a>
+        </div>
+        <br />
+      </div>
+    </div>
+  </section>
+</div>

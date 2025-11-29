@@ -1,0 +1,118 @@
+<div class="not-found-container">
+  <!-- Background Animation -->
+  <div class="background-animation">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="not-found-content">
+    <div class="error-section">
+      <!-- Animated 404 Number -->
+      <div class="error-number" (click)="animate404()">
+        <span class="four">4</span>
+        <span class="zero">0</span>
+        <span class="four">4</span>
+      </div>
+
+      <!-- Error Message -->
+      <div class="error-message">
+        <h1 class="error-title">Ops! Página não encontrada</h1>
+        <p class="error-description">
+          A página que você está procurando parece ter se perdido no ciberespaço! 
+          Mas não se preocupe, nossos desenvolvedores estão trabalhando para trazer 
+          ela de volta. Enquanto isso, que tal explorar nossos serviços?
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="error-actions">
+        <button class="btn btn-primary" (click)="goHome()">
+          <i class="ri-home-line"></i>
+          Voltar ao Início
+        </button>
+        <button class="btn btn-secondary" (click)="goBack()">
+          <i class="ri-arrow-left-line"></i>
+          Página Anterior
+        </button>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="quick-links">
+        <h3>Navegação Rápida:</h3>
+        <div class="links-grid">
+          <a routerLink="/services" class="quick-link">
+            <i class="ri-code-s-slash-line"></i>
+            <span>Serviços</span>
+          </a>
+          <a routerLink="/products" class="quick-link">
+            <i class="ri-apps-line"></i>
+            <span>Produtos</span>
+          </a>
+          <a routerLink="/clients" class="quick-link">
+            <i class="ri-group-line"></i>
+            <span>Clientes</span>
+          </a>
+          <a routerLink="/contact" class="quick-link">
+            <i class="ri-phone-line"></i>
+            <span>Contato</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Fun Fact -->
+      <div class="fun-fact">
+        <div class="fact-icon">
+          <i class="ri-lightbulb-line"></i>
+        </div>
+        <div class="fact-content">
+          <p>
+            <strong>Sabia que?</strong> O erro 404 foi criado em 1992 no CERN, 
+            quando os desenvolvedores trabalhavam em uma sala que tinha o número 404. 
+            Coincidência ou não, esse código se tornou universal! 🚀
+          </p>
+          <p class="fact-footer">
+            <i class="ri-heart-line"></i>
+            Feito com carinho pela equipe Biss Solutions
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Illustration -->
+    <div class="illustration">
+      <div class="robot-404">
+        <div class="robot-head">
+          <div class="robot-eyes">
+            <div class="eye left-eye"></div>
+            <div class="eye right-eye"></div>
+          </div>
+          <div class="robot-mouth"></div>
+        </div>
+        <div class="robot-body">
+          <div class="robot-screen">
+            <span class="screen-text">404</span>
+          </div>
+        </div>
+        <div class="robot-arms">
+          <div class="arm left-arm"></div>
+          <div class="arm right-arm"></div>
+        </div>
+      </div>
+      
+      <!-- Floating Elements -->
+      <div class="floating-elements">
+        <div class="element element-1">?</div>
+        <div class="element element-2">!</div>
+        <div class="element element-3">💻</div>
+        <div class="element element-4">🔧</div>
+      </div>
+    </div>
+  </div>
+
+</div>

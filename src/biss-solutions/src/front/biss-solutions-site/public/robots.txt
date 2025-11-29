@@ -1,0 +1,41 @@
+# Robots.txt for Biss Solutions
+# https://biss.com.br
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://biss.com.br/sitemap.xml
+
+# Allow all search engines to crawl
+Allow: /images/
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+
+# Disallow admin or sensitive areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Crawl delay (optional - be nice to servers)
+Crawl-delay: 1
+
+# Specific instructions for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block bad bots (optional)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

@@ -1,0 +1,65 @@
+<div class="cliente-item" [class.has-project-image]="cliente.projectImage">
+  <div class="cliente-content">
+    <div class="cliente-header">
+      <div class="cliente-header-row">
+        <div class="cliente-logo">
+          <app-optimized-image
+            [src]="cliente.logo"
+            [alt]="'Logo ' + cliente.name"
+            type="logo"
+            [width]="60"
+            [height]="60"
+            loading="lazy"
+            [fallbackSrc]="'/images/placeholder-logo.png'">
+          </app-optimized-image>
+        </div>
+        <div class="cliente-info">
+          <h3 class="cliente-name">{{ cliente.name }}</h3>
+        </div>
+      </div>
+      <div class="cliente-version-row">
+        <p class="cliente-version">{{ cliente.version }}</p>
+      </div>
+      <p class="cliente-description">{{ cliente.description }}</p>
+    </div>
+
+    <div class="cliente-services">
+      <h4 class="services-title">Serviços Prestados:</h4>
+      <div class="services-tags">
+        <span
+          *ngFor="let service of cliente.services"
+          class="service-tag"
+          [class]="'service-' + service.category.toLowerCase().replace(' ', '-')"
+        >
+          {{ service.name }}
+        </span>
+      </div>
+    </div>
+
+    <div class="cliente-project" *ngIf="cliente.projectImage">
+      <h4 class="project-title">Projeto Realizado:</h4>
+      <div class="project-image">
+        <app-optimized-image
+          [src]="cliente.projectImage"
+          [alt]="cliente.projectImageAlt || 'Projeto ' + cliente.name"
+          type="gallery"
+          loading="lazy"
+          [fallbackSrc]="'/images/placeholder-project.png'">
+        </app-optimized-image>
+      </div>
+    </div>
+  </div>
+
+  <div class="cliente-actions" *ngIf="cliente.website">
+    <a
+      [href]="cliente.website"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-outline"
+      [attr.aria-label]="'Visitar site do ' + cliente.name"
+    >
+      <i class="ri-external-link-line"></i>
+      Visitar Site
+    </a>
+  </div>
+</div>

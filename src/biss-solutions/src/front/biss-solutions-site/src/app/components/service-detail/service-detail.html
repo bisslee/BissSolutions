@@ -1,0 +1,164 @@
+<div class="service-detail-page">
+  <!-- Hero Section -->
+  <app-hero-section
+    [title]="titulo"
+    [subtitle]="subtitulo"
+    backgroundImage="/images/about/about.jpg"
+    height="25vh">
+  </app-hero-section>
+
+  <!-- Serviço Detalhe Section -->
+  <section class="service-detail-section">
+    <div class="container">
+      <!-- Descrição Principal -->
+      <div class="descricao-principal">
+        <div class="descricao-content">
+          <h2 class="section-title">Sobre o Serviço</h2>
+          <p class="descricao-texto">{{ descricao }}</p>
+        </div>
+        <div class="descricao-imagem">
+          <img
+            [src]="imagem"
+            [alt]="titulo + ' - ' + subtitulo"
+            [title]="titulo + ' - ' + subtitulo"
+            class="imagem-service"
+            loading="lazy"
+            width="800"
+            height="600">
+        </div>
+      </div>
+
+      <!-- Benefícios -->
+      <div class="beneficios-section">
+        <h2 class="section-title">Benefícios</h2>
+        <div class="beneficios-grid">
+          <div class="beneficio-item" *ngFor="let beneficio of beneficios">
+            <div class="beneficio-icon">
+              <i class="ri-check-line"></i>
+            </div>
+            <p class="beneficio-texto">{{ beneficio }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tecnologias -->
+      <div class="tecnologias-section">
+        <h2 class="section-title">Tecnologias Utilizadas</h2>
+        <div class="tecnologias-grid">
+          <span class="tecnologia-tag" *ngFor="let tecnologia of tecnologias">
+            {{ tecnologia }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Processo -->
+      <div class="processo-section">
+        <h2 class="section-title">Nosso Processo</h2>
+        <div class="processo-timeline">
+          <div class="processo-item" *ngFor="let item of processo; let i = index">
+            <div class="processo-numero">{{ i + 1 }}</div>
+            <div class="processo-content">
+              <h3 class="processo-etapa">{{ item.etapa }}</h3>
+              <p class="processo-descricao">{{ item.descricao }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Casos de Uso -->
+      <div class="casos-uso-section" *ngIf="casosUso && casosUso.length > 0">
+        <h2 class="section-title">Casos de Uso</h2>
+        <div class="casos-grid">
+          <div class="caso-item" *ngFor="let caso of casosUso">
+            <div class="caso-icon">
+              <i class="ri-lightbulb-line"></i>
+            </div>
+            <p class="caso-texto">{{ caso }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conteúdo Expandido -->
+      <div class="conteudo-expandido" *ngIf="conteudoExpandido">
+        <div class="conteudo-content" [innerHTML]="conteudoExpandido"></div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="testimonials-section" *ngIf="testimonials && testimonials.length > 0">
+        <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-item" *ngFor="let testimonial of testimonials">
+            <div class="testimonial-content">
+              <p class="testimonial-text">"{{ testimonial.texto }}"</p>
+              <div class="testimonial-author">
+                <div class="testimonial-info">
+                  <h4 class="testimonial-name">{{ testimonial.nome }}</h4>
+                  <p class="testimonial-company">{{ testimonial.empresa }}</p>
+                  <p class="testimonial-role" *ngIf="testimonial.cargo">{{ testimonial.cargo }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="faq-section" *ngIf="faq && faq.length > 0">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <div class="faq-list">
+          <div class="faq-item" *ngFor="let item of faq">
+            <div class="faq-question">
+              <h3>{{ item.pergunta }}</h3>
+            </div>
+            <div class="faq-answer">
+              <p>{{ item.resposta }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Links Relacionados -->
+      <div class="links-relacionados">
+        <h3>Serviços Relacionados</h3>
+        <div class="links-grid">
+          <a routerLink="/services/consulting" class="related-link">
+            <i class="ri-user-search-line"></i>
+            <span>Consultoria em TI</span>
+          </a>
+          <a routerLink="/services/cloud" class="related-link">
+            <i class="ri-cloud-line"></i>
+            <span>Soluções em Nuvem</span>
+          </a>
+          <a routerLink="/services/support" class="related-link">
+            <i class="ri-customer-service-line"></i>
+            <span>Suporte Técnico</span>
+          </a>
+          <a routerLink="/clients" class="related-link">
+            <i class="ri-star-line"></i>
+            <span>Cases de Sucesso</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <div class="cta-content">
+          <h2 class="cta-title">Interessado neste Serviço?</h2>
+          <p class="cta-subtitle">
+            Entre em contato conosco e vamos conversar sobre como podemos ajudar sua empresa.
+          </p>
+          <div class="cta-buttons">
+            <a routerLink="/contact" class="btn btn-primary">
+              <i class="ri-message-line"></i>
+              Solicitar Orçamento
+            </a>
+            <a routerLink="/services" class="btn btn-secondary">
+              <i class="ri-arrow-left-line"></i>
+              Ver Todos os Serviços
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

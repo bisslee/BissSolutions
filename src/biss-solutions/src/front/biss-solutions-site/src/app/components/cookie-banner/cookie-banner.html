@@ -1,0 +1,25 @@
+<div class="cookie-banner" *ngIf="showBanner">
+  <div class="cookie-content">
+    <div class="cookie-icon">
+      <i class="ri-cookie-line"></i>
+    </div>
+    <div class="cookie-text">
+      <h3>🍪 Cookies</h3>
+      <p>
+        Utilizamos cookies para melhorar sua experiência de navegação, 
+        personalizar conteúdo e analisar nosso tráfego. Ao clicar em "Aceitar", 
+        você concorda com nossa política de cookies.
+      </p>
+    </div>
+    <div class="cookie-actions">
+      <button class="btn-accept" (click)="acceptCookies()">
+        <i class="ri-check-line"></i>
+        Aceitar
+      </button>
+      <button class="btn-deny" (click)="denyCookies()">
+        <i class="ri-close-line"></i>
+        Recusar
+      </button>
+    </div>
+  </div>
+</div>

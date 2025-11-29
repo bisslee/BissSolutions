@@ -1,0 +1,11 @@
+.main-content {
+  min-height: calc(100vh - 200px); /* Altura total menos header e footer */
+  padding-bottom: 80px; /* Espaço para bottom navigation */
+}
+
+/* Desktop - remove padding apenas em telas muito grandes */
+@media (min-width: 1024px) {
+  .main-content {
+    padding-bottom: 0; /* Remove padding no desktop */
+  }
+}

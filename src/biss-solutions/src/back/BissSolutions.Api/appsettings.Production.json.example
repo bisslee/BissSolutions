@@ -1,0 +1,22 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=YOUR_SERVER;Database=BissSolutionsDb;User Id=YOUR_USER;Password=YOUR_PASSWORD;"
+  },
+  "EmailSettings": {
+    "SmtpServer": "mail.biss.com.br",
+    "SmtpPort": 587,
+    "EnableSsl": true,
+    "SmtpUsername": "contato@biss.com.br",
+    "SmtpPassword": "YOUR_PASSWORD_HERE",
+    "FromEmail": "contato@biss.com.br",
+    "ToEmail": "ivana@biss.com.br"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+

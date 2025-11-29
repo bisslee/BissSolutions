@@ -1,0 +1,219 @@
+<div class="about-page">
+  <!-- Breadcrumb -->
+  <div class="container">
+    <app-breadcrumb></app-breadcrumb>
+  </div>
+
+  <app-hero-section
+    title="Sobre o Site"
+    subtitle="Arquitetura, tecnologias e roadmap de desenvolvimento"
+    backgroundImage="/images/about/about.jpg"
+    height="40vh">
+  </app-hero-section>
+
+<!-- Seção de Introdução -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-content">
+      <br />
+      <h2>Como Criamos Este Site</h2>
+      <p class="intro-text">
+        Este site foi desenvolvido com as mais modernas tecnologias web, seguindo as melhores práticas
+        de desenvolvimento e arquitetura de software. Utilizamos <a routerLink="/services/development" class="text-link">Angular 17+ com Standalone Components</a>,
+        design mobile-first responsivo, e implementamos otimizações avançadas de performance para
+        garantir uma experiência excepcional aos usuários.
+      </p>
+      <p class="intro-text">
+        Nosso objetivo era criar uma plataforma moderna, rápida e acessível que representasse
+        adequadamente os valores e serviços da <a routerLink="/company" class="text-link">Biss Solutions</a>, utilizando
+        <a routerLink="/services" class="text-link">tecnologias de ponta</a> e seguindo padrões de desenvolvimento profissional.
+        Conheça nossos <a routerLink="/products" class="text-link">produtos gratuitos</a> e
+        <a routerLink="/clients" class="text-link">cases de sucesso</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Seção adicional com informações técnicas detalhadas -->
+<section class="technical-details">
+  <div class="container">
+    <!-- Stack Tecnológico -->
+    <div class="tech-stack-section">
+      <h2>Stack Tecnológico</h2>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <div class="tech-icon">⚡</div>
+          <h3>Angular 17+</h3>
+          <p>Framework frontend moderno com Standalone Components, Signals e Server-Side Rendering</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">🎨</div>
+          <h3>CSS Moderno</h3>
+          <p>CSS Grid, Flexbox e variáveis CSS para design responsivo e moderno</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">📱</div>
+          <h3>PWA</h3>
+          <p>Progressive Web App com Service Worker para experiência offline</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">🔍</div>
+          <h3>SEO Otimizado</h3>
+          <p>Meta tags, Schema.org, Open Graph e otimizações para motores de busca</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">⚡</div>
+          <h3>Performance</h3>
+          <p>Lazy loading, code splitting e otimizações de carregamento</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">🛡️</div>
+          <h3>Segurança</h3>
+          <p>Content Security Policy, HTTPS e práticas de segurança web</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arquitetura de Componentes -->
+    <div class="architecture-section">
+      <h2>Arquitetura de Componentes</h2>
+      <div class="architecture-diagram">
+        <div class="diagram-level">
+          <h3>Presentation Layer</h3>
+          <div class="components">
+            <span class="component">Header</span>
+            <span class="component">Footer</span>
+            <span class="component">Navigation</span>
+            <span class="component">Pages</span>
+          </div>
+        </div>
+        <div class="diagram-arrow">↓</div>
+        <div class="diagram-level">
+          <h3>Business Logic Layer</h3>
+          <div class="components">
+            <span class="component">Services</span>
+            <span class="component">Components</span>
+            <span class="component">Guards</span>
+            <span class="component">Interceptors</span>
+          </div>
+        </div>
+        <div class="diagram-arrow">↓</div>
+        <div class="diagram-level">
+          <h3>Data Layer</h3>
+          <div class="components">
+            <span class="component">HTTP Client</span>
+            <span class="component">Local Storage</span>
+            <span class="component">Service Worker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Características Técnicas -->
+    <div class="features-section">
+      <h2>Características Técnicas</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>🚀 Performance</h3>
+          <ul>
+            <li>Lazy loading de rotas</li>
+            <li>Code splitting automático</li>
+            <li>Tree shaking</li>
+            <li>Minificação e compressão</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <h3>📱 Responsividade</h3>
+          <ul>
+            <li>Mobile-first design</li>
+            <li>Breakpoints otimizados</li>
+            <li>Touch-friendly interface</li>
+            <li>Cross-browser compatibility</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <h3>🔧 Manutenibilidade</h3>
+          <ul>
+            <li>Standalone components</li>
+            <li>TypeScript strict mode</li>
+            <li>ESLint + Prettier</li>
+            <li>Modular architecture</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <h3>🌐 Acessibilidade</h3>
+          <ul>
+            <li>WCAG 2.1 compliance</li>
+            <li>Semantic HTML</li>
+            <li>Keyboard navigation</li>
+            <li>Screen reader support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Roadmap de development -->
+    <div class="roadmap-section">
+      <h2>Roadmap de desenvolvimento</h2>
+      <div class="roadmap-timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker">1</div>
+          <div class="timeline-content">
+            <h3>API Admin</h3>
+            <p>Desenvolvimento de API administrativa para gerenciamento de conteúdo</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">2</div>
+          <div class="timeline-content">
+            <h3>SSO (Single Sign-On)</h3>
+            <p>Implementação de autenticação única para todos os serviços</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">3</div>
+          <div class="timeline-content">
+            <h3>LinkHub</h3>
+            <p>Centralizador de links e recursos da empresa</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">4</div>
+          <div class="timeline-content">
+            <h3>ContaComigo</h3>
+            <p>Sistema de gestão de contas e usuários</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">5</div>
+          <div class="timeline-content">
+            <h3>Meu Blog</h3>
+            <p>Plataforma de blog integrada com CMS</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">6</div>
+          <div class="timeline-content">
+            <h3>Social Integration</h3>
+            <p>Integração completa com redes sociais</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Versão do Site -->
+    <div class="version-section">
+      <div class="version-card">
+        <div class="version-icon">ℹ️</div>
+        <div class="version-info">
+          <h2>Versão do Site</h2>
+          <p class="version-number">Versão {{ version }}</p>
+          <p class="version-description">
+            Esta é a versão atual do site Biss Solutions, desenvolvido com as mais modernas tecnologias web.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

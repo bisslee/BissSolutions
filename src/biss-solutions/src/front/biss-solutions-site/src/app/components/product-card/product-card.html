@@ -1,0 +1,65 @@
+<div class="product-card" [class.featured]="featured">
+  <!-- Header -->
+  <div class="product-header">
+    <div class="product-icon">
+      <app-optimized-image
+        [src]="logo"
+        [alt]="nome"
+        type="logo"
+        [width]="80"
+        [height]="80"
+        loading="lazy"
+        class="product-logo">
+      </app-optimized-image>
+    </div>
+    <div class="product-badge free">
+      Gratuito
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="product-content">
+    <h3 class="product-nome">{{ nome }}</h3>
+    <p class="product-descricao">{{ descricao }}</p>
+
+    <div class="product-meta">
+      {{ versao }}
+    </div>
+
+    <div class="product-features">
+      <span class="feature-tag" *ngFor="let feature of features">{{ feature }}</span>
+    </div>
+
+    <div class="product-highlights">
+      <div class="highlight-item" *ngFor="let highlight of highlights">
+        <span class="highlight-icon">{{ highlight.icon }}</span>{{ highlight.text }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="product-actions">
+    <a
+      [href]="nugetUrl"
+      target="_blank"
+      class="btn btn-primary">
+      <i class="ri-download-line"></i>
+      Instalar via NuGet
+    </a>
+
+    <div class="secondary-actions">
+      <a
+        [href]="docUrl"
+        target="_blank"
+        class="btn btn-secondary">
+        📚 Documentação
+      </a>
+      <a
+        [href]="githubUrl"
+        target="_blank"
+        class="btn btn-secondary">
+        🐙 GitHub
+      </a>
+    </div>
+  </div>
+</div>

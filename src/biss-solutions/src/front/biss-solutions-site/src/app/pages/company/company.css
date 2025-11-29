@@ -1,0 +1,284 @@
+/* company Page Styles */
+.company-page {
+  min-height: 100vh;
+  padding-top: 10px; /* Espaço para o header fixo */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Hero Section removido - agora é um componente */
+
+/* about Section */
+.about-section {
+  padding: var(--space-2xl) 0;
+  background-color: var(--white);
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.text-content {
+  order: 2;
+}
+
+.intro-text {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--neutral-600);
+  margin-bottom: var(--space-lg);
+}
+
+.intro-text:last-child {
+  margin-bottom: 0;
+}
+
+.image-content {
+  order: 1;
+  text-align: center;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Valores Section */
+.valores-section {
+  padding: var(--space-2xl) 0;
+  background-color: var(--neutral-50);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-xl);
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+.valor-card {
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid var(--neutral-200);
+}
+
+.valor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.valor-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-md);
+}
+
+.valor-icon i {
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.valor-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-sm);
+}
+
+.valor-description {
+  color: var(--neutral-600);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Missão e Visão Section */
+.missao-visao-section {
+  padding: var(--space-2xl) 0;
+  background-color: var(--white);
+}
+
+.missao-visao-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+.missao-card,
+.visao-card {
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--neutral-200);
+}
+
+.card-icon {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+}
+
+.card-icon i {
+  font-size: 2.5rem;
+  color: var(--white);
+}
+
+.card-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-md);
+}
+
+.card-description {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--neutral-600);
+  margin: 0;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, var(--neutral-900) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  padding: var(--space-2xl) 0;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.cta-subtitle {
+  font-size: 1.125rem;
+  opacity: 0.9;
+  margin-bottom: var(--space-xl);
+}
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+  background: var(--white);
+  color: var(--primary);
+}
+
+/* Responsividade */
+@media (max-width: 767px) {
+  .company-page {
+    padding-top: 70px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .content-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .text-content {
+    order: 1;
+  }
+
+  .image-content {
+    order: 2;
+  }
+
+  .valores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .missao-visao-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cta-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .valores-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
