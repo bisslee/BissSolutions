@@ -1,5 +1,10 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using BissSolutions.Api.Data;
+using BissSolutions.Api.Models;
 using BissSolutions.Api.Services;
 using BissSolutions.Api.Middleware;
 
@@ -8,18 +13,67 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+// Configurar Swagger
 builder.Services.AddSwaggerGen();
 
 // Health Checks
 builder.Services.AddHealthChecks();
 
-// Configuração do Entity Framework
+// Configuração do Entity Framework com Identity
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Configuração do Identity
+builder.Services.AddIdentity<AdminUser, IdentityRole>(options =>
+{
+    // Configurações de senha
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    
+    // Configurações de lockout
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.AllowedForNewUsers = true;
+    
+    // Configurações de usuário
+    options.User.RequireUniqueEmail = true;
+    options.SignIn.RequireConfirmedEmail = false;
+})
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddDefaultTokenProviders();
+
+// Configuração do JWT
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var secretKey = jwtSettings["SecretKey"] ?? throw new InvalidOperationException("JWT SecretKey não configurado");
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
+        ClockSkew = TimeSpan.Zero
+    };
+});
 
 // Registro dos serviços
 builder.Services.AddScoped<IPageService, PageService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IJwtService, JwtService>();
 
 // Configuração do CORS
 builder.Services.AddCors(options =>
@@ -58,6 +112,8 @@ if (!app.Environment.IsDevelopment())
 // Habilitar CORS
 app.UseCors("AllowAngularApp");
 
+// Authentication deve vir antes de Authorization
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
@@ -71,13 +127,16 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AdminUser>>();
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
         
         // Em desenvolvimento: EnsureCreated
         // Em produção: usar migrations
         if (app.Environment.IsDevelopment())
         {
             context.Database.EnsureCreated();
-            SeedData.Initialize(context);
+            await SeedData.Initialize(context, userManager, roleManager, configuration);
         }
         else
         {
@@ -85,6 +144,9 @@ using (var scope = app.Services.CreateScope())
             if (context.Database.CanConnect())
             {
                 app.Logger.LogInformation("Database connection successful");
+                
+                // Seed apenas do usuário admin (se não existir)
+                await SeedData.Initialize(context, userManager, roleManager, configuration);
             }
             else
             {

@@ -1,10 +1,11 @@
+using Microsoft.AspNetCore.Identity;
 using BissSolutions.Api.Models;
 
 namespace BissSolutions.Api.Data
 {
     public static class SeedData
     {
-        public static void Initialize(ApplicationDbContext context)
+        public static async Task Initialize(ApplicationDbContext context, UserManager<AdminUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
             if (!context.Pages.Any())
             {
@@ -186,6 +187,58 @@ namespace BissSolutions.Api.Data
 
                 context.Components.AddRange(homeComponents);
                 context.SaveChanges();
+            }
+
+            // Seed de usuário admin inicial
+            await SeedAdminUser(userManager, roleManager, configuration);
+        }
+
+        private static async Task SeedAdminUser(UserManager<AdminUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        {
+            // Criar role Admin se não existir
+            const string adminRoleName = "Admin";
+            if (!await roleManager.RoleExistsAsync(adminRoleName))
+            {
+                await roleManager.CreateAsync(new IdentityRole(adminRoleName));
+            }
+
+            // Verificar se já existe usuário admin
+            var adminSettings = configuration.GetSection("AdminSettings");
+            var defaultEmail = adminSettings["DefaultAdminEmail"] ?? "admin@biss.com.br";
+            var defaultPassword = adminSettings["DefaultAdminPassword"] ?? "ChangeThisPassword123!";
+
+            var existingAdmin = await userManager.FindByEmailAsync(defaultEmail);
+            if (existingAdmin == null)
+            {
+                var adminUser = new AdminUser
+                {
+                    UserName = defaultEmail,
+                    Email = defaultEmail,
+                    EmailConfirmed = true,
+                    FullName = "Administrador",
+                    IsActive = true,
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                var result = await userManager.CreateAsync(adminUser, defaultPassword);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(adminUser, adminRoleName);
+                    Console.WriteLine($"✅ Usuário admin criado: {defaultEmail}");
+                    Console.WriteLine($"⚠️  IMPORTANTE: Altere a senha padrão em produção!");
+                }
+                else
+                {
+                    Console.WriteLine($"❌ Erro ao criar usuário admin: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+                }
+            }
+            else
+            {
+                // Garantir que o usuário existente tenha a role Admin
+                if (!await userManager.IsInRoleAsync(existingAdmin, adminRoleName))
+                {
+                    await userManager.AddToRoleAsync(existingAdmin, adminRoleName);
+                }
             }
         }
     }

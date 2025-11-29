@@ -33,24 +33,22 @@ namespace BissSolutions.Api.Middleware
             var result = string.Empty;
 
             // Personalizar resposta baseado no tipo de exceção
-            switch (exception)
+            if (exception is ArgumentException or ArgumentNullException)
             {
-                case ArgumentException:
-                case ArgumentNullException:
-                    code = HttpStatusCode.BadRequest;
-                    result = JsonSerializer.Serialize(new
-                    {
-                        success = false,
-                        message = "Dados inválidos fornecidos."
-                    });
-                    break;
-                default:
-                    result = JsonSerializer.Serialize(new
-                    {
-                        success = false,
-                        message = "Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente."
-                    });
-                    break;
+                code = HttpStatusCode.BadRequest;
+                result = JsonSerializer.Serialize(new
+                {
+                    success = false,
+                    message = "Dados inválidos fornecidos."
+                });
+            }
+            else
+            {
+                result = JsonSerializer.Serialize(new
+                {
+                    success = false,
+                    message = "Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente."
+                });
             }
 
             context.Response.ContentType = "application/json";

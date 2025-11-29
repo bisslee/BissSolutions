@@ -6,38 +6,57 @@ Implementar sistema de **Admin de Conteúdo** para gerenciar dinamicamente o con
 
 ---
 
-## 🎯 FASE 1: Autenticação Simples por Senha
+## 🎯 FASE 1: Autenticação com Entity Framework Identity
 
 ### Backend (API)
 
-- [ ] **1.1. Criar Model de Admin**
-  - Model `Admin` ou `AdminUser` com:
-    - Id
-    - Username (ou email)
-    - Password (hash)
-    - CreatedAt
-    - LastLoginAt
+- [x] **1.1. Adicionar Pacotes do Identity**
+  - ✅ `Microsoft.AspNetCore.Identity.EntityFrameworkCore` (v10.0.0)
+  - ✅ `Microsoft.AspNetCore.Authentication.JwtBearer` (v10.0.0)
 
-- [ ] **1.2. Criar Service de Autenticação**
-  - `IAuthService` e `AuthService`
-  - Método de login (validar senha)
-  - Método de geração de token/session simples
-  - Hash de senha (usar BCrypt ou similar)
+- [x] **1.2. Criar Model AdminUser (herda de IdentityUser)**
+  - ✅ Model `AdminUser` : `IdentityUser`
+  - ✅ Propriedades adicionais: `FullName`, `CreatedAt`, `LastLoginAt`, `IsActive`
+  - ✅ Configuração no DbContext
 
-- [ ] **1.3. Criar Controller de Autenticação**
-  - `POST /api/admin/auth/login` - Login com senha
-  - `POST /api/admin/auth/logout` - Logout
-  - `GET /api/admin/auth/verify` - Verificar se está autenticado
+- [x] **1.3. Atualizar ApplicationDbContext**
+  - ✅ Herdar de `IdentityDbContext<AdminUser>`
+  - ✅ Manter DbSets existentes (Pages, Components, etc.)
 
-- [ ] **1.4. Criar Middleware de Autenticação**
-  - Middleware para proteger rotas `/api/admin/*`
-  - Validação de token/session
-  - Se não autenticado, retornar 401
+- [x] **1.4. Configurar Identity no Program.cs**
+  - ✅ `AddIdentity<AdminUser, IdentityRole>()`
+  - ✅ Configurações de senha (complexidade, lockout, etc.)
+  - ✅ Configurar JWT Bearer Authentication
 
-- [ ] **1.5. Configurar Senha Admin no appsettings**
-  - Adicionar configuração de senha admin
-  - Usar variável de ambiente ou appsettings
-  - Seed inicial com senha padrão
+- [x] **1.5. Criar DTOs de Autenticação**
+  - ✅ `LoginRequest` (Email, Password)
+  - ✅ `LoginResponse` (Token, RefreshToken, Expiration, UserInfo)
+  - ✅ `UserInfo` (Id, Email, FullName, UserName)
+
+- [x] **1.6. Criar Controller de Autenticação**
+  - ✅ `POST /api/admin/auth/login` - Login com Identity e JWT
+  - ✅ `POST /api/admin/auth/logout` - Logout
+  - ✅ `GET /api/admin/auth/me` - Informações do usuário logado
+
+- [x] **1.7. Configurar Autenticação**
+  - ✅ JWT Bearer Authentication configurado
+  - ✅ Middleware de autenticação no pipeline
+  - ✅ Rotas `/api/admin/*` podem ser protegidas com `[Authorize]`
+
+- [x] **1.8. Criar JwtService**
+  - ✅ Interface `IJwtService`
+  - ✅ Implementação `JwtService` com geração e validação de tokens
+  - ✅ Refresh token support
+
+- [x] **1.9. Configurar JWT no appsettings.json**
+  - ✅ Configuração `JwtSettings` (SecretKey, Issuer, Audience, ExpirationInMinutes)
+  - ✅ Configuração `AdminSettings` (DefaultAdminEmail, DefaultAdminPassword)
+  - ✅ Seed inicial com usuário admin padrão
+
+- [x] **1.10. Seed de Usuário Admin Inicial**
+  - ✅ Atualizado `SeedData` para criar usuário admin inicial
+  - ✅ Criação automática de role "Admin"
+  - ✅ Atribuição de role ao usuário admin
 
 ### Frontend (Angular)
 
@@ -354,11 +373,13 @@ Implementar sistema de **Admin de Conteúdo** para gerenciar dinamicamente o con
 ## 📝 Observações Importantes
 
 ### Arquitetura Atual (Fase 1)
+
 - Manter estrutura atual da API
 - Não fazer refatoração arquitetural ainda
 - Foco em funcionalidade
 
 ### Próximas Evoluções (Pós v3.0.0)
+
 - Migrar para Clean Architecture
 - Implementar DDD
 - Separar em camadas (Domain, Application, Infrastructure)
@@ -366,6 +387,7 @@ Implementar sistema de **Admin de Conteúdo** para gerenciar dinamicamente o con
 - CQRS (opcional)
 
 ### Segurança
+
 - Autenticação simples por senha (fase inicial)
 - Depois evoluir para JWT ou Identity
 - Rate limiting já existe
@@ -393,4 +415,3 @@ Implementar sistema de **Admin de Conteúdo** para gerenciar dinamicamente o con
 **Data de Início:** 29/11/2025  
 **Branch:** `feature/v3.0.0`  
 **Objetivo:** Sistema completo de Admin de Conteúdo
-
