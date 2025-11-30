@@ -1,0 +1,172 @@
+<div class="service-form-page">
+  <div class="page-header">
+    <h1 class="page-title">{{ isEditMode ? 'Editar Serviço' : 'Novo Serviço' }}</h1>
+    <p class="page-subtitle">{{ isEditMode ? 'Atualize as informações do serviço' : 'Adicione um novo serviço ao catálogo' }}</p>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading && isEditMode" class="loading-state">
+    <i class="ri-loader-4-line"></i>
+    <p>Carregando serviço...</p>
+  </div>
+
+  <!-- Formulário -->
+  <form *ngIf="!isLoading || !isEditMode" [formGroup]="serviceForm" (ngSubmit)="onSubmit()" class="service-form">
+    <div class="form-grid">
+      <!-- Coluna Esquerda -->
+      <div class="form-column">
+        <!-- Informações Básicas -->
+        <div class="form-section">
+          <h2 class="section-title">Informações Básicas</h2>
+
+          <div class="form-group">
+            <label for="title" class="form-label">
+              Título <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="title"
+              formControlName="title"
+              class="form-input"
+              [class.error]="getFieldError('title')"
+              placeholder="Ex: Desenvolvimento de Software">
+            <span *ngIf="getFieldError('title')" class="error-message">
+              {{ getFieldError('title') }}
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="slug" class="form-label">Slug</label>
+            <input
+              type="text"
+              id="slug"
+              formControlName="slug"
+              class="form-input"
+              [class.error]="getFieldError('slug')"
+              placeholder="Ex: desenvolvimento-software">
+            <span class="form-hint">O slug será gerado automaticamente a partir do título se deixado em branco.</span>
+            <span *ngIf="getFieldError('slug')" class="error-message">
+              {{ getFieldError('slug') }}
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="form-label">Descrição</label>
+            <textarea
+              id="description"
+              formControlName="description"
+              class="form-textarea"
+              rows="4"
+              placeholder="Descreva o serviço oferecido..."></textarea>
+            <span class="form-hint">Máximo de 2000 caracteres</span>
+          </div>
+
+          <div class="form-group">
+            <label for="serviceTypes" class="form-label">Tipos de Serviços</label>
+            <textarea
+              id="serviceTypes"
+              formControlName="serviceTypes"
+              class="form-textarea"
+              rows="3"
+              placeholder="Ex: APIs REST e Microserviços, Sistemas Web e Mobile, Migração de Sistemas Legados..."></textarea>
+            <span class="form-hint">Liste os tipos de serviços oferecidos nesta categoria</span>
+          </div>
+
+          <div class="form-group">
+            <label for="image" class="form-label">URL da Imagem</label>
+            <input
+              type="text"
+              id="image"
+              formControlName="image"
+              class="form-input"
+              placeholder="/images/services/development.jpg">
+            <span class="form-hint">Caminho da imagem no servidor</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna Direita -->
+      <div class="form-column">
+        <!-- Configurações -->
+        <div class="form-section">
+          <h2 class="section-title">Configurações</h2>
+
+          <div class="form-group">
+            <label for="order" class="form-label">
+              Ordem <span class="required">*</span>
+            </label>
+            <input
+              type="number"
+              id="order"
+              formControlName="order"
+              class="form-input"
+              [class.error]="getFieldError('order')"
+              min="0">
+            <span class="form-hint">Ordem de exibição (quanto menor, mais aparece primeiro)</span>
+            <span *ngIf="getFieldError('order')" class="error-message">
+              {{ getFieldError('order') }}
+            </span>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  formControlName="isActive"
+                  class="checkbox-input">
+                <span>Serviço ativo</span>
+              </label>
+              <span class="form-hint">Serviços inativos não aparecem no site</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  formControlName="featuredOnHome"
+                  class="checkbox-input">
+                <span>Destaque na Home</span>
+              </label>
+              <span class="form-hint">Exibir este serviço em destaque na página inicial</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  formControlName="isNew"
+                  class="checkbox-input">
+                <span>Marcar como novo</span>
+              </label>
+              <span class="form-hint">Exibir badge "Novo" no serviço</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões de Ação -->
+    <div class="form-actions">
+      <button
+        type="button"
+        class="btn-secondary"
+        (click)="cancel()"
+        [disabled]="isLoading">
+        Cancelar
+      </button>
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="serviceForm.invalid || isLoading">
+        <i *ngIf="isLoading" class="ri-loader-4-line"></i>
+        <span>{{ isEditMode ? 'Atualizar' : 'Criar' }} Serviço</span>
+      </button>
+    </div>
+  </form>
+</div>
+

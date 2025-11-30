@@ -72,6 +72,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddScoped<IPageService, PageService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<IServiceService, ServiceService>();
 
 // Configuração do CORS
 builder.Services.AddCors(options =>
@@ -79,7 +80,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngularApp", policy =>
     {
         policy.WithOrigins("http://localhost:4200", "https://localhost:4200", "http://localhost:4550", "https://biss.com.br", "https://www.biss.com.br")
-              .WithMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+              .WithMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
               .WithHeaders("Content-Type", "Authorization", "X-Requested-With")
               .AllowCredentials();
     });
@@ -120,7 +121,7 @@ app.MapControllers();
 // Health Check endpoint
 app.MapHealthChecks("/health");
 
-// Criar banco de dados se não existir e popular com dados iniciais
+// Aplicar migrations automaticamente e popular com dados iniciais
 using (var scope = app.Services.CreateScope())
 {
     try
@@ -130,34 +131,35 @@ using (var scope = app.Services.CreateScope())
         var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
         
-        // Em desenvolvimento: EnsureCreated
-        // Em produção: usar migrations
-        if (app.Environment.IsDevelopment())
+        // Verificar conexão com banco
+        if (context.Database.CanConnect())
         {
-            context.Database.EnsureCreated();
+            app.Logger.LogInformation("Database connection successful. Applying migrations...");
+            
+            // Aplicar migrations automaticamente
+            context.Database.Migrate();
+            
+            app.Logger.LogInformation("Migrations applied successfully.");
+            
+            // Seed de dados iniciais
             await SeedData.Initialize(context, userManager, roleManager, configuration);
+            
+            app.Logger.LogInformation("Database initialization completed.");
         }
         else
         {
-            // Em produção, apenas verificar se pode conectar
-            if (context.Database.CanConnect())
-            {
-                app.Logger.LogInformation("Database connection successful");
-                
-                // Seed apenas do usuário admin (se não existir)
-                await SeedData.Initialize(context, userManager, roleManager, configuration);
-            }
-            else
-            {
-                app.Logger.LogWarning("Cannot connect to database. Please check connection string.");
-            }
+            app.Logger.LogWarning("Cannot connect to database. Please check connection string.");
         }
     }
     catch (Exception ex)
     {
-        app.Logger.LogError(ex, "Error initializing database");
-        // Não falhar a aplicação se o banco não estiver disponível
-        // A API ainda pode funcionar para endpoints que não precisam do banco
+        app.Logger.LogError(ex, "Error initializing database or applying migrations");
+        // Em desenvolvimento, ainda permitir que a API inicie para facilitar debug
+        // Em produção, você pode querer falhar a aplicação aqui
+        if (!app.Environment.IsDevelopment())
+        {
+            throw; // Falhar em produção se não conseguir aplicar migrations
+        }
     }
 }
 

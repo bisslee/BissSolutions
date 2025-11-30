@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { ServiceService } from '../../../services/service.service';
 import { UserInfo } from '../../../models/auth.models';
 
 interface StatisticCard {
@@ -52,6 +53,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private serviceService: ServiceService,
     private router: Router
   ) {}
 
@@ -63,12 +65,27 @@ export class DashboardComponent implements OnInit {
   }
 
   private loadStatistics(): void {
-    // TODO: Carregar estatísticas reais da API
-    // Por enquanto, valores mockados
-    this.statistics = this.statistics.map(stat => ({
-      ...stat,
-      value: 0 // Será substituído por valores reais quando a API estiver pronta
-    }));
+    this.isLoading = true;
+    
+    // Carregar total de serviços ativos
+    this.serviceService.getServicesCount('Active').subscribe({
+      next: (response) => {
+        const servicesStat = this.statistics.find(s => s.title === 'Total de Serviços');
+        if (servicesStat) {
+          servicesStat.value = response.count;
+        }
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('Erro ao carregar estatísticas de serviços:', error);
+        this.isLoading = false;
+      }
+    });
+    
+    // TODO: Carregar outras estatísticas quando os endpoints estiverem disponíveis
+    // this.partnerService.getCount('Active').subscribe(...)
+    // this.productService.getCount('Active').subscribe(...)
+    // this.contactService.getUnreadCount().subscribe(...)
   }
 }
 

@@ -92,6 +92,18 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadComponent: () => import('./pages/admin/dashboard/dashboard').then(m => m.DashboardComponent)
+      },
+      {
+        path: 'services',
+        loadComponent: () => import('./pages/admin/services/services-list').then(m => m.ServicesListComponent)
+      },
+      {
+        path: 'services/new',
+        loadComponent: () => import('./pages/admin/services/service-form').then(m => m.ServiceFormComponent)
+      },
+      {
+        path: 'services/edit/:id',
+        loadComponent: () => import('./pages/admin/services/service-form').then(m => m.ServiceFormComponent)
       }
     ]
   },

@@ -1,0 +1,130 @@
+<div class="services-list-page">
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">Serviços</h1>
+      <p class="page-subtitle">Gerencie os serviços oferecidos pela empresa</p>
+    </div>
+    <button class="btn-primary" routerLink="/admin/services/new">
+      <i class="ri-add-line"></i>
+      Novo Serviço
+    </button>
+  </div>
+
+  <!-- Filtros e Busca -->
+  <div class="filters-section">
+    <div class="search-box">
+      <i class="ri-search-line"></i>
+      <input
+        type="text"
+        placeholder="Buscar serviços..."
+        [(ngModel)]="searchTerm"
+        class="search-input">
+    </div>
+    <div class="filter-group">
+      <label for="statusFilter">Filtrar por status:</label>
+      <select
+        id="statusFilter"
+        [(ngModel)]="statusFilter"
+        (change)="onStatusFilterChange()"
+        class="filter-select">
+        <option value="All">Todos</option>
+        <option value="Active">Apenas Ativos</option>
+        <option value="Inactive">Apenas Inativos</option>
+      </select>
+    </div>
+    <div class="total-count">
+      <strong>Total: {{ totalCount }}</strong>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="loading-state">
+    <i class="ri-loader-4-line"></i>
+    <p>Carregando serviços...</p>
+  </div>
+
+  <!-- Lista de Serviços -->
+  <div *ngIf="!isLoading" class="services-container">
+    <!-- Tabela -->
+    <div class="table-container">
+      <table class="services-table">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Slug</th>
+            <th>Status</th>
+            <th>Destaque</th>
+            <th>Novo</th>
+            <th>Ordem</th>
+            <th class="actions-column">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let service of filteredServices" [class.inactive]="!service.isActive">
+            <td class="title-cell">
+              <div class="service-info">
+                <strong>{{ service.title }}</strong>
+                <span *ngIf="service.description" class="description">
+                  {{ service.description.length > 60 ? (service.description | slice:0:60) + '...' : service.description }}
+                </span>
+              </div>
+            </td>
+            <td>
+              <code class="slug-badge">{{ service.slug }}</code>
+            </td>
+            <td>
+              <span class="status-badge" [class.active]="service.isActive" [class.inactive]="!service.isActive">
+                {{ service.isActive ? 'Ativo' : 'Inativo' }}
+              </span>
+            </td>
+            <td>
+              <span *ngIf="service.featuredOnHome" class="featured-badge">
+                <i class="ri-star-fill"></i> Destaque
+              </span>
+            </td>
+            <td>
+              <span *ngIf="service.isNew" class="new-badge">
+                <i class="ri-newspaper-line"></i> Novo
+              </span>
+            </td>
+            <td>{{ service.order }}</td>
+            <td class="actions-cell">
+              <div class="action-buttons">
+                <button
+                  class="btn-icon"
+                  [title]="service.isActive ? 'Desativar' : 'Ativar'"
+                  (click)="toggleActive(service)">
+                  <i [class]="service.isActive ? 'ri-eye-off-line' : 'ri-eye-line'"></i>
+                </button>
+                <button
+                  class="btn-icon"
+                  title="Editar"
+                  (click)="editService(service)">
+                  <i class="ri-pencil-line"></i>
+                </button>
+                <button
+                  class="btn-icon btn-danger"
+                  title="Excluir"
+                  (click)="deleteService(service)">
+                  <i class="ri-delete-bin-line"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Estado vazio -->
+    <div *ngIf="filteredServices.length === 0" class="empty-state">
+      <i class="ri-service-line"></i>
+      <p *ngIf="searchTerm">Nenhum serviço encontrado com os filtros aplicados.</p>
+      <p *ngIf="!searchTerm">Nenhum serviço cadastrado ainda.</p>
+      <button class="btn-primary" routerLink="/admin/services/new">
+        <i class="ri-add-line"></i>
+        Criar Primeiro Serviço
+      </button>
+    </div>
+  </div>
+</div>
+

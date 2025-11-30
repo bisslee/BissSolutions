@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "biss-solutions-api-auth",
-		"name": "Biss Solutions API - Autenticação",
-		"description": "Collection para testar a API de Autenticação da Biss Solutions",
+		"_postman_id": "biss-solutions-api",
+		"name": "Biss Solutions API",
+		"description": "Collection completa para testar a API da Biss Solutions - Autenticação, Serviços, Parceiros, Produtos e mais",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -129,12 +129,283 @@
 				}
 			],
 			"description": "Endpoints relacionados à autenticação"
+		},
+		{
+			"name": "Serviços (Admin)",
+			"item": [
+				{
+					"name": "Listar Todos os Serviços",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/services?includeInactive=true",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"services"
+							],
+							"query": [
+								{
+									"key": "includeInactive",
+									"value": "true",
+									"description": "Incluir serviços inativos"
+								}
+							]
+						},
+						"description": "Lista todos os serviços (incluindo inativos para admin). Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Serviço por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/services/:id",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do serviço"
+								}
+							]
+						},
+						"description": "Obtém um serviço específico por ID. Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Serviço",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Desenvolvimento de Software Personalizado\",\n    \"description\": \"Soluções em Angular, .NET, Python e tecnologias modernas\",\n    \"serviceTypes\": \"Angular, .NET, Python, React, Node.js\",\n    \"image\": \"/images/services/development.jpg\",\n    \"slug\": \"\",\n    \"isNew\": false,\n    \"featuredOnHome\": true,\n    \"isActive\": true,\n    \"order\": 1\n}"
+						},
+						"url": {
+							"raw": "{{site-url}}/api/admin/services",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"services"
+							]
+						},
+						"description": "Cria um novo serviço. O slug será gerado automaticamente se não fornecido. Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Serviço",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Desenvolvimento de Software Personalizado\",\n    \"description\": \"Soluções em Angular, .NET, Python e tecnologias modernas - ATUALIZADO\",\n    \"serviceTypes\": \"Angular, .NET, Python, React, Node.js, TypeScript\",\n    \"image\": \"/images/services/development.jpg\",\n    \"slug\": \"desenvolvimento-software-personalizado\",\n    \"isNew\": false,\n    \"featuredOnHome\": true,\n    \"isActive\": true,\n    \"order\": 1\n}"
+						},
+						"url": {
+							"raw": "{{site-url}}/api/admin/services/:id",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do serviço"
+								}
+							]
+						},
+						"description": "Atualiza um serviço existente. Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Serviço",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/services/:id",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do serviço"
+								}
+							]
+						},
+						"description": "Deleta um serviço (soft delete - marca como inativo). Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Ativar/Desativar Serviço",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/services/:id/toggle-active",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"services",
+								":id",
+								"toggle-active"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do serviço"
+								}
+							]
+						},
+						"description": "Ativa ou desativa um serviço. Requer autenticação."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints administrativos para gerenciar serviços"
+		},
+		{
+			"name": "Serviços (Público)",
+			"item": [
+				{
+					"name": "Listar Serviços Ativos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site-url}}/api/services",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"services"
+							]
+						},
+						"description": "Lista apenas os serviços ativos (endpoint público)"
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Serviço por Slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site-url}}/api/services/slug/:slug",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"services",
+								"slug",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "desenvolvimento-software-personalizado",
+									"description": "Slug do serviço"
+								}
+							]
+						},
+						"description": "Obtém um serviço ativo por seu slug (endpoint público)"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints públicos para consultar serviços"
 		}
 	],
 	"variable": [
 		{
 			"key": "site-url",
-			"value": "http://localhost:5000",
+			"value": "http://localhost:5023",
 			"type": "string"
 		}
 	]

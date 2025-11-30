@@ -15,6 +15,10 @@ namespace BissSolutions.Api.Data
         public DbSet<Component> Components { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Partner> Partners { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -71,6 +75,35 @@ namespace BissSolutions.Api.Data
                 entity.Property(e => e.Email).IsRequired();
                 entity.Property(e => e.Subject).IsRequired();
                 entity.Property(e => e.Message).IsRequired();
+            });
+
+            // Configuração da entidade Service
+            modelBuilder.Entity<Service>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Title).IsRequired();
+                entity.Property(e => e.Slug).IsRequired();
+                entity.HasIndex(e => e.Slug).IsUnique();
+            });
+
+            // Configuração da entidade Partner
+            modelBuilder.Entity<Partner>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired();
+            });
+
+            // Configuração da entidade Product
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Title).IsRequired();
+            });
+
+            // Configuração da entidade Company
+            modelBuilder.Entity<Company>(entity =>
+            {
+                entity.HasKey(e => e.Id);
             });
         }
     }
