@@ -128,6 +128,22 @@ export const routes: Routes = [
       {
         path: 'clients/edit/:id',
         loadComponent: () => import('./pages/admin/clients/client-form').then(m => m.ClientFormComponent)
+      },
+      {
+        path: 'products',
+        loadComponent: () => import('./pages/admin/products/products-list').then(m => m.ProductsListComponent)
+      },
+      {
+        path: 'products/new',
+        loadComponent: () => import('./pages/admin/products/product-form').then(m => m.ProductFormComponent)
+      },
+      {
+        path: 'products/edit/:id',
+        loadComponent: () => import('./pages/admin/products/product-form').then(m => m.ProductFormComponent)
+      },
+      {
+        path: 'company',
+        loadComponent: () => import('./pages/admin/company/company-form').then(m => m.CompanyFormComponent)
       }
     ]
   },

@@ -60,25 +60,25 @@ Implementar sistema de **Admin de Conteúdo** para gerenciar dinamicamente o con
 
 ### Frontend (Angular)
 
-- [ ] **1.6. Criar Página de Login Admin**
-  - Rota `/admin/login`
-  - Formulário simples (usuário/senha)
-  - Integração com API de autenticação
-  - Guard para proteger rota `/admin`
+- [x] **1.11. Criar Página de Login Admin**
+  - ✅ Rota `/admin/login`
+  - ✅ Formulário simples (usuário/senha)
+  - ✅ Integração com API de autenticação
+  - ✅ Guard para proteger rota `/admin`
 
-- [ ] **1.7. Criar Serviço de Autenticação (Frontend)**
-  - `auth.service.ts`
-  - Métodos: login(), logout(), isAuthenticated()
-  - Armazenar token/session (localStorage ou sessionStorage)
+- [x] **1.12. Criar Serviço de Autenticação (Frontend)**
+  - ✅ `auth.service.ts`
+  - ✅ Métodos: login(), logout(), isAuthenticated()
+  - ✅ Armazenar token no localStorage
 
-- [ ] **1.8. Criar Guard de Autenticação**
-  - `admin.guard.ts`
-  - Proteger todas as rotas `/admin/*`
-  - Redirecionar para `/admin/login` se não autenticado
+- [x] **1.13. Criar Guard de Autenticação**
+  - ✅ `admin.guard.ts`
+  - ✅ Proteger todas as rotas `/admin/*`
+  - ✅ Redirecionar para `/admin/login` se não autenticado
 
-- [ ] **1.9. Criar Interceptor HTTP**
-  - Adicionar token/session nas requisições para `/api/admin/*`
-  - Tratar erro 401 (deslogar automaticamente)
+- [x] **1.14. Criar Interceptor HTTP**
+  - ✅ Adicionar token nas requisições para `/api/admin/*`
+  - ✅ Tratar erro 401 (deslogar automaticamente)
 
 ---
 
@@ -86,139 +86,191 @@ Implementar sistema de **Admin de Conteúdo** para gerenciar dinamicamente o con
 
 ### Backend (API)
 
-- [ ] **2.1. Criar Models Adicionais**
-  - `Service` (Serviços)
-    - Id, Title, Description, Image, Slug, IsActive, Order
-  - `Partner` (Parceiros)
-    - Id, Name, Logo, Website, Description, IsActive, Order
-  - `Product` (Produtos)
-    - Id, Title, Description, Image, Price, Category, IsActive, Order
-  - `Company` (Informações da Empresa)
-    - Id, Mission, Vision, Values, History, IsActive
+- [x] **2.1. Criar Models Adicionais**
+  - ✅ `Service` (Serviços) - Guid Id, Title, Description, Image, Slug, ServiceTypes, IsNew, IsFeatured, IsActive, Order
+  - ✅ `Partner` (Parceiros) - Guid Id, Name, Logo, Website, Description, IsActive, Order
+  - ✅ `Product` (Produtos) - Guid Id, Title, Description, CurrentVersion, TechnologyItems, Features, NugetLink, DocumentationLink, GithubLink, ProductLink, Image, Price, Category, IsActive, Order
+  - ✅ `Company` (Informações da Empresa) - Guid Id, Mission, Vision, Values, History, Description, IsActive
+  - ✅ `Client` (Clientes) - Guid Id, Name, Versions, Description, ServicesProvided, Logo, ProjectImage, ProjectLink, Website, IsActive, Order
 
-- [ ] **2.2. Atualizar ApplicationDbContext**
-  - Adicionar DbSets:
-    - `DbSet<Service> Services`
-    - `DbSet<Partner> Partners`
-    - `DbSet<Product> Products`
-    - `DbSet<Company> Companies`
-    - `DbSet<Admin> Admins`
+- [x] **2.2. Atualizar ApplicationDbContext**
+  - ✅ Adicionados DbSets:
+    - ✅ `DbSet<Service> Services`
+    - ✅ `DbSet<Partner> Partners`
+    - ✅ `DbSet<Product> Products`
+    - ✅ `DbSet<Company> Companies`
+    - ✅ `DbSet<Client> Clients`
 
-- [ ] **2.3. Criar Migrations**
-  - Migration para adicionar novas tabelas
-  - Seed data inicial
+- [x] **2.3. Criar Migrations**
+  - ✅ Migration `InitialEntitiesWithGuid` criada
+  - ✅ Todos os IDs convertidos para GUID (uniqueidentifier)
+  - ✅ Tabelas criadas com relacionamentos
 
 ### Frontend (Angular)
 
-- [ ] **2.4. Criar Layout Base do Admin**
-  - Componente `admin-layout`
-  - Header com logo e botão de logout
-  - Sidebar com menu de navegação
-  - Área de conteúdo principal
-  - Rota base `/admin`
+- [x] **2.4. Criar Layout Base do Admin**
+  - ✅ Componente `admin-layout`
+  - ✅ Header com logo e botão de logout
+  - ✅ Sidebar com menu de navegação
+  - ✅ Área de conteúdo principal
+  - ✅ Rota base `/admin`
 
-- [ ] **2.5. Criar Página Dashboard Admin**
-  - Rota `/admin` ou `/admin/dashboard`
-  - Cards com estatísticas:
-    - Total de serviços
-    - Total de parceiros
-    - Total de produtos
-    - Mensagens de contato (recentes)
+- [x] **2.5. Criar Página Dashboard Admin**
+  - ✅ Rota `/admin` ou `/admin/dashboard`
+  - ✅ Cards com estatísticas:
+    - ✅ Total de serviços (integração com API)
+    - ⏳ Total de parceiros (preparado)
+    - ⏳ Total de produtos (preparado)
+    - ⏳ Mensagens de contato (preparado)
 
-- [ ] **2.6. Criar Menu de Navegação Admin**
-  - Links para:
-    - Dashboard
-    - Serviços
-    - Parceiros
-    - Produtos
-    - Sobre o Site
-    - Empresa
-    - Sair
+- [x] **2.6. Criar Menu de Navegação Admin**
+  - ✅ Links para:
+    - ✅ Dashboard
+    - ✅ Serviços
+    - ✅ Parceiros
+    - ✅ Clientes
+    - ⏳ Produtos
+    - ⏳ Sobre o Site
+    - ⏳ Empresa
+    - ✅ Sair
 
 ---
 
-## 🎯 FASE 3: Gerenciamento de Serviços
+## 🎯 FASE 3: Gerenciamento de Serviços ✅ COMPLETA
 
 ### Backend (API)
 
-- [ ] **3.1. Criar Service de Serviços**
-  - `IServiceService` e `ServiceService`
-  - CRUD completo: GetAll, GetById, Create, Update, Delete
-  - Soft delete (IsActive)
+- [x] **3.1. Criar Service de Serviços**
+  - ✅ `IServiceService` e `ServiceService`
+  - ✅ CRUD completo: GetAll, GetById, Create, Update, Delete
+  - ✅ Soft delete (IsActive)
+  - ✅ Geração automática de Slug
+  - ✅ Método GetCountAsync com filtros
 
-- [ ] **3.2. Criar Controller de Serviços Admin**
-  - `GET /api/admin/services` - Listar todos (incluindo inativos)
-  - `GET /api/admin/services/{id}` - Obter por ID
-  - `POST /api/admin/services` - Criar novo
-  - `PUT /api/admin/services/{id}` - Atualizar
-  - `DELETE /api/admin/services/{id}` - Deletar (soft delete)
-  - Proteger com middleware de autenticação
+- [x] **3.2. Criar Controller de Serviços Admin**
+  - ✅ `GET /api/admin/services` - Listar todos (incluindo inativos)
+  - ✅ `GET /api/admin/services/{id}` - Obter por ID
+  - ✅ `GET /api/admin/services/count` - Obter contagem com filtro
+  - ✅ `POST /api/admin/services` - Criar novo
+  - ✅ `PUT /api/admin/services/{id}` - Atualizar
+  - ✅ `PATCH /api/admin/services/{id}/toggle-active` - Alternar status
+  - ✅ Protegido com `[Authorize]`
 
-- [ ] **3.3. Endpoint Público de Serviços (manter)**
-  - `GET /api/services` - Listar apenas ativos (para o site)
+- [x] **3.3. Endpoint Público de Serviços**
+  - ✅ `GET /api/services` - Listar apenas ativos (para o site)
+  - ✅ `GET /api/services/slug/{slug}` - Obter por slug
 
 ### Frontend (Angular)
 
-- [ ] **3.4. Criar Lista de Serviços**
-  - Página `/admin/services`
-  - Tabela com todos os serviços
-  - Colunas: Nome, Descrição, Status, Ações
-  - Botão "Novo Serviço"
-  - Filtros e busca
+- [x] **3.4. Criar Lista de Serviços**
+  - ✅ Página `/admin/services`
+  - ✅ Grid de cards com todos os serviços
+  - ✅ Colunas: Imagem, Título, Status, Ações
+  - ✅ Botão "Novo Serviço"
+  - ✅ Filtros por busca e status
 
-- [ ] **3.5. Criar Formulário de Serviço**
-  - Página `/admin/services/new` (criar)
-  - Página `/admin/services/edit/:id` (editar)
-  - Campos:
-    - Título (obrigatório)
-    - Descrição
-    - Slug (auto-gerado a partir do título)
-    - Imagem (upload)
-    - Status (Ativo/Inativo)
-    - Ordem
+- [x] **3.5. Criar Formulário de Serviço**
+  - ✅ Página `/admin/services/new` (criar)
+  - ✅ Página `/admin/services/edit/:id` (editar)
+  - ✅ Campos:
+    - ✅ Título (obrigatório)
+    - ✅ Descrição
+    - ✅ Slug (auto-gerado a partir do título)
+    - ✅ ServiceTypes (multi-select)
+    - ✅ Imagem (campo de texto/URL)
+    - ✅ IsNew, IsFeatured (checkboxes)
+    - ✅ Status (Ativo/Inativo)
+    - ✅ Ordem
 
-- [ ] **3.6. Integração com API**
-  - Serviço Angular para comunicação com API
-  - Listar, criar, atualizar, deletar
-  - Upload de imagens
+- [x] **3.6. Integração com API**
+  - ✅ Serviço Angular `ServiceService`
+  - ✅ Listar, criar, atualizar, deletar
+  - ✅ Toggle de status ativo/inativo
 
 ---
 
-## 🎯 FASE 4: Gerenciamento de Parceiros
+## 🎯 FASE 4: Gerenciamento de Parceiros ✅ COMPLETA
 
 ### Backend (API)
 
-- [ ] **4.1. Criar Service de Parceiros**
-  - `IPartnerService` e `PartnerService`
-  - CRUD completo
+- [x] **4.1. Criar Service de Parceiros**
+  - ✅ `IPartnerService` e `PartnerService`
+  - ✅ CRUD completo
+  - ✅ Soft delete (IsActive)
 
-- [ ] **4.2. Criar Controller de Parceiros Admin**
-  - `GET /api/admin/partners` - Listar todos
-  - `GET /api/admin/partners/{id}` - Obter por ID
-  - `POST /api/admin/partners` - Criar novo
-  - `PUT /api/admin/partners/{id}` - Atualizar
-  - `DELETE /api/admin/partners/{id}` - Deletar
-  - Upload de logo
+- [x] **4.2. Criar Controller de Parceiros Admin**
+  - ✅ `GET /api/admin/partners` - Listar todos
+  - ✅ `GET /api/admin/partners/{id}` - Obter por ID
+  - ✅ `POST /api/admin/partners` - Criar novo
+  - ✅ `PUT /api/admin/partners/{id}` - Atualizar
+  - ✅ `PATCH /api/admin/partners/{id}/toggle-active` - Alternar status
+  - ✅ Protegido com `[Authorize]`
+  - ⏳ Upload de logo (campo de texto/URL por enquanto)
 
-- [ ] **4.3. Endpoint Público de Parceiros**
-  - `GET /api/partners` - Listar apenas ativos
+- [x] **4.3. Endpoint Público de Parceiros**
+  - ✅ `GET /api/partners` - Listar apenas ativos
+  - ✅ `GET /api/partners/{id}` - Obter por ID
 
 ### Frontend (Angular)
 
-- [ ] **4.4. Criar Lista de Parceiros**
-  - Página `/admin/partners`
-  - Grid ou tabela com logos
-  - Botão "Novo Parceiro"
+- [x] **4.4. Criar Lista de Parceiros**
+  - ✅ Página `/admin/partners`
+  - ✅ Grid de cards com logos
+  - ✅ Botão "Novo Parceiro"
+  - ✅ Filtros por busca e status
 
-- [ ] **4.5. Criar Formulário de Parceiro**
-  - Página `/admin/partners/new` e `/admin/partners/edit/:id`
-  - Campos:
-    - Nome (obrigatório)
-    - Logo (upload)
-    - Website (URL)
-    - Descrição
-    - Status
-    - Ordem
+- [x] **4.5. Criar Formulário de Parceiro**
+  - ✅ Página `/admin/partners/new` e `/admin/partners/edit/:id`
+  - ✅ Campos:
+    - ✅ Nome (obrigatório)
+    - ✅ Logo (campo de texto/URL)
+    - ✅ Website (URL)
+    - ✅ Descrição
+    - ✅ Status
+    - ✅ Ordem
+
+---
+
+## 🎯 FASE 4.5: Gerenciamento de Clientes ✅ COMPLETA
+
+### Backend (API)
+
+- [x] **4.5.1. Criar Service de Clientes**
+  - ✅ `IClientService` e `ClientService`
+  - ✅ CRUD completo
+  - ✅ Soft delete (IsActive)
+
+- [x] **4.5.2. Criar Controller de Clientes Admin**
+  - ✅ `GET /api/admin/clients` - Listar todos
+  - ✅ `GET /api/admin/clients/{id}` - Obter por ID
+  - ✅ `POST /api/admin/clients` - Criar novo
+  - ✅ `PUT /api/admin/clients/{id}` - Atualizar
+  - ✅ `PATCH /api/admin/clients/{id}/toggle-active` - Alternar status
+  - ✅ Protegido com `[Authorize]`
+
+- [x] **4.5.3. Endpoint Público de Clientes**
+  - ✅ `GET /api/clients` - Listar apenas ativos
+  - ✅ `GET /api/clients/{id}` - Obter por ID
+
+### Frontend (Angular)
+
+- [x] **4.5.4. Criar Lista de Clientes**
+  - ✅ Página `/admin/clients`
+  - ✅ Grid de cards com logos e informações
+  - ✅ Botão "Novo Cliente"
+  - ✅ Filtros por busca e status
+
+- [x] **4.5.5. Criar Formulário de Cliente**
+  - ✅ Página `/admin/clients/new` e `/admin/clients/edit/:id`
+  - ✅ Campos:
+    - ✅ Nome (obrigatório)
+    - ✅ Versions
+    - ✅ Description
+    - ✅ ServicesProvided
+    - ✅ Logo, ProjectImage (campos de texto/URL)
+    - ✅ ProjectLink, Website (URLs)
+    - ✅ Status
+    - ✅ Ordem
 
 ---
 
@@ -227,39 +279,46 @@ Implementar sistema de **Admin de Conteúdo** para gerenciar dinamicamente o con
 ### Backend (API)
 
 - [ ] **5.1. Criar Service de Produtos**
-  - `IProductService` e `ProductService`
-  - CRUD completo
+  - ⏳ `IProductService` e `ProductService`
+  - ⏳ CRUD completo
+  - ⏳ Soft delete (IsActive)
+  - ✅ Model `Product` já existe com todos os campos necessários
 
 - [ ] **5.2. Criar Controller de Produtos Admin**
-  - `GET /api/admin/products` - Listar todos
-  - `GET /api/admin/products/{id}` - Obter por ID
-  - `POST /api/admin/products` - Criar novo
-  - `PUT /api/admin/products/{id}` - Atualizar
-  - `DELETE /api/admin/products/{id}` - Deletar
-  - Upload de imagem
+  - ⏳ `GET /api/admin/products` - Listar todos
+  - ⏳ `GET /api/admin/products/{id}` - Obter por ID
+  - ⏳ `POST /api/admin/products` - Criar novo
+  - ⏳ `PUT /api/admin/products/{id}` - Atualizar
+  - ⏳ `PATCH /api/admin/products/{id}/toggle-active` - Alternar status
+  - ⏳ Proteger com `[Authorize]`
+  - ⏳ Upload de imagem
 
 - [ ] **5.3. Endpoint Público de Produtos**
-  - `GET /api/products` - Listar apenas ativos
-  - `GET /api/products/category/{category}` - Filtrar por categoria
+  - ⏳ `GET /api/products` - Listar apenas ativos
+  - ⏳ `GET /api/products/category/{category}` - Filtrar por categoria
 
 ### Frontend (Angular)
 
 - [ ] **5.4. Criar Lista de Produtos**
-  - Página `/admin/products`
-  - Grid com cards de produtos
-  - Filtro por categoria
-  - Botão "Novo Produto"
+  - ⏳ Página `/admin/products`
+  - ⏳ Grid com cards de produtos
+  - ⏳ Filtro por categoria
+  - ⏳ Botão "Novo Produto"
 
 - [ ] **5.5. Criar Formulário de Produto**
-  - Página `/admin/products/new` e `/admin/products/edit/:id`
-  - Campos:
-    - Título (obrigatório)
-    - Descrição
-    - Imagem (upload)
-    - Preço (opcional)
-    - Categoria
-    - Status
-    - Ordem
+  - ⏳ Página `/admin/products/new` e `/admin/products/edit/:id`
+  - ⏳ Campos:
+    - ⏳ Título (obrigatório)
+    - ⏳ Descrição
+    - ⏳ CurrentVersion
+    - ⏳ TechnologyItems
+    - ⏳ Features
+    - ⏳ NugetLink, DocumentationLink, GithubLink, ProductLink
+    - ⏳ Imagem (campo de texto/URL)
+    - ⏳ Preço (opcional)
+    - ⏳ Categoria
+    - ⏳ Status
+    - ⏳ Ordem
 
 ---
 
@@ -397,16 +456,18 @@ Implementar sistema de **Admin de Conteúdo** para gerenciar dinamicamente o con
 
 ## ✅ Checklist de Entrega v3.0.0
 
-- [ ] Autenticação funcionando
-- [ ] Dashboard admin criado
-- [ ] CRUD de Serviços completo
-- [ ] CRUD de Parceiros completo
+- [x] Autenticação funcionando (Backend + Frontend)
+- [x] Dashboard admin criado (com cards de estatísticas)
+- [x] CRUD de Serviços completo (Backend + Frontend)
+- [x] CRUD de Parceiros completo (Backend + Frontend)
+- [x] CRUD de Clientes completo (Backend + Frontend)
 - [ ] CRUD de Produtos completo
 - [ ] Gerenciamento de Empresa funcionando
 - [ ] Gerenciamento de "Sobre o Site" funcionando
-- [ ] Upload de imagens funcionando
+- [ ] Upload de imagens funcionando (atualmente usando URLs)
 - [ ] Testes básicos realizados
-- [ ] Documentação atualizada
+- [x] Postman collection atualizada (com GUIDs)
+- [x] Migrations criadas com GUIDs
 - [ ] Build de produção gerado
 - [ ] Versão atualizada para 3.0.0
 
@@ -415,3 +476,27 @@ Implementar sistema de **Admin de Conteúdo** para gerenciar dinamicamente o con
 **Data de Início:** 29/11/2025  
 **Branch:** `feature/v3.0.0`  
 **Objetivo:** Sistema completo de Admin de Conteúdo
+
+---
+
+## 📊 Progresso Atual
+
+### ✅ Concluído
+- **FASE 1:** Autenticação (100%) - Backend + Frontend completo
+- **FASE 2:** Estrutura Base do Admin (100%) - Layout, Sidebar, Dashboard
+- **FASE 3:** Gerenciamento de Serviços (100%) - Backend + Frontend completo
+- **FASE 4:** Gerenciamento de Parceiros (100%) - Backend + Frontend completo
+- **FASE 4.5:** Gerenciamento de Clientes (100%) - Backend + Frontend completo
+- **Infraestrutura:** Migrations com GUIDs, Postman collection atualizada
+
+### ⏳ Em Progresso / Pendente
+- **FASE 5:** Gerenciamento de Produtos (0%) - Model existe, falta Service/Controller/Frontend
+- **FASE 6:** Gerenciamento de Empresa/Sobre o Site (0%)
+- **FASE 7:** Upload de Imagens (0%) - Atualmente usando URLs
+- **FASE 8:** Melhorias e Polimento (0%)
+
+### 📝 Observações
+- Todos os IDs foram migrados para GUID (uniqueidentifier)
+- Postman collection atualizada com exemplos usando GUIDs
+- Frontend completamente integrado com backend para Serviços, Parceiros e Clientes
+- Sistema de autenticação JWT funcionando

@@ -1,0 +1,119 @@
+<div class="products-list-page">
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">Produtos</h1>
+      <p class="page-subtitle">Gerencie os produtos oferecidos pela empresa</p>
+    </div>
+    <button class="btn-primary" routerLink="/admin/products/new">
+      <i class="ri-add-line"></i>
+      Novo Produto
+    </button>
+  </div>
+
+  <!-- Filtros e Busca -->
+  <div class="filters-section">
+    <div class="search-box">
+      <i class="ri-search-line"></i>
+      <input
+        type="text"
+        placeholder="Buscar produtos..."
+        [(ngModel)]="searchTerm"
+        class="search-input">
+    </div>
+    <div class="filter-group">
+      <label for="categoryFilter">Categoria:</label>
+      <select
+        id="categoryFilter"
+        [(ngModel)]="categoryFilter"
+        (change)="onCategoryFilterChange()"
+        class="filter-select">
+        <option value="">Todas</option>
+        <option *ngFor="let category of uniqueCategories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="statusFilter">Status:</label>
+      <select
+        id="statusFilter"
+        [(ngModel)]="statusFilter"
+        (change)="onStatusFilterChange()"
+        class="filter-select">
+        <option value="All">Todos</option>
+        <option value="Active">Apenas Ativos</option>
+        <option value="Inactive">Apenas Inativos</option>
+      </select>
+    </div>
+    <div class="total-count">
+      <strong>Total: {{ filteredProducts.length }}</strong>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="loading-state">
+    <i class="ri-loader-4-line"></i>
+    <p>Carregando produtos...</p>
+  </div>
+
+  <!-- Lista de Produtos -->
+  <div *ngIf="!isLoading" class="products-container">
+    <!-- Grid de Cards -->
+    <div *ngIf="filteredProducts.length > 0" class="products-grid">
+      <div *ngFor="let product of filteredProducts" class="product-card" [class.inactive]="!product.isActive">
+        <div class="product-image">
+          <img *ngIf="product.image" [src]="product.image" [alt]="product.title" />
+          <div *ngIf="!product.image" class="no-image">
+            <i class="ri-image-line"></i>
+          </div>
+        </div>
+        <div class="product-content">
+          <div class="product-header">
+            <h3 class="product-title">{{ product.title }}</h3>
+            <span class="status-badge" [class.active]="product.isActive" [class.inactive]="!product.isActive">
+              {{ product.isActive ? 'Ativo' : 'Inativo' }}
+            </span>
+          </div>
+          <div *ngIf="product.category" class="product-category">
+            <i class="ri-price-tag-3-line"></i>
+            {{ product.category }}
+          </div>
+          <div *ngIf="product.description" class="product-description">
+            {{ product.description.length > 100 ? (product.description | slice:0:100) + '...' : product.description }}
+          </div>
+          <div *ngIf="product.currentVersion" class="product-version">
+            <strong>Versão:</strong> {{ product.currentVersion }}
+          </div>
+          <div class="product-links" *ngIf="product.nugetLink || product.githubLink || product.documentationLink">
+            <a *ngIf="product.nugetLink" [href]="product.nugetLink" target="_blank" class="link-badge">
+              <i class="ri-npmjs-line"></i> NuGet
+            </a>
+            <a *ngIf="product.githubLink" [href]="product.githubLink" target="_blank" class="link-badge">
+              <i class="ri-github-line"></i> GitHub
+            </a>
+            <a *ngIf="product.documentationLink" [href]="product.documentationLink" target="_blank" class="link-badge">
+              <i class="ri-book-line"></i> Docs
+            </a>
+          </div>
+          <div class="product-actions">
+            <button class="btn-icon" (click)="toggleActive(product)" [title]="product.isActive ? 'Desativar' : 'Ativar'">
+              <i [class]="product.isActive ? 'ri-toggle-line' : 'ri-toggle-fill'"></i>
+            </button>
+            <button class="btn-icon" (click)="editProduct(product)" title="Editar">
+              <i class="ri-edit-line"></i>
+            </button>
+            <button class="btn-icon btn-danger" (click)="deleteProduct(product)" title="Excluir">
+              <i class="ri-delete-bin-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estado vazio -->
+    <div *ngIf="filteredProducts.length === 0" class="empty-state">
+      <i class="ri-shopping-bag-line"></i>
+      <p *ngIf="searchTerm || categoryFilter || statusFilter !== 'All'">Nenhum produto encontrado com os filtros aplicados.</p>
+      <p *ngIf="!searchTerm && !categoryFilter && statusFilter === 'All'">Nenhum produto cadastrado ainda.</p>
+    </div>
+  </div>
+</div>
+

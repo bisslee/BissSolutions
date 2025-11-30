@@ -72,7 +72,7 @@ export class AdminSidebarComponent implements OnInit {
       icon: 'ri-file-text-line',
       route: '/admin/content',
       children: [
-        { label: 'Empresa', icon: 'ri-building-line', route: '/admin/content/company' },
+        { label: 'Empresa', icon: 'ri-building-line', route: '/admin/company' },
         { label: 'Sobre o Site', icon: 'ri-information-line', route: '/admin/content/about-site' }
       ]
     },

@@ -1,0 +1,334 @@
+<div class="company-form-page">
+  <div class="page-header">
+    <h1 class="page-title">Informações da Empresa</h1>
+    <p class="page-subtitle">Gerencie as informações institucionais da empresa</p>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="loading-state">
+    <i class="ri-loader-4-line"></i>
+    <p>Carregando informações da empresa...</p>
+  </div>
+
+  <!-- Formulário -->
+  <form *ngIf="!isLoading" [formGroup]="companyForm" (ngSubmit)="onSubmit()" class="company-form">
+    
+    <!-- Informações Básicas -->
+    <div class="form-section">
+      <h2 class="section-title">
+        <i class="ri-building-line"></i> Informações Básicas
+      </h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name" class="form-label">Nome da Empresa</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-input"
+            placeholder="Ex: Biss Solutions">
+        </div>
+        <div class="form-group">
+          <label for="legalName" class="form-label">Razão Social</label>
+          <input
+            type="text"
+            id="legalName"
+            formControlName="legalName"
+            class="form-input"
+            placeholder="Ex: Biss Solutions Tecnologia Ltda">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cnpj" class="form-label">CNPJ</label>
+          <input
+            type="text"
+            id="cnpj"
+            formControlName="cnpj"
+            class="form-input"
+            placeholder="00.000.000/0000-00">
+        </div>
+        <div class="form-group">
+          <label for="foundedYear" class="form-label">Ano de Fundação</label>
+          <input
+            type="number"
+            id="foundedYear"
+            formControlName="foundedYear"
+            class="form-input"
+            placeholder="2020">
+        </div>
+        <div class="form-group">
+          <label for="numberOfEmployees" class="form-label">Número de Funcionários</label>
+          <input
+            type="text"
+            id="numberOfEmployees"
+            formControlName="numberOfEmployees"
+            class="form-input"
+            placeholder="Ex: 10-50, 50+">
+        </div>
+      </div>
+    </div>
+
+    <!-- Contato -->
+    <div class="form-section">
+      <h2 class="section-title">
+        <i class="ri-phone-line"></i> Contato
+      </h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email" class="form-label">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-input"
+            placeholder="contato@biss.com.br">
+        </div>
+        <div class="form-group">
+          <label for="phone" class="form-label">Telefone</label>
+          <input
+            type="text"
+            id="phone"
+            formControlName="phone"
+            class="form-input"
+            placeholder="(00) 00000-0000">
+        </div>
+        <div class="form-group">
+          <label for="website" class="form-label">Website</label>
+          <input
+            type="url"
+            id="website"
+            formControlName="website"
+            class="form-input"
+            placeholder="https://biss.com.br">
+        </div>
+      </div>
+    </div>
+
+    <!-- Endereço -->
+    <div class="form-section">
+      <h2 class="section-title">
+        <i class="ri-map-pin-line"></i> Endereço
+      </h2>
+      <div class="form-group">
+        <label for="address" class="form-label">Endereço Completo</label>
+        <input
+          type="text"
+          id="address"
+          formControlName="address"
+          class="form-input"
+          placeholder="Rua, número, bairro">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="city" class="form-label">Cidade</label>
+          <input
+            type="text"
+            id="city"
+            formControlName="city"
+            class="form-input"
+            placeholder="São Paulo">
+        </div>
+        <div class="form-group">
+          <label for="state" class="form-label">Estado</label>
+          <input
+            type="text"
+            id="state"
+            formControlName="state"
+            class="form-input"
+            placeholder="SP">
+        </div>
+        <div class="form-group">
+          <label for="zipCode" class="form-label">CEP</label>
+          <input
+            type="text"
+            id="zipCode"
+            formControlName="zipCode"
+            class="form-input"
+            placeholder="00000-000">
+        </div>
+      </div>
+    </div>
+
+    <!-- Redes Sociais -->
+    <div class="form-section">
+      <h2 class="section-title">
+        <i class="ri-share-line"></i> Redes Sociais
+      </h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="linkedInUrl" class="form-label">
+            <i class="ri-linkedin-line"></i> LinkedIn
+          </label>
+          <input
+            type="url"
+            id="linkedInUrl"
+            formControlName="linkedInUrl"
+            class="form-input"
+            placeholder="https://linkedin.com/company/...">
+        </div>
+        <div class="form-group">
+          <label for="facebookUrl" class="form-label">
+            <i class="ri-facebook-line"></i> Facebook
+          </label>
+          <input
+            type="url"
+            id="facebookUrl"
+            formControlName="facebookUrl"
+            class="form-input"
+            placeholder="https://facebook.com/...">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="instagramUrl" class="form-label">
+            <i class="ri-instagram-line"></i> Instagram
+          </label>
+          <input
+            type="url"
+            id="instagramUrl"
+            formControlName="instagramUrl"
+            class="form-input"
+            placeholder="https://instagram.com/...">
+        </div>
+        <div class="form-group">
+          <label for="twitterUrl" class="form-label">
+            <i class="ri-twitter-line"></i> Twitter
+          </label>
+          <input
+            type="url"
+            id="twitterUrl"
+            formControlName="twitterUrl"
+            class="form-input"
+            placeholder="https://twitter.com/...">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="youtubeUrl" class="form-label">
+          <i class="ri-youtube-line"></i> YouTube
+        </label>
+        <input
+          type="url"
+          id="youtubeUrl"
+          formControlName="youtubeUrl"
+          class="form-input"
+          placeholder="https://youtube.com/...">
+      </div>
+    </div>
+
+    <!-- Mídia -->
+    <div class="form-section">
+      <h2 class="section-title">
+        <i class="ri-image-line"></i> Mídia
+      </h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="logoUrl" class="form-label">URL do Logo</label>
+          <input
+            type="url"
+            id="logoUrl"
+            formControlName="logoUrl"
+            class="form-input"
+            placeholder="/images/logo.png">
+        </div>
+        <div class="form-group">
+          <label for="bannerUrl" class="form-label">URL do Banner</label>
+          <input
+            type="url"
+            id="bannerUrl"
+            formControlName="bannerUrl"
+            class="form-input"
+            placeholder="/images/banner.jpg">
+        </div>
+      </div>
+    </div>
+
+    <!-- Informações Institucionais -->
+    <div class="form-section">
+      <h2 class="section-title">
+        <i class="ri-file-text-line"></i> Informações Institucionais
+      </h2>
+      <div class="form-group">
+        <label for="description" class="form-label">Descrição</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          class="form-textarea"
+          rows="4"
+          placeholder="Descrição geral da empresa..."></textarea>
+        <span class="form-hint">Máximo de 2000 caracteres</span>
+      </div>
+      <div class="form-group">
+        <label for="mission" class="form-label">Missão</label>
+        <textarea
+          id="mission"
+          formControlName="mission"
+          class="form-textarea"
+          rows="3"
+          placeholder="A missão da empresa..."></textarea>
+        <span class="form-hint">Máximo de 2000 caracteres</span>
+      </div>
+      <div class="form-group">
+        <label for="vision" class="form-label">Visão</label>
+        <textarea
+          id="vision"
+          formControlName="vision"
+          class="form-textarea"
+          rows="3"
+          placeholder="A visão da empresa..."></textarea>
+        <span class="form-hint">Máximo de 2000 caracteres</span>
+      </div>
+      <div class="form-group">
+        <label for="values" class="form-label">Valores</label>
+        <textarea
+          id="values"
+          formControlName="values"
+          class="form-textarea"
+          rows="3"
+          placeholder="Os valores da empresa..."></textarea>
+        <span class="form-hint">Máximo de 2000 caracteres</span>
+      </div>
+      <div class="form-group">
+        <label for="history" class="form-label">História</label>
+        <textarea
+          id="history"
+          formControlName="history"
+          class="form-textarea"
+          rows="6"
+          placeholder="A história da empresa..."></textarea>
+        <span class="form-hint">Máximo de 5000 caracteres</span>
+      </div>
+    </div>
+
+    <!-- Configurações -->
+    <div class="form-section">
+      <h2 class="section-title">
+        <i class="ri-settings-line"></i> Configurações
+      </h2>
+      <div class="form-group">
+        <div class="checkbox-group">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              formControlName="isActive"
+              class="checkbox-input">
+            <span>Empresa ativa</span>
+          </label>
+          <span class="form-hint">Empresas inativas não aparecem no site</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões de Ação -->
+    <div class="form-actions">
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="companyForm.invalid || isSaving">
+        <i *ngIf="isSaving" class="ri-loader-4-line"></i>
+        <span>{{ isSaving ? 'Salvando...' : 'Salvar Informações' }}</span>
+      </button>
+    </div>
+  </form>
+</div>
+
