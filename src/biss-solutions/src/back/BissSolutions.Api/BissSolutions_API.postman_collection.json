@@ -134,6 +134,40 @@
 			"name": "Serviços (Admin)",
 			"item": [
 				{
+					"name": "Obter Total de Serviços",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/services/count?statusFilter=All",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"services",
+								"count"
+							],
+							"query": [
+								{
+									"key": "statusFilter",
+									"value": "All",
+									"description": "Filtro: All, Active ou Inactive"
+								}
+							]
+						},
+						"description": "Obtém o total de serviços com filtro opcional (All, Active, Inactive). Requer autenticação."
+					},
+					"response": []
+				},
+				{
 					"name": "Listar Todos os Serviços",
 					"request": {
 						"method": "GET",
@@ -400,6 +434,546 @@
 				}
 			],
 			"description": "Endpoints públicos para consultar serviços"
+		},
+		{
+			"name": "Parceiros (Admin)",
+			"item": [
+				{
+					"name": "Listar Todos os Parceiros",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/partners?includeInactive=true",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"partners"
+							],
+							"query": [
+								{
+									"key": "includeInactive",
+									"value": "true",
+									"description": "Incluir parceiros inativos"
+								}
+							]
+						},
+						"description": "Lista todos os parceiros (incluindo inativos para admin). Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Parceiro por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/partners/:id",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"partners",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do parceiro"
+								}
+							]
+						},
+						"description": "Obtém um parceiro específico por ID. Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Parceiro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Empresa Parceira\",\n    \"logo\": \"/images/partners/logo.jpg\",\n    \"description\": \"Descrição do parceiro\",\n    \"website\": \"https://www.parceiro.com.br\",\n    \"isActive\": true,\n    \"order\": 1\n}"
+						},
+						"url": {
+							"raw": "{{site-url}}/api/admin/partners",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"partners"
+							]
+						},
+						"description": "Cria um novo parceiro. Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Parceiro",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Empresa Parceira\",\n    \"logo\": \"/images/partners/logo.jpg\",\n    \"description\": \"Descrição do parceiro - ATUALIZADO\",\n    \"website\": \"https://www.parceiro.com.br\",\n    \"isActive\": true,\n    \"order\": 1\n}"
+						},
+						"url": {
+							"raw": "{{site-url}}/api/admin/partners/:id",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"partners",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do parceiro"
+								}
+							]
+						},
+						"description": "Atualiza um parceiro existente. Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Parceiro",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/partners/:id",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"partners",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do parceiro"
+								}
+							]
+						},
+						"description": "Deleta um parceiro (soft delete - marca como inativo). Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Ativar/Desativar Parceiro",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/partners/:id/toggle-active",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"partners",
+								":id",
+								"toggle-active"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do parceiro"
+								}
+							]
+						},
+						"description": "Ativa ou desativa um parceiro. Requer autenticação."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints administrativos para gerenciar parceiros"
+		},
+		{
+			"name": "Parceiros (Público)",
+			"item": [
+				{
+					"name": "Listar Parceiros Ativos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site-url}}/api/partners",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"partners"
+							]
+						},
+						"description": "Lista apenas os parceiros ativos (endpoint público)"
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Parceiro por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site-url}}/api/partners/:id",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"partners",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do parceiro"
+								}
+							]
+						},
+						"description": "Obtém um parceiro ativo por ID (endpoint público)"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints públicos para consultar parceiros"
+		},
+		{
+			"name": "Clientes (Admin)",
+			"item": [
+				{
+					"name": "Listar Todos os Clientes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/clients?includeInactive=true",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "includeInactive",
+									"value": "true",
+									"description": "Incluir clientes inativos"
+								}
+							]
+						},
+						"description": "Lista todos os clientes (incluindo inativos para admin). Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Cliente por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/clients/:id",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"clients",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do cliente"
+								}
+							]
+						},
+						"description": "Obtém um cliente específico por ID. Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cliente XYZ\",\n    \"versions\": \"v1.0, v2.0\",\n    \"description\": \"Descrição do cliente e projeto desenvolvido\",\n    \"servicesProvided\": \"Desenvolvimento de sistema web, API REST, Integração\",\n    \"logo\": \"/images/clients/logo.jpg\",\n    \"projectImage\": \"/images/clients/project.jpg\",\n    \"projectLink\": \"https://www.projeto.com.br\",\n    \"website\": \"https://www.cliente.com.br\",\n    \"isActive\": true,\n    \"order\": 1\n}"
+						},
+						"url": {
+							"raw": "{{site-url}}/api/admin/clients",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"clients"
+							]
+						},
+						"description": "Cria um novo cliente. Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cliente XYZ\",\n    \"versions\": \"v1.0, v2.0, v3.0\",\n    \"description\": \"Descrição do cliente e projeto desenvolvido - ATUALIZADO\",\n    \"servicesProvided\": \"Desenvolvimento de sistema web, API REST, Integração, Migração\",\n    \"logo\": \"/images/clients/logo.jpg\",\n    \"projectImage\": \"/images/clients/project.jpg\",\n    \"projectLink\": \"https://www.projeto.com.br\",\n    \"website\": \"https://www.cliente.com.br\",\n    \"isActive\": true,\n    \"order\": 1\n}"
+						},
+						"url": {
+							"raw": "{{site-url}}/api/admin/clients/:id",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"clients",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do cliente"
+								}
+							]
+						},
+						"description": "Atualiza um cliente existente. Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/clients/:id",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"clients",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do cliente"
+								}
+							]
+						},
+						"description": "Deleta um cliente (soft delete - marca como inativo). Requer autenticação."
+					},
+					"response": []
+				},
+				{
+					"name": "Ativar/Desativar Cliente",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site-url}}/api/admin/clients/:id/toggle-active",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"clients",
+								":id",
+								"toggle-active"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do cliente"
+								}
+							]
+						},
+						"description": "Ativa ou desativa um cliente. Requer autenticação."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints administrativos para gerenciar clientes"
+		},
+		{
+			"name": "Clientes (Público)",
+			"item": [
+				{
+					"name": "Listar Clientes Ativos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site-url}}/api/clients",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"clients"
+							]
+						},
+						"description": "Lista apenas os clientes ativos (endpoint público)"
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Cliente por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{site-url}}/api/clients/:id",
+							"host": [
+								"{{site-url}}"
+							],
+							"path": [
+								"api",
+								"clients",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID do cliente"
+								}
+							]
+						},
+						"description": "Obtém um cliente ativo por ID (endpoint público)"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints públicos para consultar clientes"
 		}
 	],
 	"variable": [

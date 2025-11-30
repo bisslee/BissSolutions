@@ -104,6 +104,30 @@ export const routes: Routes = [
       {
         path: 'services/edit/:id',
         loadComponent: () => import('./pages/admin/services/service-form').then(m => m.ServiceFormComponent)
+      },
+      {
+        path: 'partners',
+        loadComponent: () => import('./pages/admin/partners/partners-list').then(m => m.PartnersListComponent)
+      },
+      {
+        path: 'partners/new',
+        loadComponent: () => import('./pages/admin/partners/partner-form').then(m => m.PartnerFormComponent)
+      },
+      {
+        path: 'partners/edit/:id',
+        loadComponent: () => import('./pages/admin/partners/partner-form').then(m => m.PartnerFormComponent)
+      },
+      {
+        path: 'clients',
+        loadComponent: () => import('./pages/admin/clients/clients-list').then(m => m.ClientsListComponent)
+      },
+      {
+        path: 'clients/new',
+        loadComponent: () => import('./pages/admin/clients/client-form').then(m => m.ClientFormComponent)
+      },
+      {
+        path: 'clients/edit/:id',
+        loadComponent: () => import('./pages/admin/clients/client-form').then(m => m.ClientFormComponent)
       }
     ]
   },

@@ -1,0 +1,125 @@
+<div class="clients-list-page">
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">Clientes</h1>
+      <p class="page-subtitle">Gerencie os clientes e projetos desenvolvidos</p>
+    </div>
+    <button class="btn-primary" routerLink="/admin/clients/new">
+      <i class="ri-add-line"></i>
+      Novo Cliente
+    </button>
+  </div>
+
+  <!-- Filtros e Busca -->
+  <div class="filters-section">
+    <div class="search-box">
+      <i class="ri-search-line"></i>
+      <input
+        type="text"
+        placeholder="Buscar clientes..."
+        [(ngModel)]="searchTerm"
+        class="search-input">
+    </div>
+    <div class="filter-group">
+      <label for="statusFilter">Filtrar por status:</label>
+      <select
+        id="statusFilter"
+        [(ngModel)]="statusFilter"
+        (change)="onStatusFilterChange()"
+        class="filter-select">
+        <option value="All">Todos</option>
+        <option value="Active">Apenas Ativos</option>
+        <option value="Inactive">Apenas Inativos</option>
+      </select>
+    </div>
+    <div class="total-count">
+      <strong>Total: {{ filteredClients.length }}</strong>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="loading-state">
+    <i class="ri-loader-4-line"></i>
+    <p>Carregando clientes...</p>
+  </div>
+
+  <!-- Lista de Clientes -->
+  <div *ngIf="!isLoading" class="clients-container">
+    <!-- Grid -->
+    <div class="clients-grid">
+      <div *ngFor="let client of filteredClients" class="client-card" [class.inactive]="!client.isActive">
+        <div class="client-header">
+          <div class="client-logo" *ngIf="client.logo">
+            <img [src]="client.logo" [alt]="client.name">
+          </div>
+          <div class="client-logo-placeholder" *ngIf="!client.logo">
+            <i class="ri-building-line"></i>
+          </div>
+          <div class="client-info">
+            <h3 class="client-name">{{ client.name }}</h3>
+            <span *ngIf="client.versions" class="client-versions">{{ client.versions }}</span>
+          </div>
+        </div>
+        
+        <div class="client-body">
+          <p *ngIf="client.description" class="client-description">
+            {{ client.description.length > 100 ? (client.description | slice:0:100) + '...' : client.description }}
+          </p>
+          
+          <div *ngIf="client.servicesProvided" class="client-services">
+            <strong>Serviços:</strong>
+            <span>{{ client.servicesProvided }}</span>
+          </div>
+
+          <div class="client-links" *ngIf="client.website || client.projectLink">
+            <a *ngIf="client.website" [href]="client.website" target="_blank" class="link-badge">
+              <i class="ri-global-line"></i> Website
+            </a>
+            <a *ngIf="client.projectLink" [href]="client.projectLink" target="_blank" class="link-badge">
+              <i class="ri-link"></i> Projeto
+            </a>
+          </div>
+        </div>
+
+        <div class="client-footer">
+          <span class="status-badge" [class.active]="client.isActive" [class.inactive]="!client.isActive">
+            {{ client.isActive ? 'Ativo' : 'Inativo' }}
+          </span>
+          <span class="order-badge">Ordem: {{ client.order }}</span>
+          <div class="action-buttons">
+            <button
+              class="btn-icon"
+              [title]="client.isActive ? 'Desativar' : 'Ativar'"
+              (click)="toggleActive(client)">
+              <i [class]="client.isActive ? 'ri-eye-off-line' : 'ri-eye-line'"></i>
+            </button>
+            <button
+              class="btn-icon"
+              title="Editar"
+              (click)="editClient(client)">
+              <i class="ri-pencil-line"></i>
+            </button>
+            <button
+              class="btn-icon btn-danger"
+              title="Excluir"
+              (click)="deleteClient(client)">
+              <i class="ri-delete-bin-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estado vazio -->
+    <div *ngIf="filteredClients.length === 0" class="empty-state">
+      <i class="ri-user-line"></i>
+      <p *ngIf="searchTerm">Nenhum cliente encontrado com os filtros aplicados.</p>
+      <p *ngIf="!searchTerm">Nenhum cliente cadastrado ainda.</p>
+      <button class="btn-primary" routerLink="/admin/clients/new">
+        <i class="ri-add-line"></i>
+        Criar Primeiro Cliente
+      </button>
+    </div>
+  </div>
+</div>
+

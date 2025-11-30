@@ -1,0 +1,116 @@
+<div class="partners-list-page">
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">Parceiros</h1>
+      <p class="page-subtitle">Gerencie os parceiros/clientes da empresa</p>
+    </div>
+    <button class="btn-primary" routerLink="/admin/partners/new">
+      <i class="ri-add-line"></i>
+      Novo Parceiro
+    </button>
+  </div>
+
+  <!-- Filtros e Busca -->
+  <div class="filters-section">
+    <div class="search-box">
+      <i class="ri-search-line"></i>
+      <input
+        type="text"
+        placeholder="Buscar parceiros..."
+        [(ngModel)]="searchTerm"
+        class="search-input">
+    </div>
+    <div class="filter-group">
+      <label for="statusFilter">Filtrar por status:</label>
+      <select
+        id="statusFilter"
+        [(ngModel)]="statusFilter"
+        (change)="onStatusFilterChange()"
+        class="filter-select">
+        <option value="All">Todos</option>
+        <option value="Active">Apenas Ativos</option>
+        <option value="Inactive">Apenas Inativos</option>
+      </select>
+    </div>
+    <div class="total-count">
+      <strong>Total: {{ filteredPartners.length }}</strong>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="loading-state">
+    <i class="ri-loader-4-line"></i>
+    <p>Carregando parceiros...</p>
+  </div>
+
+  <!-- Lista de Parceiros -->
+  <div *ngIf="!isLoading" class="partners-container">
+    <!-- Grid -->
+    <div class="partners-grid">
+      <div *ngFor="let partner of filteredPartners" class="partner-card" [class.inactive]="!partner.isActive">
+        <div class="partner-header">
+          <div class="partner-logo" *ngIf="partner.logo">
+            <img [src]="partner.logo" [alt]="partner.name">
+          </div>
+          <div class="partner-logo-placeholder" *ngIf="!partner.logo">
+            <i class="ri-building-line"></i>
+          </div>
+          <div class="partner-info">
+            <h3 class="partner-name">{{ partner.name }}</h3>
+          </div>
+        </div>
+        
+        <div class="partner-body">
+          <p *ngIf="partner.description" class="partner-description">
+            {{ partner.description.length > 100 ? (partner.description | slice:0:100) + '...' : partner.description }}
+          </p>
+
+          <div class="partner-links" *ngIf="partner.website">
+            <a *ngIf="partner.website" [href]="partner.website" target="_blank" class="link-badge">
+              <i class="ri-global-line"></i> Website
+            </a>
+          </div>
+        </div>
+
+        <div class="partner-footer">
+          <span class="status-badge" [class.active]="partner.isActive" [class.inactive]="!partner.isActive">
+            {{ partner.isActive ? 'Ativo' : 'Inativo' }}
+          </span>
+          <span class="order-badge">Ordem: {{ partner.order }}</span>
+          <div class="action-buttons">
+            <button
+              class="btn-icon"
+              [title]="partner.isActive ? 'Desativar' : 'Ativar'"
+              (click)="toggleActive(partner)">
+              <i [class]="partner.isActive ? 'ri-eye-off-line' : 'ri-eye-line'"></i>
+            </button>
+            <button
+              class="btn-icon"
+              title="Editar"
+              (click)="editPartner(partner)">
+              <i class="ri-pencil-line"></i>
+            </button>
+            <button
+              class="btn-icon btn-danger"
+              title="Excluir"
+              (click)="deletePartner(partner)">
+              <i class="ri-delete-bin-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estado vazio -->
+    <div *ngIf="filteredPartners.length === 0" class="empty-state">
+      <i class="ri-group-line"></i>
+      <p *ngIf="searchTerm">Nenhum parceiro encontrado com os filtros aplicados.</p>
+      <p *ngIf="!searchTerm">Nenhum parceiro cadastrado ainda.</p>
+      <button class="btn-primary" routerLink="/admin/partners/new">
+        <i class="ri-add-line"></i>
+        Criar Primeiro Parceiro
+      </button>
+    </div>
+  </div>
+</div>
+

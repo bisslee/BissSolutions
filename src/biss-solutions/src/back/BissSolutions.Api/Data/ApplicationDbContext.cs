@@ -17,6 +17,7 @@ namespace BissSolutions.Api.Data
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Partner> Partners { get; set; }
+        public DbSet<Client> Clients { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Company> Companies { get; set; }
 
@@ -90,7 +91,32 @@ namespace BissSolutions.Api.Data
             modelBuilder.Entity<Partner>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired();
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
+                entity.Property(e => e.Logo).HasMaxLength(500);
+                entity.Property(e => e.Description).HasMaxLength(2000);
+                entity.Property(e => e.Website).HasMaxLength(500);
+                entity.Property(e => e.IsActive).IsRequired();
+                entity.Property(e => e.Order).IsRequired();
+                entity.Property(e => e.CreatedAt).IsRequired();
+                entity.Property(e => e.UpdatedAt).IsRequired();
+            });
+
+            // Configuração da entidade Client
+            modelBuilder.Entity<Client>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
+                entity.Property(e => e.Versions).HasMaxLength(200);
+                entity.Property(e => e.Description).HasMaxLength(2000);
+                entity.Property(e => e.ServicesProvided).HasMaxLength(2000);
+                entity.Property(e => e.Logo).HasMaxLength(500);
+                entity.Property(e => e.ProjectImage).HasMaxLength(500);
+                entity.Property(e => e.ProjectLink).HasMaxLength(500);
+                entity.Property(e => e.Website).HasMaxLength(500);
+                entity.Property(e => e.IsActive).IsRequired();
+                entity.Property(e => e.Order).IsRequired();
+                entity.Property(e => e.CreatedAt).IsRequired();
+                entity.Property(e => e.UpdatedAt).IsRequired();
             });
 
             // Configuração da entidade Product

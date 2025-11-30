@@ -50,6 +50,15 @@ export class AdminSidebarComponent implements OnInit {
       ]
     },
     {
+      label: 'Clientes',
+      icon: 'ri-user-line',
+      route: '/admin/clients',
+      children: [
+        { label: 'Listar Clientes', icon: 'ri-list-check', route: '/admin/clients' },
+        { label: 'Novo Cliente', icon: 'ri-add-circle-line', route: '/admin/clients/new' }
+      ]
+    },
+    {
       label: 'Produtos',
       icon: 'ri-shopping-bag-line',
       route: '/admin/products',

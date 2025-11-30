@@ -73,6 +73,8 @@ builder.Services.AddScoped<IPageService, PageService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IServiceService, ServiceService>();
+builder.Services.AddScoped<IPartnerService, PartnerService>();
+builder.Services.AddScoped<IClientService, ClientService>();
 
 // Configuração do CORS
 builder.Services.AddCors(options =>
