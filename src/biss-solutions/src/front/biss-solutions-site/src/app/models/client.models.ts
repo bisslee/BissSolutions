@@ -1,5 +1,5 @@
 export interface Client {
-  id?: number;
+  id?: string; // GUID como string
   name: string;
   versions?: string | null;
   description?: string | null;
@@ -28,6 +28,6 @@ export interface ClientCreateRequest {
 }
 
 export interface ClientUpdateRequest extends ClientCreateRequest {
-  id: number;
+  id: string; // GUID como string
 }
 

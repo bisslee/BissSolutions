@@ -3,7 +3,7 @@
  */
 
 export interface Service {
-  id?: number;
+  id?: string; // GUID como string
   title: string;
   description?: string | null;
   serviceTypes?: string | null;
@@ -30,6 +30,6 @@ export interface ServiceCreateRequest {
 }
 
 export interface ServiceUpdateRequest extends ServiceCreateRequest {
-  id: number;
+  id: string; // GUID como string
 }
 

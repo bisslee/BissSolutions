@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using BissSolutions.Api.Models;
 using BissSolutions.Api.Services;
@@ -29,7 +30,7 @@ namespace BissSolutions.Api.Controllers
         /// Obtém um cliente ativo por ID para o site público
         /// </summary>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Client>> GetClient(int id)
+        public async Task<ActionResult<Client>> GetClient(Guid id)
         {
             var client = await _clientService.GetClientByIdAsync(id);
             if (client == null || !client.IsActive)

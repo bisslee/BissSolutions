@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using BissSolutions.Api.Models;
 using BissSolutions.Api.Services;
@@ -29,7 +30,7 @@ namespace BissSolutions.Api.Controllers
         /// Obtém um parceiro ativo por ID para o site público
         /// </summary>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Partner>> GetPartner(int id)
+        public async Task<ActionResult<Partner>> GetPartner(Guid id)
         {
             var partner = await _partnerService.GetPartnerByIdAsync(id);
             if (partner == null || !partner.IsActive)

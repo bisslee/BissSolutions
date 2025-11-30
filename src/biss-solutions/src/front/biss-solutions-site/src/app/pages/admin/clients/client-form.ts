@@ -17,7 +17,7 @@ export class ClientFormComponent implements OnInit {
   clientForm: FormGroup;
   isLoading = false;
   isEditMode = false;
-  clientId: number | null = null;
+  clientId: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,7 +44,7 @@ export class ClientFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditMode = true;
-      this.clientId = parseInt(id, 10);
+      this.clientId = id; // GUID como string
       this.loadClient();
     }
   }

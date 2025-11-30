@@ -37,7 +37,7 @@ export class ClientService {
   /**
    * Obtém um cliente por ID
    */
-  getClientById(id: number): Observable<Client> {
+  getClientById(id: string): Observable<Client> {
     return this.http.get<Client>(`${this.apiUrl}/${id}`)
       .pipe(
         catchError(this.handleError)
@@ -57,7 +57,7 @@ export class ClientService {
   /**
    * Atualiza um cliente existente
    */
-  updateClient(id: number, client: ClientUpdateRequest): Observable<Client> {
+  updateClient(id: string, client: ClientUpdateRequest): Observable<Client> {
     return this.http.put<Client>(`${this.apiUrl}/${id}`, client)
       .pipe(
         catchError(this.handleError)
@@ -67,7 +67,7 @@ export class ClientService {
   /**
    * Deleta um cliente (soft delete)
    */
-  deleteClient(id: number): Observable<void> {
+  deleteClient(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`)
       .pipe(
         catchError(this.handleError)
@@ -77,7 +77,7 @@ export class ClientService {
   /**
    * Ativa/Desativa um cliente
    */
-  toggleActive(id: number): Observable<Client> {
+  toggleActive(id: string): Observable<Client> {
     return this.http.patch<Client>(`${this.apiUrl}/${id}/toggle-active`, {})
       .pipe(
         catchError(this.handleError)

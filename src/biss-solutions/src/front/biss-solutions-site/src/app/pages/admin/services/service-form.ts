@@ -17,7 +17,7 @@ export class ServiceFormComponent implements OnInit {
   serviceForm: FormGroup;
   isLoading = false;
   isEditMode = false;
-  serviceId: number | null = null;
+  serviceId: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -51,7 +51,7 @@ export class ServiceFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditMode = true;
-      this.serviceId = parseInt(id, 10);
+      this.serviceId = id; // GUID como string
       this.loadService();
     }
   }

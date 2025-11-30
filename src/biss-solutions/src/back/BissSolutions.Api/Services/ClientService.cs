@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using BissSolutions.Api.Data;
 using BissSolutions.Api.Models;
@@ -28,7 +29,7 @@ namespace BissSolutions.Api.Services
                 .ToListAsync();
         }
 
-        public async Task<Client?> GetClientByIdAsync(int id)
+        public async Task<Client?> GetClientByIdAsync(Guid id)
         {
             return await _context.Clients.FindAsync(id);
         }
@@ -43,7 +44,7 @@ namespace BissSolutions.Api.Services
             return client;
         }
 
-        public async Task<Client?> UpdateClientAsync(int id, Client client)
+        public async Task<Client?> UpdateClientAsync(Guid id, Client client)
         {
             var existingClient = await _context.Clients.FindAsync(id);
             if (existingClient == null) return null;
@@ -64,7 +65,7 @@ namespace BissSolutions.Api.Services
             return existingClient;
         }
 
-        public async Task<bool> DeleteClientAsync(int id)
+        public async Task<bool> DeleteClientAsync(Guid id)
         {
             var client = await _context.Clients.FindAsync(id);
             if (client == null) return false;
@@ -76,7 +77,7 @@ namespace BissSolutions.Api.Services
             return true;
         }
 
-        public async Task<bool> ToggleActiveAsync(int id)
+        public async Task<bool> ToggleActiveAsync(Guid id)
         {
             var client = await _context.Clients.FindAsync(id);
             if (client == null) return false;

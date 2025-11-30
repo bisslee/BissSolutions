@@ -201,7 +201,7 @@
 					"response": []
 				},
 				{
-					"name": "Obter Serviço por ID",
+					"name": "Obter Serviço por GUID",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -225,12 +225,12 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do serviço"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do serviço"
 								}
 							]
 						},
-						"description": "Obtém um serviço específico por ID. Requer autenticação."
+						"description": "Obtém um serviço específico por GUID. Requer autenticação."
 					},
 					"response": []
 				},
@@ -285,7 +285,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Desenvolvimento de Software Personalizado\",\n    \"description\": \"Soluções em Angular, .NET, Python e tecnologias modernas - ATUALIZADO\",\n    \"serviceTypes\": \"Angular, .NET, Python, React, Node.js, TypeScript\",\n    \"image\": \"/images/services/development.jpg\",\n    \"slug\": \"desenvolvimento-software-personalizado\",\n    \"isNew\": false,\n    \"featuredOnHome\": true,\n    \"isActive\": true,\n    \"order\": 1\n}"
+							"raw": "{\n    \"id\": \"00000000-0000-0000-0000-000000000001\",\n    \"title\": \"Desenvolvimento de Software Personalizado\",\n    \"description\": \"Soluções em Angular, .NET, Python e tecnologias modernas - ATUALIZADO\",\n    \"serviceTypes\": \"Angular, .NET, Python, React, Node.js, TypeScript\",\n    \"image\": \"/images/services/development.jpg\",\n    \"slug\": \"desenvolvimento-software-personalizado\",\n    \"isNew\": false,\n    \"featuredOnHome\": true,\n    \"isActive\": true,\n    \"order\": 1\n}"
 						},
 						"url": {
 							"raw": "{{site-url}}/api/admin/services/:id",
@@ -301,8 +301,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do serviço"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do serviço"
 								}
 							]
 						},
@@ -335,8 +335,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do serviço"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do serviço"
 								}
 							]
 						},
@@ -370,8 +370,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do serviço"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do serviço"
 								}
 							]
 						},
@@ -472,7 +472,7 @@
 					"response": []
 				},
 				{
-					"name": "Obter Parceiro por ID",
+					"name": "Obter Parceiro por GUID",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -496,12 +496,12 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do parceiro"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do parceiro"
 								}
 							]
 						},
-						"description": "Obtém um parceiro específico por ID. Requer autenticação."
+						"description": "Obtém um parceiro específico por GUID. Requer autenticação."
 					},
 					"response": []
 				},
@@ -556,7 +556,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Empresa Parceira\",\n    \"logo\": \"/images/partners/logo.jpg\",\n    \"description\": \"Descrição do parceiro - ATUALIZADO\",\n    \"website\": \"https://www.parceiro.com.br\",\n    \"isActive\": true,\n    \"order\": 1\n}"
+							"raw": "{\n    \"id\": \"00000000-0000-0000-0000-000000000001\",\n    \"name\": \"Empresa Parceira\",\n    \"logo\": \"/images/partners/logo.jpg\",\n    \"description\": \"Descrição do parceiro - ATUALIZADO\",\n    \"website\": \"https://www.parceiro.com.br\",\n    \"isActive\": true,\n    \"order\": 1\n}"
 						},
 						"url": {
 							"raw": "{{site-url}}/api/admin/partners/:id",
@@ -572,8 +572,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do parceiro"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do parceiro"
 								}
 							]
 						},
@@ -606,8 +606,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do parceiro"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do parceiro"
 								}
 							]
 						},
@@ -641,8 +641,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do parceiro"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do parceiro"
 								}
 							]
 						},
@@ -676,7 +676,7 @@
 					"response": []
 				},
 				{
-					"name": "Obter Parceiro por ID",
+					"name": "Obter Parceiro por GUID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -693,12 +693,12 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do parceiro"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do parceiro"
 								}
 							]
 						},
-						"description": "Obtém um parceiro ativo por ID (endpoint público)"
+						"description": "Obtém um parceiro ativo por GUID (endpoint público)"
 					},
 					"response": []
 				}
@@ -742,7 +742,7 @@
 					"response": []
 				},
 				{
-					"name": "Obter Cliente por ID",
+					"name": "Obter Cliente por GUID",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -766,12 +766,12 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do cliente"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do cliente"
 								}
 							]
 						},
-						"description": "Obtém um cliente específico por ID. Requer autenticação."
+						"description": "Obtém um cliente específico por GUID. Requer autenticação."
 					},
 					"response": []
 				},
@@ -826,7 +826,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Cliente XYZ\",\n    \"versions\": \"v1.0, v2.0, v3.0\",\n    \"description\": \"Descrição do cliente e projeto desenvolvido - ATUALIZADO\",\n    \"servicesProvided\": \"Desenvolvimento de sistema web, API REST, Integração, Migração\",\n    \"logo\": \"/images/clients/logo.jpg\",\n    \"projectImage\": \"/images/clients/project.jpg\",\n    \"projectLink\": \"https://www.projeto.com.br\",\n    \"website\": \"https://www.cliente.com.br\",\n    \"isActive\": true,\n    \"order\": 1\n}"
+							"raw": "{\n    \"id\": \"00000000-0000-0000-0000-000000000001\",\n    \"name\": \"Cliente XYZ\",\n    \"versions\": \"v1.0, v2.0, v3.0\",\n    \"description\": \"Descrição do cliente e projeto desenvolvido - ATUALIZADO\",\n    \"servicesProvided\": \"Desenvolvimento de sistema web, API REST, Integração, Migração\",\n    \"logo\": \"/images/clients/logo.jpg\",\n    \"projectImage\": \"/images/clients/project.jpg\",\n    \"projectLink\": \"https://www.projeto.com.br\",\n    \"website\": \"https://www.cliente.com.br\",\n    \"isActive\": true,\n    \"order\": 1\n}"
 						},
 						"url": {
 							"raw": "{{site-url}}/api/admin/clients/:id",
@@ -842,8 +842,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do cliente"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do cliente"
 								}
 							]
 						},
@@ -876,8 +876,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do cliente"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do cliente"
 								}
 							]
 						},
@@ -911,8 +911,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do cliente"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do cliente"
 								}
 							]
 						},
@@ -946,7 +946,7 @@
 					"response": []
 				},
 				{
-					"name": "Obter Cliente por ID",
+					"name": "Obter Cliente por GUID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -963,12 +963,12 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1",
-									"description": "ID do cliente"
+									"value": "00000000-0000-0000-0000-000000000001",
+									"description": "GUID do cliente"
 								}
 							]
 						},
-						"description": "Obtém um cliente ativo por ID (endpoint público)"
+						"description": "Obtém um cliente ativo por GUID (endpoint público)"
 					},
 					"response": []
 				}

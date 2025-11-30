@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using BissSolutions.Api.Models;
@@ -31,7 +32,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Obtém um cliente por ID
         /// </summary>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Client>> GetClient(int id)
+        public async Task<ActionResult<Client>> GetClient(Guid id)
         {
             var client = await _clientService.GetClientByIdAsync(id);
             if (client == null)
@@ -64,7 +65,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Atualiza um cliente existente
         /// </summary>
         [HttpPut("{id}")]
-        public async Task<ActionResult<Client>> UpdateClient(int id, Client client)
+        public async Task<ActionResult<Client>> UpdateClient(Guid id, Client client)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -80,7 +81,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Deleta um cliente (soft delete)
         /// </summary>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteClient(int id)
+        public async Task<IActionResult> DeleteClient(Guid id)
         {
             var result = await _clientService.DeleteClientAsync(id);
             if (!result)
@@ -93,7 +94,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Ativa/Desativa um cliente
         /// </summary>
         [HttpPatch("{id}/toggle-active")]
-        public async Task<ActionResult<Client>> ToggleActive(int id)
+        public async Task<ActionResult<Client>> ToggleActive(Guid id)
         {
             var result = await _clientService.ToggleActiveAsync(id);
             if (!result)

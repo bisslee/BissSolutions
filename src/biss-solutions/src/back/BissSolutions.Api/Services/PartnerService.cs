@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using BissSolutions.Api.Data;
 using BissSolutions.Api.Models;
@@ -28,7 +29,7 @@ namespace BissSolutions.Api.Services
                 .ToListAsync();
         }
 
-        public async Task<Partner?> GetPartnerByIdAsync(int id)
+        public async Task<Partner?> GetPartnerByIdAsync(Guid id)
         {
             return await _context.Partners.FindAsync(id);
         }
@@ -43,7 +44,7 @@ namespace BissSolutions.Api.Services
             return partner;
         }
 
-        public async Task<Partner?> UpdatePartnerAsync(int id, Partner partner)
+        public async Task<Partner?> UpdatePartnerAsync(Guid id, Partner partner)
         {
             var existingPartner = await _context.Partners.FindAsync(id);
             if (existingPartner == null) return null;
@@ -60,7 +61,7 @@ namespace BissSolutions.Api.Services
             return existingPartner;
         }
 
-        public async Task<bool> DeletePartnerAsync(int id)
+        public async Task<bool> DeletePartnerAsync(Guid id)
         {
             var partner = await _context.Partners.FindAsync(id);
             if (partner == null) return false;
@@ -72,7 +73,7 @@ namespace BissSolutions.Api.Services
             return true;
         }
 
-        public async Task<bool> ToggleActiveAsync(int id)
+        public async Task<bool> ToggleActiveAsync(Guid id)
         {
             var partner = await _context.Partners.FindAsync(id);
             if (partner == null) return false;

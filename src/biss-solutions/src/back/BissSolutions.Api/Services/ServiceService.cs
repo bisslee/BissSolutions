@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using BissSolutions.Api.Data;
 using BissSolutions.Api.Models;
@@ -30,7 +31,7 @@ namespace BissSolutions.Api.Services
                 .ToListAsync();
         }
 
-        public async Task<Service?> GetServiceByIdAsync(int id)
+        public async Task<Service?> GetServiceByIdAsync(Guid id)
         {
             return await _context.Services.FindAsync(id);
         }
@@ -70,7 +71,7 @@ namespace BissSolutions.Api.Services
             return service;
         }
 
-        public async Task<Service?> UpdateServiceAsync(int id, Service service)
+        public async Task<Service?> UpdateServiceAsync(Guid id, Service service)
         {
             var existingService = await _context.Services.FindAsync(id);
             if (existingService == null) return null;
@@ -106,7 +107,7 @@ namespace BissSolutions.Api.Services
             return existingService;
         }
 
-        public async Task<bool> DeleteServiceAsync(int id)
+        public async Task<bool> DeleteServiceAsync(Guid id)
         {
             var service = await _context.Services.FindAsync(id);
             if (service == null) return false;
@@ -118,7 +119,7 @@ namespace BissSolutions.Api.Services
             return true;
         }
 
-        public async Task<bool> ToggleActiveAsync(int id)
+        public async Task<bool> ToggleActiveAsync(Guid id)
         {
             var service = await _context.Services.FindAsync(id);
             if (service == null) return false;

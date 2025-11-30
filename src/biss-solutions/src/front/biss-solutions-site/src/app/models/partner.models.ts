@@ -1,5 +1,5 @@
 export interface Partner {
-  id: number;
+  id?: string; // GUID como string
   name: string;
   logo: string | null;
   description: string | null;
@@ -20,6 +20,7 @@ export interface PartnerCreateRequest {
 }
 
 export interface PartnerUpdateRequest {
+  id: string; // GUID como string
   name?: string;
   logo?: string;
   description?: string;

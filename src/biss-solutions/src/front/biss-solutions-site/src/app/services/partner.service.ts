@@ -37,7 +37,7 @@ export class PartnerService {
   /**
    * Obtém um parceiro por ID
    */
-  getPartnerById(id: number): Observable<Partner> {
+  getPartnerById(id: string): Observable<Partner> {
     return this.http.get<Partner>(`${this.apiUrl}/${id}`)
       .pipe(
         catchError(this.handleError)
@@ -57,7 +57,7 @@ export class PartnerService {
   /**
    * Atualiza um parceiro existente
    */
-  updatePartner(id: number, partner: PartnerUpdateRequest): Observable<Partner> {
+  updatePartner(id: string, partner: PartnerUpdateRequest): Observable<Partner> {
     return this.http.put<Partner>(`${this.apiUrl}/${id}`, partner)
       .pipe(
         catchError(this.handleError)
@@ -67,7 +67,7 @@ export class PartnerService {
   /**
    * Deleta um parceiro (soft delete)
    */
-  deletePartner(id: number): Observable<void> {
+  deletePartner(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`)
       .pipe(
         catchError(this.handleError)
@@ -77,7 +77,7 @@ export class PartnerService {
   /**
    * Ativa/Desativa um parceiro
    */
-  toggleActive(id: number): Observable<Partner> {
+  toggleActive(id: string): Observable<Partner> {
     return this.http.patch<Partner>(`${this.apiUrl}/${id}/toggle-active`, {})
       .pipe(
         catchError(this.handleError)

@@ -17,7 +17,7 @@ export class PartnerFormComponent implements OnInit {
   partnerForm: FormGroup;
   isLoading = false;
   isEditMode = false;
-  partnerId: number | null = null;
+  partnerId: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,7 +40,7 @@ export class PartnerFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditMode = true;
-      this.partnerId = parseInt(id, 10);
+      this.partnerId = id; // GUID como string
       this.loadPartner();
     }
   }
@@ -82,7 +82,7 @@ export class PartnerFormComponent implements OnInit {
 
     if (this.isEditMode && this.partnerId) {
       // Atualizar
-      this.partnerService.updatePartner(this.partnerId, formValue).subscribe({
+      this.partnerService.updatePartner(this.partnerId, { ...formValue, id: this.partnerId }).subscribe({
         next: () => {
           this.toastService.show('Parceiro atualizado com sucesso!', 'success');
           this.router.navigate(['/admin/partners']);

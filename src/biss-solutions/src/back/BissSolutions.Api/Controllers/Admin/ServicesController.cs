@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using BissSolutions.Api.Models;
@@ -42,7 +43,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Obtém um serviço por ID
         /// </summary>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Service>> GetService(int id)
+        public async Task<ActionResult<Service>> GetService(Guid id)
         {
             var service = await _serviceService.GetServiceByIdAsync(id);
             if (service == null)
@@ -75,7 +76,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Atualiza um serviço existente
         /// </summary>
         [HttpPut("{id}")]
-        public async Task<ActionResult<Service>> UpdateService(int id, Service service)
+        public async Task<ActionResult<Service>> UpdateService(Guid id, Service service)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -91,7 +92,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Deleta um serviço (soft delete)
         /// </summary>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteService(int id)
+        public async Task<IActionResult> DeleteService(Guid id)
         {
             var result = await _serviceService.DeleteServiceAsync(id);
             if (!result)
@@ -104,7 +105,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Ativa/Desativa um serviço
         /// </summary>
         [HttpPatch("{id}/toggle-active")]
-        public async Task<ActionResult<Service>> ToggleActive(int id)
+        public async Task<ActionResult<Service>> ToggleActive(Guid id)
         {
             var result = await _serviceService.ToggleActiveAsync(id);
             if (!result)

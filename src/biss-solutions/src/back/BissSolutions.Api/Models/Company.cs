@@ -1,10 +1,11 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace BissSolutions.Api.Models
 {
     public class Company
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         
         [MaxLength(2000)]
         public string? Description { get; set; } // Descrição

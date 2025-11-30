@@ -37,7 +37,7 @@ export class ServiceService {
   /**
    * Obtém um serviço por ID
    */
-  getServiceById(id: number): Observable<Service> {
+  getServiceById(id: string): Observable<Service> {
     return this.http.get<Service>(`${this.apiUrl}/${id}`)
       .pipe(
         catchError(this.handleError)
@@ -71,7 +71,7 @@ export class ServiceService {
   /**
    * Atualiza um serviço existente
    */
-  updateService(id: number, service: ServiceUpdateRequest): Observable<Service> {
+  updateService(id: string, service: ServiceUpdateRequest): Observable<Service> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
@@ -85,7 +85,7 @@ export class ServiceService {
   /**
    * Deleta um serviço (soft delete)
    */
-  deleteService(id: number): Observable<void> {
+  deleteService(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`)
       .pipe(
         catchError(this.handleError)
@@ -95,7 +95,7 @@ export class ServiceService {
   /**
    * Ativa/Desativa um serviço
    */
-  toggleActive(id: number): Observable<Service> {
+  toggleActive(id: string): Observable<Service> {
     return this.http.patch<Service>(`${this.apiUrl}/${id}/toggle-active`, {})
       .pipe(
         catchError(this.handleError)

@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using BissSolutions.Api.Models;
@@ -31,7 +32,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Obtém um parceiro por ID
         /// </summary>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Partner>> GetPartner(int id)
+        public async Task<ActionResult<Partner>> GetPartner(Guid id)
         {
             var partner = await _partnerService.GetPartnerByIdAsync(id);
             if (partner == null)
@@ -64,7 +65,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Atualiza um parceiro existente
         /// </summary>
         [HttpPut("{id}")]
-        public async Task<ActionResult<Partner>> UpdatePartner(int id, Partner partner)
+        public async Task<ActionResult<Partner>> UpdatePartner(Guid id, Partner partner)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -80,7 +81,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Deleta um parceiro (soft delete)
         /// </summary>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePartner(int id)
+        public async Task<IActionResult> DeletePartner(Guid id)
         {
             var result = await _partnerService.DeletePartnerAsync(id);
             if (!result)
@@ -93,7 +94,7 @@ namespace BissSolutions.Api.Controllers.Admin
         /// Ativa/Desativa um parceiro
         /// </summary>
         [HttpPatch("{id}/toggle-active")]
-        public async Task<ActionResult<Partner>> ToggleActive(int id)
+        public async Task<ActionResult<Partner>> ToggleActive(Guid id)
         {
             var result = await _partnerService.ToggleActiveAsync(id);
             if (!result)
