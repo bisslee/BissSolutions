@@ -1,14 +1,15 @@
 <!-- Layout Mobile-First Biss Solutions -->
-<app-top-bar></app-top-bar>
-<app-header></app-header>
+<!-- Esconder componentes do site público quando estiver no admin -->
+<app-top-bar *ngIf="!isAdminRoute"></app-top-bar>
+<app-header *ngIf="!isAdminRoute"></app-header>
 
 <main class="main-content">
   <router-outlet />
 </main>
 
-<app-footer></app-footer>
-<app-floating-buttons></app-floating-buttons>
-<app-bottom-navigation></app-bottom-navigation>
+<app-footer *ngIf="!isAdminRoute"></app-footer>
+<app-floating-buttons *ngIf="!isAdminRoute"></app-floating-buttons>
+<app-bottom-navigation *ngIf="!isAdminRoute"></app-bottom-navigation>
 
 <!-- Cookie Banner -->
 <app-cookie-banner></app-cookie-banner>

@@ -1,29 +1,57 @@
 <div class="dashboard-page">
-  <div class="dashboard-container">
-    <header class="dashboard-header">
-      <div class="header-content">
-        <h1 class="dashboard-title">Painel Administrativo</h1>
-        <div class="header-actions">
-          <div class="user-info">
-            <span class="user-name">{{ currentUser?.fullName || currentUser?.email }}</span>
+  <div class="dashboard-header">
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-subtitle">Bem-vindo de volta, {{ currentUser?.fullName || currentUser?.email }}!</p>
+  </div>
+
+  <!-- Cards de Estatísticas -->
+  <div class="stats-grid">
+    <div *ngFor="let stat of statistics" class="stat-card" [style.border-left-color]="stat.color">
+      <div class="stat-icon" [style.background-color]="stat.color + '20'">
+        <i [class]="stat.icon" [style.color]="stat.color"></i>
+      </div>
+      <div class="stat-content">
+        <div class="stat-value">{{ stat.value }}</div>
+        <div class="stat-title">{{ stat.title }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção de Conteúdo -->
+  <div class="dashboard-content">
+    <div class="content-grid">
+      <!-- Mensagens Recentes -->
+      <div class="content-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <i class="ri-mail-line"></i>
+            Mensagens Recentes
+          </h2>
+        </div>
+        <div class="card-body">
+          <div class="empty-state">
+            <i class="ri-inbox-line"></i>
+            <p>Nenhuma mensagem no momento.</p>
           </div>
-          <button (click)="logout()" class="logout-button">
-            Sair
-          </button>
         </div>
       </div>
-    </header>
 
-    <main class="dashboard-main">
-      <div class="welcome-section">
-        <h2>Bem-vindo, {{ currentUser?.fullName || currentUser?.email }}!</h2>
-        <p>Painel administrativo em desenvolvimento.</p>
+      <!-- Atividades Recentes -->
+      <div class="content-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <i class="ri-time-line"></i>
+            Atividades Recentes
+          </h2>
+        </div>
+        <div class="card-body">
+          <div class="empty-state">
+            <i class="ri-file-list-line"></i>
+            <p>Nenhuma atividade recente.</p>
+          </div>
+        </div>
       </div>
-
-      <div class="loading" *ngIf="isLoading">
-        <p>Carregando...</p>
-      </div>
-    </main>
+    </div>
   </div>
 </div>
 

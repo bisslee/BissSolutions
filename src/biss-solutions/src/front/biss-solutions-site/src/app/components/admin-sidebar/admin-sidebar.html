@@ -1,0 +1,78 @@
+<aside class="admin-sidebar" [class.collapsed]="collapsed">
+  <div class="sidebar-header">
+    <div class="logo-container">
+      <img 
+        src="/images/logo-tech-cinza.png" 
+        alt="Biss Solutions" 
+        class="logo"
+        *ngIf="!collapsed">
+      <span class="logo-icon" *ngIf="collapsed">BS</span>
+    </div>
+    <button 
+      class="toggle-button"
+      (click)="toggle.emit()"
+      [attr.aria-label]="collapsed ? 'Expandir menu' : 'Recolher menu'">
+      <i [class]="collapsed ? 'ri-menu-unfold-line' : 'ri-menu-fold-line'"></i>
+    </button>
+  </div>
+
+  <nav class="sidebar-nav">
+    <ul class="nav-list">
+      <li *ngFor="let item of menuItems" class="nav-item">
+        <!-- Item de menu principal -->
+        <a 
+          *ngIf="!hasChildren(item)"
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          class="nav-link"
+          [title]="item.label">
+          <i [class]="item.icon"></i>
+          <span *ngIf="!collapsed" class="nav-label">{{ item.label }}</span>
+          <span *ngIf="item.badge !== undefined && !collapsed" class="badge">{{ item.badge }}</span>
+        </a>
+
+        <!-- Item com submenu -->
+        <div *ngIf="hasChildren(item)" class="nav-group">
+          <button
+            class="nav-link nav-link-group"
+            (click)="toggleExpand(item)"
+            [class.expanded]="isExpanded(item)"
+            [title]="item.label">
+            <i [class]="item.icon"></i>
+            <span *ngIf="!collapsed" class="nav-label">{{ item.label }}</span>
+            <i *ngIf="!collapsed" 
+               class="ri-arrow-down-s-line expand-icon"
+               [class.rotated]="isExpanded(item)"></i>
+          </button>
+
+          <!-- Submenu -->
+          <ul *ngIf="!collapsed && isExpanded(item)" class="submenu active">
+            <li *ngFor="let child of item.children" class="submenu-item">
+              <a 
+                [routerLink]="child.route"
+                routerLinkActive="active"
+                class="submenu-link">
+                <i [class]="child.icon"></i>
+                <span>{{ child.label }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Footer da Sidebar -->
+  <div class="sidebar-footer" *ngIf="!collapsed">
+    <div class="user-info">
+      <div class="user-avatar">
+        <i class="ri-user-line"></i>
+      </div>
+      <div class="user-details">
+        <span class="user-name">{{ currentUser?.fullName || currentUser?.email }}</span>
+        <span class="user-role">Administrador</span>
+      </div>
+    </div>
+  </div>
+</aside>
+

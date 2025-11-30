@@ -1,0 +1,60 @@
+<header class="admin-header">
+  <div class="header-left">
+    <button class="menu-toggle" (click)="onToggleSidebar()" aria-label="Toggle sidebar">
+      <i class="ri-menu-line"></i>
+    </button>
+    <h1 class="page-title">Painel Administrativo</h1>
+  </div>
+
+  <div class="header-right">
+    <!-- Notificações (futuro) -->
+    <button class="icon-button" aria-label="Notificações">
+      <i class="ri-notification-3-line"></i>
+      <span class="notification-badge" *ngIf="false">3</span>
+    </button>
+
+    <!-- Menu do usuário -->
+    <div class="user-menu-container">
+      <button 
+        class="user-menu-button"
+        (click)="toggleUserMenu()"
+        [attr.aria-expanded]="showUserMenu">
+        <div class="user-avatar">
+          <i class="ri-user-line"></i>
+        </div>
+        <span class="user-name" *ngIf="currentUser">
+          {{ currentUser.fullName || currentUser.email }}
+        </span>
+        <i class="ri-arrow-down-s-line dropdown-icon"></i>
+      </button>
+
+      <!-- Dropdown do menu -->
+      <div class="user-menu-dropdown" *ngIf="showUserMenu">
+        <div class="user-info-header">
+          <div class="user-avatar-large">
+            <i class="ri-user-line"></i>
+          </div>
+          <div class="user-details">
+            <div class="user-name-large">{{ currentUser?.fullName || currentUser?.email }}</div>
+            <div class="user-email">{{ currentUser?.email }}</div>
+          </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" (click)="goToProfile()">
+          <i class="ri-user-settings-line"></i>
+          <span>Meu Perfil</span>
+        </button>
+        <button class="dropdown-item" (click)="goToProfile()">
+          <i class="ri-settings-3-line"></i>
+          <span>Configurações</span>
+        </button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item logout" (click)="logout()">
+          <i class="ri-logout-box-line"></i>
+          <span>Sair</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+

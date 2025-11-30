@@ -1,5 +1,7 @@
 import { Component, signal, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { filter } from 'rxjs/operators';
 import { TopBar } from './components/top-bar/top-bar';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
@@ -14,6 +16,7 @@ import { PwaService } from './services/pwa.service';
 @Component({
   selector: 'app-root',
   imports: [
+    CommonModule,
     RouterOutlet,
     TopBar,
     Header,
@@ -30,11 +33,30 @@ import { PwaService } from './services/pwa.service';
 })
 export class App implements OnInit {
   protected readonly title = signal('Biss Solutions');
+  isAdminRoute = false;
 
-  constructor(private pwaService: PwaService) {}
+  constructor(
+    private pwaService: PwaService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     // PWA Service é inicializado automaticamente no construtor
     console.log('🚀 Biss Solutions PWA inicializada!');
+
+    // Verificar se está em rota admin
+    this.checkAdminRoute();
+    
+    // Observar mudanças de rota
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.checkAdminRoute();
+      });
+  }
+
+  private checkAdminRoute(): void {
+    const url = this.router.url;
+    this.isAdminRoute = url.startsWith('/admin');
   }
 }
