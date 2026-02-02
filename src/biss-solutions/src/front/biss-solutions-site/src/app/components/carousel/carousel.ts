@@ -11,6 +11,8 @@ interface CarouselSlide {
   buttonText: string;
   buttonLink: string;
   overlayColor: string;
+  /** Quando false, o slide não é exibido (desabilitado, mantido no código). */
+  enabled?: boolean;
 }
 
 @Component({
@@ -33,7 +35,8 @@ export class Carousel implements OnInit, OnDestroy {
       subtitle: '🎁 Landing Page Profissional + Hospedagem 1 ano + 5 e-mails personalizados. Tudo que você precisa para começar a vender online!',
       buttonText: 'Aproveite Agora',
       buttonLink: '/services/pacote-completo',
-      overlayColor: 'rgba(220, 38, 127, 0.5)'
+      overlayColor: 'rgba(220, 38, 127, 0.5)',
+      enabled: false
     },
     {
       id: 1,
@@ -73,6 +76,11 @@ export class Carousel implements OnInit, OnDestroy {
     }
   ];
 
+  /** Slides exibidos no carrossel (exclui os com enabled: false). */
+  get enabledSlides(): CarouselSlide[] {
+    return this.slides.filter(s => s.enabled !== false);
+  }
+
   ngOnInit() {
     this.startAutoSlide();
     this.preloadCarouselImages();
@@ -82,9 +90,9 @@ export class Carousel implements OnInit, OnDestroy {
    * Preload das imagens do carrossel para melhor performance
    */
   private preloadCarouselImages(): void {
-    this.slides.forEach((slide, index) => {
-      // Preload apenas a primeira imagem (atual) e a próxima
-      if (index === this.currentSlide || index === (this.currentSlide + 1) % this.slides.length) {
+    const enabled = this.enabledSlides;
+    enabled.forEach((slide, index) => {
+      if (index === this.currentSlide || index === (this.currentSlide + 1) % enabled.length) {
         const img = new Image();
         img.src = slide.image;
       }
@@ -110,13 +118,15 @@ export class Carousel implements OnInit, OnDestroy {
   }
 
   nextSlide() {
-    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+    const n = this.enabledSlides.length;
+    this.currentSlide = (this.currentSlide + 1) % n;
     this.stopAutoSlide();
     this.startAutoSlide();
   }
 
   previousSlide() {
-    this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
+    const n = this.enabledSlides.length;
+    this.currentSlide = this.currentSlide === 0 ? n - 1 : this.currentSlide - 1;
     this.stopAutoSlide();
     this.startAutoSlide();
   }
