@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class VersionService {
-  readonly version = '2.6.2';
+  readonly version = '2.7.1';
   readonly buildDate = new Date().toISOString();
 
   getVersion(): string {
